@@ -28,81 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.nombre = new System.Windows.Forms.Label();
-            this.descripcion = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // dgvProductos
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(438, 179);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "holaaaa";
+            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductos.Location = new System.Drawing.Point(12, 16);
+            this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.Size = new System.Drawing.Size(776, 357);
+            this.dgvProductos.TabIndex = 0;
             // 
-            // nombre
+            // btnAgregar
             // 
-            this.nombre.AutoSize = true;
-            this.nombre.Location = new System.Drawing.Point(28, 37);
-            this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(107, 13);
-            this.nombre.TabIndex = 1;
-            this.nombre.Text = "Nombre del Producto";
+            this.btnAgregar.Location = new System.Drawing.Point(366, 388);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 53);
+            this.btnAgregar.TabIndex = 1;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // descripcion
+            // btnEditar
             // 
-            this.descripcion.AutoSize = true;
-            this.descripcion.Location = new System.Drawing.Point(28, 74);
-            this.descripcion.Name = "descripcion";
-            this.descripcion.Size = new System.Drawing.Size(63, 13);
-            this.descripcion.TabIndex = 2;
-            this.descripcion.Text = "Descripción";
+            this.btnEditar.Location = new System.Drawing.Point(285, 388);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 53);
+            this.btnEditar.TabIndex = 2;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // label2
+            // btnEliminar
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 114);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Cantidad de Producto";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(331, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Precio Unitario";
+            this.btnEliminar.Location = new System.Drawing.Point(447, 388);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 53);
+            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // FormularioProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.descripcion);
-            this.Controls.Add(this.nombre);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.dgvProductos);
             this.Name = "FormularioProductos";
-            this.Text = "FormularioProductos";
+            this.Text = "Gestión de Productos";
+            this.Load += new System.EventHandler(this.FormularioProductos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label nombre;
-        private System.Windows.Forms.Label descripcion;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dgvProductos;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

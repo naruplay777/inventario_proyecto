@@ -11,6 +11,14 @@ namespace inventario_proyecto
     {
         private string connectionString;
 
+        // Constructor que inicializa la cadena de conexión con un valor predeterminado
+        public DBHelper()
+        {
+            // Cadena de conexión actualizada
+            this.connectionString = "Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;";
+        }
+
+        // Constructor que permite pasar una cadena de conexión personalizada
         public DBHelper(string connectionString)
         {
             this.connectionString = connectionString;
@@ -23,16 +31,24 @@ namespace inventario_proyecto
                            "VALUES (@nombre, @descripcion, @categoria_id, @presentacion_id, @precio, @stock)";
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
-                cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
-                cmd.Parameters.AddWithValue("@categoria_id", producto.CategoriaId);
-                cmd.Parameters.AddWithValue("@presentacion_id", producto.PresentacionId);
-                cmd.Parameters.AddWithValue("@precio", producto.Precio);
-                cmd.Parameters.AddWithValue("@stock", producto.Stock);
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
+                    cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+                    cmd.Parameters.AddWithValue("@categoria_id", producto.CategoriaId);
+                    cmd.Parameters.AddWithValue("@presentacion_id", producto.PresentacionId);
+                    cmd.Parameters.AddWithValue("@precio", producto.Precio);
+                    cmd.Parameters.AddWithValue("@stock", producto.Stock);
 
-                connection.Open();
-                return cmd.ExecuteNonQuery() > 0;
+                    connection.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine($"Error al insertar producto: {ex.Message}");
+                    return false;
+                }
             }
         }
 
@@ -47,25 +63,32 @@ namespace inventario_proyecto
             List<Producto> productos = new List<Producto>();
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                connection.Open();
-                using (MySqlDataReader reader = cmd.ExecuteReader())
+                try
                 {
-                    while (reader.Read())
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    connection.Open();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        productos.Add(new Producto
+                        while (reader.Read())
                         {
-                            Id = reader.GetInt32("id"),
-                            Nombre = reader.GetString("nombre"),
-                            Descripcion = reader.GetString("descripcion"),
-                            CategoriaId = reader.GetInt32("categoria_id"),
-                            CategoriaNombre = reader.GetString("categoria_nombre"),
-                            PresentacionId = reader.GetInt32("presentacion_id"),
-                            PresentacionDescripcion = reader.GetString("presentacion_descripcion"),
-                            Precio = reader.GetDecimal("precio"),
-                            Stock = reader.GetInt32("stock")
-                        });
+                            productos.Add(new Producto
+                            {
+                                Id = reader.GetInt32("id"),
+                                Nombre = reader.GetString("nombre"),
+                                Descripcion = reader.GetString("descripcion"),
+                                CategoriaId = reader.GetInt32("categoria_id"),
+                                CategoriaNombre = reader.GetString("categoria_nombre"),
+                                PresentacionId = reader.GetInt32("presentacion_id"),
+                                PresentacionDescripcion = reader.GetString("presentacion_descripcion"),
+                                Precio = reader.GetDecimal("precio"),
+                                Stock = reader.GetInt32("stock")
+                            });
+                        }
                     }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine($"Error al obtener productos: {ex.Message}");
                 }
             }
             return productos;
@@ -79,17 +102,25 @@ namespace inventario_proyecto
                            "WHERE id = @id";
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@id", producto.Id);
-                cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
-                cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
-                cmd.Parameters.AddWithValue("@categoria_id", producto.CategoriaId);
-                cmd.Parameters.AddWithValue("@presentacion_id", producto.PresentacionId);
-                cmd.Parameters.AddWithValue("@precio", producto.Precio);
-                cmd.Parameters.AddWithValue("@stock", producto.Stock);
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@id", producto.Id);
+                    cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
+                    cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+                    cmd.Parameters.AddWithValue("@categoria_id", producto.CategoriaId);
+                    cmd.Parameters.AddWithValue("@presentacion_id", producto.PresentacionId);
+                    cmd.Parameters.AddWithValue("@precio", producto.Precio);
+                    cmd.Parameters.AddWithValue("@stock", producto.Stock);
 
-                connection.Open();
-                return cmd.ExecuteNonQuery() > 0;
+                    connection.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine($"Error al actualizar producto: {ex.Message}");
+                    return false;
+                }
             }
         }
 
@@ -99,11 +130,19 @@ namespace inventario_proyecto
             string query = "DELETE FROM productos WHERE id = @id";
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@id", productoId);
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@id", productoId);
 
-                connection.Open();
-                return cmd.ExecuteNonQuery() > 0;
+                    connection.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine($"Error al eliminar producto: {ex.Message}");
+                    return false;
+                }
             }
         }
     }

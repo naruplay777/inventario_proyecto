@@ -16,5 +16,39 @@ namespace inventario_proyecto
         {
             InitializeComponent();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CargarProductos()
+        {
+            DBHelper dbHelper = new DBHelper("Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;");
+            List<Producto> productos = dbHelper.ObtenerProductos();
+
+            dgvProductos.DataSource = productos; // Asignar la lista al DataGridView
+
+            dgvProductos.Columns["CategoriaNombre"].HeaderText = "Categoría";
+            dgvProductos.Columns["PresentacionDescripcion"].HeaderText = "Presentación";
+
+            dgvProductos.Columns["CategoriaId"].Visible = false;
+            dgvProductos.Columns["PresentacionId"].Visible = false;
+        }
+
+        private void FormularioProductos_Load(object sender, EventArgs e)
+        {
+            CargarProductos();
+        }
     }
 }
