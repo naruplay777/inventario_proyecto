@@ -1,9 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+using System;
 
 namespace inventario_proyecto
 {
@@ -14,7 +11,6 @@ namespace inventario_proyecto
         // Constructor que inicializa la cadena de conexión con un valor predeterminado
         public DBHelper()
         {
-            // Cadena de conexión actualizada
             this.connectionString = "Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;";
         }
 
@@ -29,6 +25,7 @@ namespace inventario_proyecto
         {
             string query = "INSERT INTO productos (nombre, descripcion, categoria_id, presentacion_id, precio, stock) " +
                            "VALUES (@nombre, @descripcion, @categoria_id, @presentacion_id, @precio, @stock)";
+
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try
@@ -60,6 +57,7 @@ namespace inventario_proyecto
                            "FROM productos p " +
                            "JOIN categorias c ON p.categoria_id = c.id " +
                            "JOIN presentaciones pr ON p.presentacion_id = pr.id";
+
             List<Producto> productos = new List<Producto>();
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -94,12 +92,77 @@ namespace inventario_proyecto
             return productos;
         }
 
+        // Obtener todas las categorías
+        public List<Categoria> ObtenerCategorias()
+        {
+            List<Categoria> listaCategorias = new List<Categoria>();  // Cambié el nombre de 'categorias' a 'listaCategorias'
+            string query = "SELECT id, nombre FROM categorias";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    connection.Open();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listaCategorias.Add(new Categoria
+                            {
+                                Id = reader.GetInt32("id"),
+                                Nombre = reader.GetString("nombre")
+                            });
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine($"Error al obtener categorías: {ex.Message}");
+                }
+            }
+            return listaCategorias;
+        }
+
+        // Obtener todas las presentaciones
+        public List<Presentacion> ObtenerPresentaciones()
+        {
+            List<Presentacion> presentaciones = new List<Presentacion>();
+            string query = "SELECT id, descripcion FROM presentaciones";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    connection.Open();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            presentaciones.Add(new Presentacion
+                            {
+                                Id = reader.GetInt32("id"),
+                                Descripcion = reader.GetString("descripcion")
+                            });
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine($"Error al obtener presentaciones: {ex.Message}");
+                }
+            }
+            return presentaciones;
+        }
+
         // Actualizar un producto
         public bool ActualizarProducto(Producto producto)
         {
             string query = "UPDATE productos SET nombre = @nombre, descripcion = @descripcion, " +
                            "categoria_id = @categoria_id, presentacion_id = @presentacion_id, precio = @precio, stock = @stock " +
                            "WHERE id = @id";
+
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try
@@ -128,6 +191,7 @@ namespace inventario_proyecto
         public bool EliminarProducto(int productoId)
         {
             string query = "DELETE FROM productos WHERE id = @id";
+
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try

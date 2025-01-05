@@ -19,12 +19,33 @@ namespace inventario_proyecto
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            using (var formulario = new FormularioAgregarEditarProducto())
+            {
+                if (formulario.ShowDialog() == DialogResult.OK)
+                {
+                    CargarProductos(); // Recarga el DataGridView
+                }
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
 
+            if (dgvProductos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un producto para editar.");
+                return;
+            }
+
+            var producto = (Producto)dgvProductos.SelectedRows[0].DataBoundItem;
+
+            using (var formulario = new FormularioAgregarEditarProducto(producto))
+            {
+                if (formulario.ShowDialog() == DialogResult.OK)
+                {
+                    CargarProductos(); // Recarga el DataGridView
+                }
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
