@@ -9,44 +9,23 @@ namespace inventario_proyecto
     public class Producto
     {
 
-        public int IdProducto { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public double Cantidad { get; set; }
-        public string UnidadMedida { get; set; }  // Por ejemplo: "caja", "cesta", "kg", "litro"
-        public double PrecioUnitario { get; set; }
+        // Propiedades básicas
+        public int Id { get; set; } // ID único del producto
+        public string Nombre { get; set; } // Nombre del producto
+        public string Descripcion { get; set; } // Descripción opcional
+        public int CategoriaId { get; set; } // ID de la categoría a la que pertenece
+        public int PresentacionId { get; set; } // ID de la presentación asociada
+        public decimal Precio { get; set; } // Precio actual del producto
+        public int Stock { get; set; } // Cantidad en inventario
 
-        // Constructor
-        public Producto(int idProducto, string nombre, string descripcion, double cantidad, string unidadMedida, double precioUnitario)
+        // Propiedades para relaciones (opcionales pero útiles para mostrar en UI)
+        public string CategoriaNombre { get; set; } // Nombre de la categoría
+        public string PresentacionDescripcion { get; set; } // Descripción de la presentación
+
+        // Métodos opcionales para lógica
+        public override string ToString()
         {
-            IdProducto = idProducto;
-            Nombre = nombre;
-            Descripcion = descripcion;
-            Cantidad = cantidad;
-            UnidadMedida = unidadMedida;
-            PrecioUnitario = precioUnitario;
+            return $"{Nombre} - {CategoriaNombre} - {PresentacionDescripcion}";
         }
-
-        // Método para agregar un producto a la base de datos
-        public void AgregarProducto(DBHelper dbHelper)
-        {
-            string query = $"INSERT INTO productos (nombre, descripcion, cantidad, unidad_medida, precio_unitario) VALUES ('{Nombre}', '{Descripcion}', {Cantidad}, '{UnidadMedida}', {PrecioUnitario})";
-            dbHelper.EjecutarComando(query);
-        }
-
-        // Método para actualizar un producto en la base de datos
-        public void ActualizarProducto(DBHelper dbHelper)
-        {
-            string query = $"UPDATE productos SET nombre='{Nombre}', descripcion='{Descripcion}', cantidad={Cantidad}, unidad_medida='{UnidadMedida}', precio_unitario={PrecioUnitario} WHERE id_producto={IdProducto}";
-            dbHelper.EjecutarComando(query);
-        }
-
-        // Método para eliminar un producto
-        public void EliminarProducto(DBHelper dbHelper)
-        {
-            string query = $"DELETE FROM productos WHERE id_producto={IdProducto}";
-            dbHelper.EjecutarComando(query);
-        }
-
     }
 }

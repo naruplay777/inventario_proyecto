@@ -46,5 +46,19 @@ namespace inventario_proyecto
 
             }
         }
+
+        private void formularioP_Click(object sender, EventArgs e)
+        {
+
+            // Crear una nueva instancia del Formulario1
+            FormularioProductos formulario1 = new FormularioProductos();
+
+            // Mostrar el Formulario1
+            formulario1.Show();
+
+            // Cerrar Formulario2
+            this.Hide();
+
+        }
     }
 }

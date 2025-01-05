@@ -9,84 +9,102 @@ namespace inventario_proyecto
 {
     public class DBHelper
     {
+        private string connectionString;
 
-        // Cadena de conexión a la base de datos
-        private string connectionString = "Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;";
-        private MySqlConnection connection;
-
-        public DBHelper()
+        public DBHelper(string connectionString)
         {
-            connection = new MySqlConnection(connectionString);
+            this.connectionString = connectionString;
         }
 
-        // Función para conectar a la base de datos
-        public void Conectar()
+        // Crear un nuevo producto
+        public bool InsertarProducto(Producto producto)
         {
-            try
+            string query = "INSERT INTO productos (nombre, descripcion, categoria_id, presentacion_id, precio, stock) " +
+                           "VALUES (@nombre, @descripcion, @categoria_id, @presentacion_id, @precio, @stock)";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
+                cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+                cmd.Parameters.AddWithValue("@categoria_id", producto.CategoriaId);
+                cmd.Parameters.AddWithValue("@presentacion_id", producto.PresentacionId);
+                cmd.Parameters.AddWithValue("@precio", producto.Precio);
+                cmd.Parameters.AddWithValue("@stock", producto.Stock);
+
                 connection.Open();
-                Console.WriteLine("Conexión exitosa a la base de datos.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al conectar a la base de datos: {ex.Message}");
+                return cmd.ExecuteNonQuery() > 0;
             }
         }
 
-        // Función para desconectar de la base de datos
-        public void Desconectar()
+        // Obtener todos los productos con detalles
+        public List<Producto> ObtenerProductos()
         {
-            try
+            string query = "SELECT p.id, p.nombre, p.descripcion, p.categoria_id, c.nombre AS categoria_nombre, " +
+                           "p.presentacion_id, pr.descripcion AS presentacion_descripcion, p.precio, p.stock " +
+                           "FROM productos p " +
+                           "JOIN categorias c ON p.categoria_id = c.id " +
+                           "JOIN presentaciones pr ON p.presentacion_id = pr.id";
+            List<Producto> productos = new List<Producto>();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                connection.Close();
-                Console.WriteLine("Desconexión exitosa de la base de datos.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al desconectar de la base de datos: {ex.Message}");
-            }
-        }
-
-        // Función para ejecutar una consulta SELECT
-        public List<string> EjecutarConsulta(string query)
-        {
-            List<string> resultados = new List<string>();
-            try
-            {
-                MySqlCommand command = new MySqlCommand(query, connection);
-                MySqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                connection.Open();
+                using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
-                    resultados.Add(reader.GetString(0));  // Obtiene el primer campo de cada fila
+                    while (reader.Read())
+                    {
+                        productos.Add(new Producto
+                        {
+                            Id = reader.GetInt32("id"),
+                            Nombre = reader.GetString("nombre"),
+                            Descripcion = reader.GetString("descripcion"),
+                            CategoriaId = reader.GetInt32("categoria_id"),
+                            CategoriaNombre = reader.GetString("categoria_nombre"),
+                            PresentacionId = reader.GetInt32("presentacion_id"),
+                            PresentacionDescripcion = reader.GetString("presentacion_descripcion"),
+                            Precio = reader.GetDecimal("precio"),
+                            Stock = reader.GetInt32("stock")
+                        });
+                    }
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al ejecutar la consulta: {ex.Message}");
-            }
-            return resultados;
+            return productos;
         }
 
-        // Función para ejecutar comandos INSERT, UPDATE, DELETE
-        public void EjecutarComando(string comando)
+        // Actualizar un producto
+        public bool ActualizarProducto(Producto producto)
         {
-            try
+            string query = "UPDATE productos SET nombre = @nombre, descripcion = @descripcion, " +
+                           "categoria_id = @categoria_id, presentacion_id = @presentacion_id, precio = @precio, stock = @stock " +
+                           "WHERE id = @id";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                MySqlCommand command = new MySqlCommand(comando, connection);
-                command.ExecuteNonQuery();
-                Console.WriteLine("Comando ejecutado correctamente.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al ejecutar el comando: {ex.Message}");
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", producto.Id);
+                cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
+                cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+                cmd.Parameters.AddWithValue("@categoria_id", producto.CategoriaId);
+                cmd.Parameters.AddWithValue("@presentacion_id", producto.PresentacionId);
+                cmd.Parameters.AddWithValue("@precio", producto.Precio);
+                cmd.Parameters.AddWithValue("@stock", producto.Stock);
+
+                connection.Open();
+                return cmd.ExecuteNonQuery() > 0;
             }
         }
 
-        // Función para obtener la conexión (en caso de que se necesite para algo específico)
-        public MySqlConnection ObtenerConexion()
+        // Eliminar un producto
+        public bool EliminarProducto(int productoId)
         {
-            return connection;
-        }
+            string query = "DELETE FROM productos WHERE id = @id";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", productoId);
 
+                connection.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
     }
 }
