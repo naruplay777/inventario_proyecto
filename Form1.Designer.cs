@@ -33,7 +33,7 @@
             // 
             // btnTestConnection
             // 
-            this.btnTestConnection.Location = new System.Drawing.Point(462, 233);
+            this.btnTestConnection.Location = new System.Drawing.Point(313, 182);
             this.btnTestConnection.Name = "btnTestConnection";
             this.btnTestConnection.Size = new System.Drawing.Size(229, 59);
             this.btnTestConnection.TabIndex = 0;
