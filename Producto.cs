@@ -8,24 +8,21 @@ namespace inventario_proyecto
 {
     public class Producto
     {
+        // Propiedades que corresponden a la tabla "productos"
+        public int Id { get; set; } // id_producto
+        public string Nombre { get; set; } // nombre_producto
+        public int CategoriaId { get; set; } // id_categoria
+        public string UnidadMedida { get; set; } // unidad_medida
+        public decimal StockActual { get; set; } // stock_actual
+        public decimal StockMinimo { get; set; } // stock_minimo
 
-        // Propiedades básicas
-        public int Id { get; set; } // ID único del producto
-        public string Nombre { get; set; } // Nombre del producto
-        public string Descripcion { get; set; } // Descripción opcional
-        public int CategoriaId { get; set; } // ID de la categoría a la que pertenece
-        public int PresentacionId { get; set; } // ID de la presentación asociada
-        public decimal Precio { get; set; } // Precio actual del producto
-        public int Stock { get; set; } // Cantidad en inventario
-
-        // Propiedades para relaciones (opcionales pero útiles para mostrar en UI)
+        // Propiedades opcionales para relaciones con otras tablas (no se almacenan en la base de datos)
         public string CategoriaNombre { get; set; } // Nombre de la categoría
-        public string PresentacionDescripcion { get; set; } // Descripción de la presentación
 
-        // Métodos opcionales para lógica
+        // Método ToString para mostrar información del producto de manera legible
         public override string ToString()
         {
-            return $"{Nombre} - {CategoriaNombre} - {PresentacionDescripcion}";
+            return $"{Nombre} - {CategoriaNombre} - {UnidadMedida}";
         }
     }
 }

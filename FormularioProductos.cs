@@ -30,7 +30,6 @@ namespace inventario_proyecto
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
             if (dgvProductos.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Seleccione un producto para editar.");
@@ -50,7 +49,34 @@ namespace inventario_proyecto
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (dgvProductos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un producto para eliminar.");
+                return;
+            }
 
+            var producto = (Producto)dgvProductos.SelectedRows[0].DataBoundItem;
+
+            var resultado = MessageBox.Show($"¿Está seguro de que desea eliminar el producto '{producto.Nombre}'?",
+                                             "Confirmar eliminación",
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Warning);
+
+            if (resultado == DialogResult.Yes)
+            {
+                DBHelper dbHelper = new DBHelper("Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;");
+                bool eliminado = dbHelper.EliminarProducto(producto.Id);
+
+                if (eliminado)
+                {
+                    MessageBox.Show("Producto eliminado exitosamente.");
+                    CargarProductos();
+                }
+                else
+                {
+                    MessageBox.Show("Hubo un error al eliminar el producto.");
+                }
+            }
         }
 
         private void CargarProductos()
@@ -58,18 +84,26 @@ namespace inventario_proyecto
             DBHelper dbHelper = new DBHelper("Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;");
             List<Producto> productos = dbHelper.ObtenerProductos();
 
-            dgvProductos.DataSource = productos; // Asignar la lista al DataGridView
+            dgvProductos.DataSource = null; // Limpia el DataGridView
+            dgvProductos.DataSource = productos;
 
-            dgvProductos.Columns["CategoriaNombre"].HeaderText = "Categoría";
-            dgvProductos.Columns["PresentacionDescripcion"].HeaderText = "Presentación";
+            // Personaliza encabezados y oculta columnas si es necesario
+            if (dgvProductos.Columns.Contains("CategoriaNombre"))
+            {
+                dgvProductos.Columns["CategoriaNombre"].HeaderText = "Categoría";
+            }
+
+            if (dgvProductos.Columns.Contains("PresentacionDescripcion"))
+            {
+                dgvProductos.Columns["PresentacionDescripcion"].HeaderText = "Presentación";
+            }
 
             dgvProductos.Columns["CategoriaId"].Visible = false;
-            dgvProductos.Columns["PresentacionId"].Visible = false;
         }
 
         private void FormularioProductos_Load(object sender, EventArgs e)
         {
-            CargarProductos();
+            CargarProductos(); // Cargar productos al iniciar el formulario
         }
     }
 }
