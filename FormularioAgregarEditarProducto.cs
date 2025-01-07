@@ -105,7 +105,7 @@ namespace inventario_proyecto
                     ProductoId = Producto.Id, // El producto al que pertenece esta presentación
                     Descripcion = cmbPresentacion.SelectedItem.ToString(),
                     CostoPorPresentacion = decimal.Parse(txtPrecio.Text)
-                };ljiujoijojiji
+                };
 
                 dbHelper.ActualizarPresentacion(presentacion);
             }
