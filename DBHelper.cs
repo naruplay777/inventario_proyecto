@@ -8,7 +8,7 @@ namespace inventario_proyecto
     {
         private string connectionString;
 
-        // Constructor que inicializa la cadena de conexión con un valor predeterminado
+        // Constructor que inicializa la cadena de conexión con un valor predeterminado hellohere
         public DBHelper()
         {
             this.connectionString = "Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;";
