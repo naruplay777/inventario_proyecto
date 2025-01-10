@@ -158,6 +158,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="borrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="borrar.Designer.cs">
+      <DependentUpon>borrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Categoria.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="Form1.cs">
