@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Runtime.InteropServices;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 
 
@@ -25,10 +27,13 @@ namespace inventario_proyecto
         {
 
         }
+
+        // esto es para que el diseño se puda mover con mouse
         [DllImport("user32.Dll", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.Dll", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
         // Método para probar la conexión al hacer clic en un botón.
 
         private void btnTestConnection_Click_1(object sender, EventArgs e)
@@ -118,6 +123,7 @@ namespace inventario_proyecto
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //esto es para dar la hora y fecha en el diseño
             labelHora.Text = DateTime.Now.ToString("h:mm:ss");
             labelfecha.Text = DateTime.Now.ToShortDateString();
         }

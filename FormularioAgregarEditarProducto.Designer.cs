@@ -41,11 +41,12 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureCerrar = new System.Windows.Forms.PictureBox();
             this.pictureMinimizar = new System.Windows.Forms.PictureBox();
+            this.pictureCerrar = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNombre
@@ -119,6 +120,7 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -134,6 +136,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Red;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -149,6 +152,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gold;
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.pictureMinimizar);
             this.panel1.Controls.Add(this.pictureCerrar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -157,6 +161,19 @@
             this.panel1.Size = new System.Drawing.Size(306, 24);
             this.panel1.TabIndex = 10;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // pictureMinimizar
+            // 
+            this.pictureMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("pictureMinimizar.Image")));
+            this.pictureMinimizar.Location = new System.Drawing.Point(257, 2);
+            this.pictureMinimizar.Name = "pictureMinimizar";
+            this.pictureMinimizar.Size = new System.Drawing.Size(20, 19);
+            this.pictureMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureMinimizar.TabIndex = 2;
+            this.pictureMinimizar.TabStop = false;
+            this.pictureMinimizar.Click += new System.EventHandler(this.pictureMinimizar_Click);
             // 
             // pictureCerrar
             // 
@@ -171,18 +188,18 @@
             this.pictureCerrar.TabStop = false;
             this.pictureCerrar.Click += new System.EventHandler(this.pictureCerrar_Click);
             // 
-            // pictureMinimizar
+            // label5
             // 
-            this.pictureMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("pictureMinimizar.Image")));
-            this.pictureMinimizar.Location = new System.Drawing.Point(257, 2);
-            this.pictureMinimizar.Name = "pictureMinimizar";
-            this.pictureMinimizar.Size = new System.Drawing.Size(20, 19);
-            this.pictureMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureMinimizar.TabIndex = 2;
-            this.pictureMinimizar.TabStop = false;
-            this.pictureMinimizar.Click += new System.EventHandler(this.pictureMinimizar_Click);
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Font = new System.Drawing.Font("Sylfaen", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(96, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 21);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "CYROP";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormularioAgregarEditarProducto
             // 
@@ -206,8 +223,8 @@
             this.Text = "p";
             this.Load += new System.EventHandler(this.FormularioAgregarEditarProducto_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,5 +246,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureCerrar;
         private System.Windows.Forms.PictureBox pictureMinimizar;
+        private System.Windows.Forms.Label label5;
     }
 }
