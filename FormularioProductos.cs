@@ -105,5 +105,10 @@ namespace inventario_proyecto
         {
             CargarProductos(); // Cargar productos al iniciar el formulario
         }
+
+        private void pictureBoxCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

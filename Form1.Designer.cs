@@ -32,6 +32,8 @@
             this.btnTestConnection = new System.Windows.Forms.Button();
             this.formularioP = new System.Windows.Forms.Button();
             this.panelBarra = new System.Windows.Forms.Panel();
+            this.pictureRetaurar = new System.Windows.Forms.PictureBox();
+            this.pictureMinimizar = new System.Windows.Forms.PictureBox();
             this.pictureMaximizar = new System.Windows.Forms.PictureBox();
             this.pictureCerrar = new System.Windows.Forms.PictureBox();
             this.panelMenu = new System.Windows.Forms.Panel();
@@ -39,14 +41,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.pictureRetaurar = new System.Windows.Forms.PictureBox();
-            this.pictureMinimizar = new System.Windows.Forms.PictureBox();
             this.panelBarra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureRetaurar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
             this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureRetaurar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureMinimizar)).BeginInit();
             this.SuspendLayout();
             // 
             // btnTestConnection
@@ -104,6 +104,32 @@
             this.panelBarra.TabIndex = 3;
             this.panelBarra.Paint += new System.Windows.Forms.PaintEventHandler(this.panelBarra_Paint);
             this.panelBarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBarra_MouseDown);
+            // 
+            // pictureRetaurar
+            // 
+            this.pictureRetaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureRetaurar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureRetaurar.Image = ((System.Drawing.Image)(resources.GetObject("pictureRetaurar.Image")));
+            this.pictureRetaurar.Location = new System.Drawing.Point(1089, 2);
+            this.pictureRetaurar.Name = "pictureRetaurar";
+            this.pictureRetaurar.Size = new System.Drawing.Size(20, 19);
+            this.pictureRetaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureRetaurar.TabIndex = 0;
+            this.pictureRetaurar.TabStop = false;
+            this.pictureRetaurar.Click += new System.EventHandler(this.pictureRetaurar_Click);
+            // 
+            // pictureMinimizar
+            // 
+            this.pictureMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("pictureMinimizar.Image")));
+            this.pictureMinimizar.Location = new System.Drawing.Point(1063, 2);
+            this.pictureMinimizar.Name = "pictureMinimizar";
+            this.pictureMinimizar.Size = new System.Drawing.Size(20, 19);
+            this.pictureMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureMinimizar.TabIndex = 0;
+            this.pictureMinimizar.TabStop = false;
+            this.pictureMinimizar.Click += new System.EventHandler(this.pictureMinimizar_Click);
             // 
             // pictureMaximizar
             // 
@@ -177,32 +203,6 @@
             this.panelContenedor.Size = new System.Drawing.Size(952, 464);
             this.panelContenedor.TabIndex = 5;
             // 
-            // pictureRetaurar
-            // 
-            this.pictureRetaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureRetaurar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureRetaurar.Image = ((System.Drawing.Image)(resources.GetObject("pictureRetaurar.Image")));
-            this.pictureRetaurar.Location = new System.Drawing.Point(1089, 2);
-            this.pictureRetaurar.Name = "pictureRetaurar";
-            this.pictureRetaurar.Size = new System.Drawing.Size(20, 19);
-            this.pictureRetaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureRetaurar.TabIndex = 0;
-            this.pictureRetaurar.TabStop = false;
-            this.pictureRetaurar.Click += new System.EventHandler(this.pictureRetaurar_Click);
-            // 
-            // pictureMinimizar
-            // 
-            this.pictureMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("pictureMinimizar.Image")));
-            this.pictureMinimizar.Location = new System.Drawing.Point(1063, 2);
-            this.pictureMinimizar.Name = "pictureMinimizar";
-            this.pictureMinimizar.Size = new System.Drawing.Size(20, 19);
-            this.pictureMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureMinimizar.TabIndex = 0;
-            this.pictureMinimizar.TabStop = false;
-            this.pictureMinimizar.Click += new System.EventHandler(this.pictureMinimizar_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,11 +218,11 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelBarra.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureRetaurar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).EndInit();
             this.panelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureRetaurar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureMinimizar)).EndInit();
             this.ResumeLayout(false);
 
         }
