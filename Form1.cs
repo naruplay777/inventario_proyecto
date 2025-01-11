@@ -115,5 +115,16 @@ namespace inventario_proyecto
         {
 
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            labelHora.Text = DateTime.Now.ToString("h:mm:ss");
+            labelfecha.Text = DateTime.Now.ToShortDateString();
+        }
+
+        private void labelfecha_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

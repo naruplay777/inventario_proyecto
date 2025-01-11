@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnTestConnection = new System.Windows.Forms.Button();
             this.formularioP = new System.Windows.Forms.Button();
             this.panelBarra = new System.Windows.Forms.Panel();
+            this.labelHora = new System.Windows.Forms.Label();
             this.pictureRetaurar = new System.Windows.Forms.PictureBox();
             this.pictureMinimizar = new System.Windows.Forms.PictureBox();
             this.pictureMaximizar = new System.Windows.Forms.PictureBox();
@@ -39,8 +41,10 @@
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelfecha = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelBarra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureRetaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimizar)).BeginInit();
@@ -51,7 +55,7 @@
             // 
             // btnTestConnection
             // 
-            this.btnTestConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(38)))), ((int)(((byte)(41)))));
+            this.btnTestConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
             this.btnTestConnection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnTestConnection.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTestConnection.FlatAppearance.BorderSize = 0;
@@ -72,7 +76,7 @@
             // 
             // formularioP
             // 
-            this.formularioP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(38)))), ((int)(((byte)(41)))));
+            this.formularioP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
             this.formularioP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.formularioP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.formularioP.FlatAppearance.BorderSize = 0;
@@ -93,6 +97,9 @@
             // panelBarra
             // 
             this.panelBarra.BackColor = System.Drawing.Color.Gold;
+            this.panelBarra.Controls.Add(this.label1);
+            this.panelBarra.Controls.Add(this.labelfecha);
+            this.panelBarra.Controls.Add(this.labelHora);
             this.panelBarra.Controls.Add(this.pictureRetaurar);
             this.panelBarra.Controls.Add(this.pictureMinimizar);
             this.panelBarra.Controls.Add(this.pictureMaximizar);
@@ -104,6 +111,15 @@
             this.panelBarra.TabIndex = 3;
             this.panelBarra.Paint += new System.Windows.Forms.PaintEventHandler(this.panelBarra_Paint);
             this.panelBarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBarra_MouseDown);
+            // 
+            // labelHora
+            // 
+            this.labelHora.Location = new System.Drawing.Point(3, 3);
+            this.labelHora.Name = "labelHora";
+            this.labelHora.Size = new System.Drawing.Size(96, 21);
+            this.labelHora.TabIndex = 1;
+            this.labelHora.Text = "label1";
+            this.labelHora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureRetaurar
             // 
@@ -158,10 +174,9 @@
             // 
             // panelMenu
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(38)))), ((int)(((byte)(41)))));
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
             this.panelMenu.Controls.Add(this.panel3);
             this.panelMenu.Controls.Add(this.panel2);
-            this.panelMenu.Controls.Add(this.panel1);
             this.panelMenu.Controls.Add(this.btnTestConnection);
             this.panelMenu.Controls.Add(this.formularioP);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -186,14 +201,6 @@
             this.panel2.Size = new System.Drawing.Size(15, 59);
             this.panel2.TabIndex = 0;
             // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(186, 69);
-            this.panel1.TabIndex = 0;
-            // 
             // panelContenedor
             // 
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -202,6 +209,34 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(952, 464);
             this.panelContenedor.TabIndex = 5;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // labelfecha
+            // 
+            this.labelfecha.Location = new System.Drawing.Point(105, 2);
+            this.labelfecha.Name = "labelfecha";
+            this.labelfecha.Size = new System.Drawing.Size(96, 21);
+            this.labelfecha.TabIndex = 2;
+            this.labelfecha.Text = "label1";
+            this.labelfecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelfecha.Click += new System.EventHandler(this.labelfecha_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Sylfaen", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(619, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "CYROP";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -233,7 +268,6 @@
         private System.Windows.Forms.Button formularioP;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelContenedor;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureCerrar;
@@ -241,6 +275,10 @@
         private System.Windows.Forms.PictureBox pictureRetaurar;
         private System.Windows.Forms.PictureBox pictureMinimizar;
         public System.Windows.Forms.Panel panelBarra;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label labelHora;
+        private System.Windows.Forms.Label labelfecha;
+        private System.Windows.Forms.Label label1;
     }
 }
 
