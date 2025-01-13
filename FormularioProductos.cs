@@ -55,6 +55,7 @@ namespace inventario_proyecto
                 return;
             }
 
+            // Obtén el producto seleccionado desde el DataGridView
             var producto = (Producto)dgvProductos.SelectedRows[0].DataBoundItem;
 
             var resultado = MessageBox.Show($"¿Está seguro de que desea eliminar el producto '{producto.Nombre}'?",
@@ -65,7 +66,7 @@ namespace inventario_proyecto
             if (resultado == DialogResult.Yes)
             {
                 DBHelper dbHelper = new DBHelper("Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;");
-                bool eliminado = dbHelper.EliminarProducto(producto.Id);
+                bool eliminado = dbHelper.EliminarProducto(producto.IdProducto); // Usa IdProducto en vez de Id
 
                 if (eliminado)
                 {
@@ -79,15 +80,20 @@ namespace inventario_proyecto
             }
         }
 
+
+
         private void CargarProductos()
         {
             DBHelper dbHelper = new DBHelper("Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;");
             List<Producto> productos = dbHelper.ObtenerProductos();
 
-            dgvProductos.DataSource = null; // Limpia el DataGridView
+            // Limpia el DataGridView y recarga los datos
+            dgvProductos.DataSource = null;
             dgvProductos.DataSource = productos;
 
             // Personaliza encabezados y oculta columnas si es necesario
+            dgvProductos.Columns["CategoriaId"].Visible = false;
+
             if (dgvProductos.Columns.Contains("CategoriaNombre"))
             {
                 dgvProductos.Columns["CategoriaNombre"].HeaderText = "Categoría";
@@ -97,9 +103,9 @@ namespace inventario_proyecto
             {
                 dgvProductos.Columns["PresentacionDescripcion"].HeaderText = "Presentación";
             }
-
-            dgvProductos.Columns["CategoriaId"].Visible = false;
         }
+
+
 
         private void FormularioProductos_Load(object sender, EventArgs e)
         {
@@ -109,6 +115,11 @@ namespace inventario_proyecto
         private void pictureBoxCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
