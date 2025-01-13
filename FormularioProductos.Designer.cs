@@ -46,7 +46,9 @@
             // 
             this.dgvProductos.AllowUserToOrderColumns = true;
             this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductos.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductos.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvProductos.Location = new System.Drawing.Point(12, 46);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.Size = new System.Drawing.Size(928, 332);

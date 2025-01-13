@@ -66,7 +66,7 @@ namespace inventario_proyecto
             if (resultado == DialogResult.Yes)
             {
                 DBHelper dbHelper = new DBHelper("Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;");
-                bool eliminado = dbHelper.EliminarProducto(producto.IdProducto); // Usa IdProducto en vez de Id
+                bool eliminado = dbHelper.EliminarProducto(producto.Id); // Usa IdProducto en vez de Id
 
                 if (eliminado)
                 {
