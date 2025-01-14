@@ -12,7 +12,7 @@ namespace inventario_proyecto
         // Constructor que inicializa la cadena de conexión con un valor predeterminado
         public DBHelper()
         {
-            this.connectionString = "Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;";
+            this.connectionString = "Server=localhost;Database=inventarioproyecto;Uid=root;Pwd=frankelvis20052004;";
         }
 
         // Constructor que permite pasar una cadena de conexión personalizada

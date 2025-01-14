@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace inventario_proyecto
 {
@@ -15,6 +17,20 @@ namespace inventario_proyecto
         public FormularioProductos()
         {
             InitializeComponent();
+        }
+        Panel p = new Panel();
+        private void btnMouseEnter(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            panelMenu.Controls.Add(p);
+            p.BackColor = Color.FromArgb(255, 215, 0);
+            p.Size = new Size(140, 5);
+            p.Location = new Point(btn.Location.X, btn.Location.Y + 29);
+        }
+
+        private void btnMouseLeave(object sender, EventArgs e)
+        {
+            panelMenu.Controls.Remove(p);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -117,7 +133,13 @@ namespace inventario_proyecto
             this.Close();
         }
 
+<<<<<<< HEAD
+
+
+        private void btnGenerarpdf_Click(object sender, EventArgs e)
+=======
         private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+>>>>>>> 70ad7dc1ad076974810c55a697ba347905877973
         {
 
         }

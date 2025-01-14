@@ -37,9 +37,12 @@
             this.btnGenerarpdf = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnServicios = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).BeginInit();
+            this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvProductos
@@ -131,9 +134,11 @@
             this.btnGenerarpdf.TabIndex = 4;
             this.btnGenerarpdf.Text = "PDF";
             this.btnGenerarpdf.UseVisualStyleBackColor = false;
+            this.btnGenerarpdf.Click += new System.EventHandler(this.btnGenerarpdf_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panelMenu);
             this.panel1.Controls.Add(this.pictureBoxCerrar);
             this.panel1.Controls.Add(this.btnGenerarpdf);
             this.panel1.Controls.Add(this.dgvProductos);
@@ -151,13 +156,43 @@
             this.pictureBoxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCerrar.Image")));
-            this.pictureBoxCerrar.Location = new System.Drawing.Point(912, 9);
+            this.pictureBoxCerrar.Location = new System.Drawing.Point(740, 399);
             this.pictureBoxCerrar.Name = "pictureBoxCerrar";
             this.pictureBoxCerrar.Size = new System.Drawing.Size(28, 31);
             this.pictureBoxCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxCerrar.TabIndex = 5;
             this.pictureBoxCerrar.TabStop = false;
             this.pictureBoxCerrar.Click += new System.EventHandler(this.pictureBoxCerrar_Click);
+            // 
+            // panelMenu
+            // 
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.panelMenu.Controls.Add(this.btnServicios);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(952, 35);
+            this.panelMenu.TabIndex = 6;
+            // 
+            // btnServicios
+            // 
+            this.btnServicios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.btnServicios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnServicios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnServicios.FlatAppearance.BorderSize = 0;
+            this.btnServicios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnServicios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnServicios.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServicios.ForeColor = System.Drawing.Color.White;
+            this.btnServicios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnServicios.Location = new System.Drawing.Point(12, 3);
+            this.btnServicios.Name = "btnServicios";
+            this.btnServicios.Size = new System.Drawing.Size(140, 29);
+            this.btnServicios.TabIndex = 3;
+            this.btnServicios.Text = "Servicios";
+            this.btnServicios.UseVisualStyleBackColor = false;
+            this.btnServicios.MouseEnter += new System.EventHandler(this.btnMouseEnter);
+            this.btnServicios.MouseLeave += new System.EventHandler(this.btnMouseLeave);
             // 
             // FormularioProductos
             // 
@@ -173,6 +208,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).EndInit();
+            this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -187,5 +223,7 @@
         private System.Windows.Forms.Button btnGenerarpdf;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBoxCerrar;
+        private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Button btnServicios;
     }
 }
