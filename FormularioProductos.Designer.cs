@@ -38,7 +38,6 @@
             this.panelMenu = new System.Windows.Forms.Panel();
             this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panelServicio = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panelMenu.SuspendLayout();
@@ -66,7 +65,7 @@
             this.btnAgregar.BackColor = System.Drawing.Color.Transparent;
             this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
@@ -143,13 +142,12 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.panelMenu.Controls.Add(this.panel3);
             this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.pictureBoxCerrar);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(952, 35);
+            this.panelMenu.Size = new System.Drawing.Size(952, 39);
             this.panelMenu.TabIndex = 6;
             // 
             // pictureBoxCerrar
@@ -177,7 +175,7 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = global::inventario_proyecto.Properties.Resources.icons8_clasificar_abajo_24;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(12, 5);
+            this.button1.Location = new System.Drawing.Point(12, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 26);
             this.button1.TabIndex = 6;
@@ -186,14 +184,6 @@
             this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.MouseEnter += new System.EventHandler(this.btnMouseEnter);
             this.button1.MouseLeave += new System.EventHandler(this.btnMouseLeave);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.panel3.Location = new System.Drawing.Point(14, 37);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(140, 80);
-            this.panel3.TabIndex = 8;
             // 
             // panelServicio
             // 
@@ -237,7 +227,6 @@
         private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.Button btnGenerarpdf;
         private System.Windows.Forms.Panel panelMenu;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBoxCerrar;
         private System.Windows.Forms.Panel panelServicio;
