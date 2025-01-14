@@ -129,5 +129,17 @@ namespace inventario_proyecto
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!panelServicio.Visible)
+            {
+                panelServicio.Visible = true;
+            }
+            else
+            {
+                panelServicio.Visible = false;
+            }
+        }
     }
 }
