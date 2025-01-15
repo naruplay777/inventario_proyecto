@@ -66,57 +66,49 @@ namespace inventario_proyecto
                 return;
             }
 
-            // Crear una nueva instancia de Producto si no existe
+            // Si el producto es null, lo inicializamos
             Producto = Producto ?? new Producto();
 
-            // Asignar valores al producto
+            // Asignar el nombre del producto
             Producto.Nombre = txtNombre.Text;
+
+            // Asignar el ID de la categoría seleccionada
             Producto.CategoriaId = (int)cmbCategoria.SelectedValue;
 
-            // Crear la presentación asociada
-            var presentacion = new Presentacion
-            {
-                Descripcion = cmbPresentacion.SelectedItem.ToString(),
-                CostoPorPresentacion = decimal.Parse(txtPrecio.Text)
-            };
-
-            // Si el producto es nuevo (Id = 0), insertar
+            // Si el producto no tiene Id, es nuevo, entonces insertamos
             if (Producto.Id == 0)
             {
-                // Insertar producto junto con la presentación
-                bool productoInsertado = dbHelper.InsertarProducto(Producto, presentacion);
+                // Insertar el producto en la base de datos
+                dbHelper.InsertarProducto(Producto);
 
-                if (productoInsertado)
+                // Después de insertar el producto, obtenemos el ID generado
+                int productoId = dbHelper.ObtenerUltimoProductoId();
+
+                // Crear una presentación con el precio y asociarla al producto
+                var presentacion = new Presentacion
                 {
-                    MessageBox.Show("Producto y presentación guardados exitosamente.");
-                }
-                else
-                {
-                    MessageBox.Show("Error al guardar el producto y la presentación.");
-                }
+                    Descripcion = cmbPresentacion.SelectedItem.ToString(), // Descripción de la presentación
+                    CostoPorPresentacion = decimal.Parse(txtPrecio.Text), // Precio de la presentación
+                    ProductoId = productoId // Referencia al ID del producto recién insertado
+                };
+
+                // Insertar la presentación
+                dbHelper.InsertarPresentacion(presentacion);
             }
             else
             {
-                // Actualizar el producto existente
-                bool productoActualizado = dbHelper.ActualizarProducto(Producto);
-                if (!productoActualizado)
-                {
-                    MessageBox.Show("Error al actualizar el producto.");
-                    return;
-                }
+                // Si ya existe el producto, actualizamos el producto
+                dbHelper.ActualizarProducto(Producto);
 
-                // Actualizar la presentación asociada
-                presentacion.ProductoId = Producto.Id; // Asociar al producto existente
-                bool presentacionActualizada = dbHelper.ActualizarPresentacion(presentacion);
+                // Y actualizamos la presentación con el precio actualizado
+                var presentacion = new Presentacion
+                {
+                    ProductoId = Producto.Id, // El producto al que pertenece esta presentación
+                    Descripcion = cmbPresentacion.SelectedItem.ToString(),
+                    CostoPorPresentacion = decimal.Parse(txtPrecio.Text)
+                };
 
-                if (presentacionActualizada)
-                {
-                    MessageBox.Show("Producto y presentación actualizados exitosamente.");
-                }
-                else
-                {
-                    MessageBox.Show("Error al actualizar la presentación.");
-                }
+                dbHelper.ActualizarPresentacion(presentacion);
             }
 
             // Cerrar el formulario y devolver el resultado
