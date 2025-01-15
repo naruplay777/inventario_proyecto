@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioAgregarEditarProducto));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -42,10 +41,9 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.pictureMinimizar = new System.Windows.Forms.PictureBox();
             this.pictureCerrar = new System.Windows.Forms.PictureBox();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
@@ -164,19 +162,6 @@
             this.panel1.TabIndex = 10;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.Font = new System.Drawing.Font("Sylfaen", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(96, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 21);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "CYROP";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pictureMinimizar
             // 
             this.pictureMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -203,13 +188,18 @@
             this.pictureCerrar.TabStop = false;
             this.pictureCerrar.Click += new System.EventHandler(this.pictureCerrar_Click);
             // 
-            // notifyIcon1
+            // label5
             // 
-            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notificaion\r\n";
-            this.notifyIcon1.Visible = true;
-            this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Font = new System.Drawing.Font("Sylfaen", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(96, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 21);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "CYROP";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormularioAgregarEditarProducto
             // 
@@ -257,6 +247,5 @@
         private System.Windows.Forms.PictureBox pictureCerrar;
         private System.Windows.Forms.PictureBox pictureMinimizar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

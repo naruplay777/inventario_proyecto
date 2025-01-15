@@ -153,11 +153,7 @@ namespace inventario_proyecto
 
         private void pictureMinimizar_Click(object sender, EventArgs e)
         {
-            // Ocultar el formulario y mostrar el icono en la bandeja
             this.WindowState = FormWindowState.Minimized;
-            this.Hide();
-            notifyIcon1.Visible = true;
-
         }
 
         [DllImport("user32.Dll", EntryPoint = "ReleaseCapture")]
@@ -170,23 +166,5 @@ namespace inventario_proyecto
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-
-        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
-        {
-            // Mostrar el formulario al hacer doble clic en el icono
-            this.Show();
-            this.WindowState = FormWindowState.Normal;
-            notifyIcon1.Visible = false;
-
-        }
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // Prevenir el cierre al minimizar
-            if (e.CloseReason == CloseReason.UserClosing && this.WindowState == FormWindowState.Minimized)
-            {
-                e.Cancel = true;
-            }
-        }
-
     }
 }
