@@ -16,6 +16,20 @@ namespace inventario_proyecto
         {
             InitializeComponent();
         }
+        Panel p = new Panel();
+        private void btnMouseEnter(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            panelMenu.Controls.Add(p);
+            p.BackColor = Color.FromArgb(255, 215, 0);
+            p.Size = new Size(140, 5);
+            p.Location = new Point(btn.Location.X, btn.Location.Y + 26);
+        }
+
+        private void btnMouseLeave(object sender, EventArgs e)
+        {
+            panelMenu.Controls.Remove(p);
+        }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -55,7 +69,6 @@ namespace inventario_proyecto
                 return;
             }
 
-            // Obtén el producto seleccionado desde el DataGridView
             var producto = (Producto)dgvProductos.SelectedRows[0].DataBoundItem;
 
             var resultado = MessageBox.Show($"¿Está seguro de que desea eliminar el producto '{producto.Nombre}'?",
@@ -66,7 +79,7 @@ namespace inventario_proyecto
             if (resultado == DialogResult.Yes)
             {
                 DBHelper dbHelper = new DBHelper("Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;");
-                bool eliminado = dbHelper.EliminarProducto(producto.Id); // Usa IdProducto en vez de Id
+                bool eliminado = dbHelper.EliminarProducto(producto.Id);
 
                 if (eliminado)
                 {
@@ -80,20 +93,15 @@ namespace inventario_proyecto
             }
         }
 
-
-
         private void CargarProductos()
         {
             DBHelper dbHelper = new DBHelper("Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;");
             List<Producto> productos = dbHelper.ObtenerProductos();
 
-            // Limpia el DataGridView y recarga los datos
-            dgvProductos.DataSource = null;
+            dgvProductos.DataSource = null; // Limpia el DataGridView
             dgvProductos.DataSource = productos;
 
             // Personaliza encabezados y oculta columnas si es necesario
-            dgvProductos.Columns["CategoriaId"].Visible = false;
-
             if (dgvProductos.Columns.Contains("CategoriaNombre"))
             {
                 dgvProductos.Columns["CategoriaNombre"].HeaderText = "Categoría";
@@ -103,9 +111,9 @@ namespace inventario_proyecto
             {
                 dgvProductos.Columns["PresentacionDescripcion"].HeaderText = "Presentación";
             }
+
+            dgvProductos.Columns["CategoriaId"].Visible = false;
         }
-
-
 
         private void FormularioProductos_Load(object sender, EventArgs e)
         {
@@ -117,9 +125,21 @@ namespace inventario_proyecto
             this.Close();
         }
 
-        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!panelServicio.Visible)
+            {
+                panelServicio.Visible = true;
+            }
+            else
+            {
+                panelServicio.Visible = false;
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System;
-using System.Windows.Forms;
 
 namespace inventario_proyecto
 {
@@ -181,55 +180,27 @@ namespace inventario_proyecto
             }
         }
         // Eliminar un producto
-        public bool EliminarProducto(int idProducto)
+        public bool EliminarProducto(int productoId)
         {
-            using (MySqlConnection conexion = new MySqlConnection(connectionString))
+            string query = "DELETE FROM productos WHERE id = @id";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                conexion.Open();
-                using (MySqlTransaction transaccion = conexion.BeginTransaction())
+                try
                 {
-                    try
-                    {
-                        // Eliminar relaciones en la tabla 'presentaciones' primero
-                        string queryEliminarRelacionados = "DELETE FROM presentaciones WHERE id_producto = @Id";
-                        using (MySqlCommand comandoRelacionados = new MySqlCommand(queryEliminarRelacionados, conexion, transaccion))
-                        {
-                            comandoRelacionados.Parameters.AddWithValue("@Id", idProducto);
-                            comandoRelacionados.ExecuteNonQuery();
-                        }
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@id", productoId);
 
-                        // Luego, eliminar el producto en la tabla 'productos'
-                        string queryEliminarProducto = "DELETE FROM productos WHERE id_producto = @Id";
-                        using (MySqlCommand comandoProducto = new MySqlCommand(queryEliminarProducto, conexion, transaccion))
-                        {
-                            comandoProducto.Parameters.AddWithValue("@Id", idProducto);
-                            comandoProducto.ExecuteNonQuery();
-                        }
-
-                        transaccion.Commit();
-                        return true;
-                    }
-                    catch (MySqlException ex)
-                    {
-                        transaccion.Rollback();
-
-                        // Manejo de errores específicos, como claves foráneas
-                        if (ex.Number == 1451) // Código para restricción de clave foránea
-                        {
-                            MessageBox.Show("No se puede eliminar este producto porque está relacionado con otras tablas.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error al eliminar el producto: " + ex.Message);
-                        }
-                        return false;
-                    }
+                    connection.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine($"Error al eliminar producto: {ex.Message}");
+                    return false;
                 }
             }
         }
-
-
-
 
 
         public bool InsertarPresentacion(Presentacion presentacion)
