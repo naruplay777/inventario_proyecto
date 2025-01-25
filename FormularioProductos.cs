@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using System.IO;
 
 namespace inventario_proyecto
 {
@@ -142,6 +143,88 @@ namespace inventario_proyecto
             {
                 panelServicio.Visible = false;
             }
+        }
+
+        private void btnGenerarpdf_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Deceas decargar el documento.", "Exito", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+           FileStream fs = new FileStream("C:\\Users\\Personal\\Documents\\PDFGenerado.pdf" , FileMode.Create);
+            Document doc = new Document(PageSize.LETTER, 3, 3, 3, 3);
+            PdfWriter pw =  PdfWriter.GetInstance(doc, fs);
+
+            doc.Open();
+
+            //titulo del pdf
+            doc.AddAuthor("Wiredbox");
+            doc.AddTitle("CYROP");
+
+            //definimos fuente
+            iTextSharp.text.Font standarfint = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+
+            //se crea el titulo
+            Paragraph title = new Paragraph("Titulo del documento");
+
+            // Centrar el título  
+            title.Alignment = Element.ALIGN_CENTER;
+
+            // Agregar el título al documento  
+            doc.Add(title);
+
+            // Agregar un salto de línea  
+            doc.Add(Chunk.NEWLINE);
+
+
+            //emcabezado de columnas 
+
+            PdfPTable tb = new PdfPTable(6);
+            tb.WidthPercentage = 90;
+
+            //Configuracion del titulo de columnas 
+
+            PdfPCell clID = new PdfPCell(new Phrase("ID", standarfint));
+            clID.BorderWidth = 1;
+            clID.BorderWidthBottom = 0.75f;
+
+            PdfPCell clNombre = new PdfPCell(new Phrase("Nombre", standarfint));
+            clNombre.BorderWidth = 1;
+            clNombre.BorderWidthBottom = 0.75f;
+
+            PdfPCell clUnidad = new PdfPCell(new Phrase("UnidadMedia", standarfint));
+            clUnidad.BorderWidth = 1;
+            clUnidad.BorderWidthBottom = 0.75f;
+
+            PdfPCell clActual = new PdfPCell(new Phrase("StockActual", standarfint));
+            clActual.BorderWidth = 1;
+            clActual.BorderWidthBottom = 0.75f;
+
+            PdfPCell clMinimo = new PdfPCell(new Phrase("StockMinimo", standarfint));
+            clMinimo.BorderWidth = 1;
+            clMinimo.BorderWidthBottom = 0.75f;
+
+            PdfPCell clCategoria = new PdfPCell(new Phrase("Categoria", standarfint));
+            clCategoria.BorderWidth = 1;
+            clCategoria.BorderWidthBottom = 0.75f;
+
+            //Agregamos las columnas a la tabla
+            tb.AddCell(clID);
+            tb.AddCell(clNombre);
+            tb.AddCell(clUnidad);
+            tb.AddCell(clActual);
+            tb.AddCell(clMinimo);
+            tb.AddCell(clCategoria);
+
+            //Agregamos datos aqui se aplica lo que es con la base de dato para los datos que se agreguen 
+            /* foreach (var mercancia in productos )
+             {
+                 clID = new PdfPCell(new Phrase(mercancia.ID.ToString, standarfint));
+             }*/
+
+            doc.Add(tb);
+
+            doc.Close();
+            pw.Close();
+
+            MessageBox.Show("Documento generado satisfactoriamente", "Exitos", MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
     }
 }
