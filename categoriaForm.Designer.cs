@@ -39,6 +39,7 @@
             this.dgvCategorias = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureCerrar = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
@@ -134,6 +135,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gold;
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.pictureCerrar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -153,6 +155,19 @@
             this.pictureCerrar.TabIndex = 2;
             this.pictureCerrar.TabStop = false;
             this.pictureCerrar.Click += new System.EventHandler(this.pictureCerrar_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Font = new System.Drawing.Font("Sylfaen", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(65, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(249, 21);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "CATEGORIAS";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // categoriaForm
             // 
@@ -192,5 +207,6 @@
         private System.Windows.Forms.DataGridView dgvCategorias;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureCerrar;
+        private System.Windows.Forms.Label label5;
     }
 }
