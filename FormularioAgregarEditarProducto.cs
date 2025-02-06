@@ -48,7 +48,7 @@ namespace inventario_proyecto
 
                 // Cargar la presentación asociada y su precio
                 var presentacion = dbHelper.ObtenerPresentacionPorProducto(Producto.Id);
-                txtPrecio.Text = presentacion?.CostoPorPresentacion.ToString();
+                txtDescripcion.Text = presentacion?.CostoPorPresentacion.ToString();
 
                 // Seleccionar la presentación que corresponde
                 cmbPresentacion.SelectedValue = presentacion?.Id;
@@ -59,7 +59,7 @@ namespace inventario_proyecto
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Verificar si los campos están vacíos
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
                 cmbCategoria.SelectedIndex == -1 || cmbPresentacion.SelectedIndex == -1)
             {
                 MessageBox.Show("Todos los campos son obligatorios.");
@@ -88,7 +88,7 @@ namespace inventario_proyecto
                 var presentacion = new Presentacion
                 {
                     Descripcion = cmbPresentacion.SelectedItem.ToString(), // Descripción de la presentación
-                    CostoPorPresentacion = decimal.Parse(txtPrecio.Text), // Precio de la presentación
+                    CostoPorPresentacion = decimal.Parse(txtDescripcion.Text), // Precio de la presentación
                     ProductoId = productoId // Referencia al ID del producto recién insertado
                 };
 
@@ -105,7 +105,7 @@ namespace inventario_proyecto
                 {
                     ProductoId = Producto.Id, // El producto al que pertenece esta presentación
                     Descripcion = cmbPresentacion.SelectedItem.ToString(),
-                    CostoPorPresentacion = decimal.Parse(txtPrecio.Text)
+                    CostoPorPresentacion = decimal.Parse(txtDescripcion.Text)
                 };
 
                 dbHelper.ActualizarPresentacion(presentacion);

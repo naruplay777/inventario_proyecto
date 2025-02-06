@@ -79,12 +79,12 @@ namespace inventario_proyecto
         {
             if (dgvPresentaciones.CurrentRow == null)
             {
-                MessageBox.Show("Selecciona una categoría para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Selecciona una presentación para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            int categoriaId = Convert.ToInt32(dgvPresentaciones.CurrentRow.Cells["ID"].Value);
-            string query = "UPDATE categorias SET nombre = @nombre, descripcion, factor = @descripcion WHERE categoria_id = @id";
+            int presentacionId = Convert.ToInt32(dgvPresentaciones.CurrentRow.Cells["ID"].Value);
+            string query = "UPDATE presentaciones SET nombre = @nombre, descripcion = @descripcion, factor = @factor WHERE presentacion_id = @id";
 
             try
             {
@@ -94,33 +94,44 @@ namespace inventario_proyecto
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@nombre", txtNombre.Text.Trim());
                     cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text.Trim());
-                    cmd.Parameters.AddWithValue("@factor", txtFactor.Text.Trim());
 
-                    cmd.Parameters.AddWithValue("@id", categoriaId);
+                    // Verificar si factor es un número
+                    if (float.TryParse(txtFactor.Text.Trim(), out float factor))
+                    {
+                        cmd.Parameters.AddWithValue("@factor", factor);
+                    }
+                    else
+                    {
+                        MessageBox.Show("El factor debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    cmd.Parameters.AddWithValue("@id", presentacionId);
                     cmd.ExecuteNonQuery();
                 }
 
                 LimpiarCampos();
                 CargarPresentaciones();
-                MessageBox.Show("Categoría actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Presentación actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al editar categoría: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al editar presentación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (dgvPresentaciones.CurrentRow == null)
             {
-                MessageBox.Show("Selecciona una categoría para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Selecciona una presentacion para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             DialogResult result = MessageBox.Show(
-                "¿Estás seguro de desactivar esta categoría?",
+                "¿Estás seguro de desactivar esta presentacion?",
                 "Confirmar eliminación lógica",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
@@ -129,7 +140,7 @@ namespace inventario_proyecto
             if (result == DialogResult.Yes)
             {
                 int presentacionID = Convert.ToInt32(dgvPresentaciones.CurrentRow.Cells["ID"].Value);
-                string query = "UPDATE categorias SET activo = 0 WHERE categoria_id = @id";
+                string query = "UPDATE presentaciones SET activo = 0 WHERE presentacion_id = @id";
 
                 try
                 {
@@ -143,11 +154,11 @@ namespace inventario_proyecto
 
                     LimpiarCampos();
                     CargarPresentaciones();
-                    MessageBox.Show("Categoría desactivada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Presentacion desactivada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al eliminar categoría: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al eliminar presentacion: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -165,7 +176,7 @@ namespace inventario_proyecto
                 return;
             }
 
-            string query = "INSERT INTO categorias (nombre, descripcion, factor) VALUES (@nombre, @descripcion, @factor)";
+            string query = "INSERT INTO presentaciones (nombre, descripcion, factor) VALUES (@nombre, @descripcion, @factor)";
 
             try
             {
