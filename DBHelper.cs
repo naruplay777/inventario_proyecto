@@ -20,6 +20,75 @@ namespace inventario_proyecto
             this.connectionString = connectionString;
         }
 
+        // Crear un nuevo producto
+        public bool InsertarProducto(Producto producto)
+        {
+            string query = "INSERT INTO productos (nombre_producto, id_categoria) VALUES (@nombre, @categoria_id)";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
+                    cmd.Parameters.AddWithValue("@categoria_id", producto.CategoriaId);
+
+                    connection.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine($"Error al insertar producto: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
+        // Obtener todos los productos con detalles
+        public List<Producto> ObtenerProductos()
+        {
+            string query = "SELECT p.id_producto, p.nombre_producto, p.id_categoria, c.nombre_categoria, " +
+                           "pr.unidad_medida, p.stock_actual, p.stock_minimo " +
+                           "FROM productos p " +
+                           "JOIN categorias c ON p.id_categoria = c.id_categoria " +
+                           "LEFT JOIN presentaciones pr ON p.id_producto = pr.id_producto";
+
+            List<Producto> productos = new List<Producto>();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    connection.Open();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            productos.Add(new Producto
+                            {
+                                Id = reader.GetInt32("id_producto"),
+                                Nombre = reader.GetString("nombre_producto"),
+                                CategoriaId = reader.GetInt32("id_categoria"),
+                                CategoriaNombre = reader.GetString("nombre_categoria"),
+                                UnidadMedida = reader.IsDBNull(reader.GetOrdinal("unidad_medida")) ? string.Empty : reader.GetString("unidad_medida"),
+                                StockActual = reader.GetDecimal("stock_actual"),
+                                StockMinimo = reader.GetDecimal("stock_minimo")
+                            });
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine($"Error al obtener productos: {ex.Message}");
+                }
+            }
+            return productos;
+        }
+
+
+
+        // Obtener todas las categorías
+
+        // Obtener todas las presentaciones
         public List<Presentacion> ObtenerPresentaciones()
         {
             List<Presentacion> presentaciones = new List<Presentacion>();
@@ -50,6 +119,37 @@ namespace inventario_proyecto
             }
             return presentaciones;
         }
+        // Actualizar un producto
+        public bool ActualizarProducto(Producto producto)
+        {
+            string query = "UPDATE productos SET nombre_producto = @nombre, " +
+                           "id_categoria = @categoria_id, unidad_medida = @unidad_medida, " +
+                           "stock_actual = @stock, stock_minimo = @stock_minimo " +
+                           "WHERE id_producto = @id";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@id", producto.Id); // id_producto
+                    cmd.Parameters.AddWithValue("@nombre", producto.Nombre); // nombre_producto
+                    cmd.Parameters.AddWithValue("@categoria_id", producto.CategoriaId); // id_categoria
+                    cmd.Parameters.AddWithValue("@unidad_medida", producto.UnidadMedida); // unidad_medida
+                    cmd.Parameters.AddWithValue("@stock", producto.StockActual); // stock_actual
+                    cmd.Parameters.AddWithValue("@stock_minimo", producto.StockMinimo); // stock_minimo
+
+                    connection.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine($"Error al actualizar producto: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+        // Eliminar un producto
         public bool EliminarProducto(int productoId)
         {
             string query = "DELETE FROM productos WHERE id = @id";
