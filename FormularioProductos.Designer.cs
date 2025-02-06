@@ -191,31 +191,23 @@
             // panelServicio
             // 
             this.panelServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.panelServicio.Controls.Add(this.AggCate);
             this.panelServicio.Controls.Add(this.btnEditar);
             this.panelServicio.Controls.Add(this.btnAgregar);
             this.panelServicio.Controls.Add(this.btnEliminar);
             this.panelServicio.Location = new System.Drawing.Point(12, 37);
             this.panelServicio.Name = "panelServicio";
-            this.panelServicio.Size = new System.Drawing.Size(140, 132);
+            this.panelServicio.Size = new System.Drawing.Size(140, 108);
             this.panelServicio.TabIndex = 7;
             this.panelServicio.Visible = false;
             // 
             // AggCate
             // 
-            this.AggCate.BackColor = System.Drawing.Color.Transparent;
-            this.AggCate.FlatAppearance.BorderSize = 0;
-            this.AggCate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.AggCate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.AggCate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AggCate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AggCate.ForeColor = System.Drawing.Color.White;
-            this.AggCate.Location = new System.Drawing.Point(0, 103);
+            this.AggCate.Location = new System.Drawing.Point(348, 383);
             this.AggCate.Name = "AggCate";
-            this.AggCate.Size = new System.Drawing.Size(140, 26);
+            this.AggCate.Size = new System.Drawing.Size(75, 23);
             this.AggCate.TabIndex = 8;
             this.AggCate.Text = "Agregar Categoria";
-            this.AggCate.UseVisualStyleBackColor = false;
+            this.AggCate.UseVisualStyleBackColor = true;
             this.AggCate.Click += new System.EventHandler(this.AggCate_Click);
             // 
             // FormularioProductos
@@ -224,6 +216,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(952, 464);
+            this.Controls.Add(this.AggCate);
             this.Controls.Add(this.panelServicio);
             this.Controls.Add(this.btnGenerarpdf);
             this.Controls.Add(this.panelMenu);
