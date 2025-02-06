@@ -68,6 +68,7 @@ namespace inventario_proyecto
                 DataGridViewRow row = dgvPresentaciones.Rows[e.RowIndex];
                 txtNombre.Text = row.Cells["nombre"].Value.ToString();
                 txtDescripcion.Text = row.Cells["descripcion"].Value.ToString();
+                txtFactor.Text = row.Cells["factor"].Value.ToString();
                 btnEditar.Enabled = true;
                 btnEliminar.Enabled = true;
 
@@ -83,7 +84,7 @@ namespace inventario_proyecto
             }
 
             int categoriaId = Convert.ToInt32(dgvPresentaciones.CurrentRow.Cells["ID"].Value);
-            string query = "UPDATE categorias SET nombre = @nombre, descripcion = @descripcion WHERE categoria_id = @id";
+            string query = "UPDATE categorias SET nombre = @nombre, descripcion, factor = @descripcion WHERE categoria_id = @id";
 
             try
             {
@@ -93,6 +94,7 @@ namespace inventario_proyecto
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@nombre", txtNombre.Text.Trim());
                     cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text.Trim());
+                    cmd.Parameters.AddWithValue("@factor", txtFactor.Text.Trim());
 
                     cmd.Parameters.AddWithValue("@id", categoriaId);
                     cmd.ExecuteNonQuery();
@@ -107,6 +109,49 @@ namespace inventario_proyecto
                 MessageBox.Show("Error al editar categoría: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvPresentaciones.CurrentRow == null)
+            {
+                MessageBox.Show("Selecciona una categoría para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "¿Estás seguro de desactivar esta categoría?",
+                "Confirmar eliminación lógica",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                int presentacionID = Convert.ToInt32(dgvPresentaciones.CurrentRow.Cells["ID"].Value);
+                string query = "UPDATE categorias SET activo = 0 WHERE categoria_id = @id";
+
+                try
+                {
+                    using (MySqlConnection conn = ConexionDB.GetConnection())
+                    {
+                        conn.Open();
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@id", presentacionID);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    LimpiarCampos();
+                    CargarPresentaciones();
+                    MessageBox.Show("Categoría desactivada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar categoría: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
@@ -120,7 +165,7 @@ namespace inventario_proyecto
                 return;
             }
 
-            string query = "INSERT INTO categorias (nombre, descripcion) VALUES (@nombre, @descripcion)";
+            string query = "INSERT INTO categorias (nombre, descripcion, factor) VALUES (@nombre, @descripcion, @factor)";
 
             try
             {
@@ -130,6 +175,7 @@ namespace inventario_proyecto
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@nombre", txtNombre.Text.Trim());
                     cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text.Trim());
+                    cmd.Parameters.AddWithValue("@factor", txtFactor.Text.Trim());
                     cmd.ExecuteNonQuery();
                 }
 

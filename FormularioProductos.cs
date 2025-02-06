@@ -251,5 +251,16 @@ namespace inventario_proyecto
             }
         
     }
+
+        private void AggPresen_Click(object sender, EventArgs e)
+        {
+            using (var formulario = new presentacionForm())
+            {
+                if (formulario.ShowDialog() == DialogResult.OK)
+                {
+                    CargarProductos(); // Recarga el DataGridView
+                }
+            }
+        }
     }
 }

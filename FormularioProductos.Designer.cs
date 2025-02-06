@@ -40,6 +40,7 @@
             this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
             this.panelServicio = new System.Windows.Forms.Panel();
             this.AggCate = new System.Windows.Forms.Button();
+            this.AggPresen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).BeginInit();
@@ -218,12 +219,23 @@
             this.AggCate.UseVisualStyleBackColor = false;
             this.AggCate.Click += new System.EventHandler(this.AggCate_Click);
             // 
+            // AggPresen
+            // 
+            this.AggPresen.Location = new System.Drawing.Point(506, 404);
+            this.AggPresen.Name = "AggPresen";
+            this.AggPresen.Size = new System.Drawing.Size(203, 23);
+            this.AggPresen.TabIndex = 8;
+            this.AggPresen.Text = "Agregar Presentacion";
+            this.AggPresen.UseVisualStyleBackColor = true;
+            this.AggPresen.Click += new System.EventHandler(this.AggPresen_Click);
+            // 
             // FormularioProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(952, 464);
+            this.Controls.Add(this.AggPresen);
             this.Controls.Add(this.panelServicio);
             this.Controls.Add(this.btnGenerarpdf);
             this.Controls.Add(this.panelMenu);
@@ -252,5 +264,6 @@
         private System.Windows.Forms.PictureBox pictureBoxCerrar;
         private System.Windows.Forms.Panel panelServicio;
         private System.Windows.Forms.Button AggCate;
+        private System.Windows.Forms.Button AggPresen;
     }
 }

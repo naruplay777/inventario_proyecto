@@ -48,6 +48,7 @@
             this.dgvPresentaciones.Name = "dgvPresentaciones";
             this.dgvPresentaciones.Size = new System.Drawing.Size(336, 150);
             this.dgvPresentaciones.TabIndex = 15;
+            this.dgvPresentaciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPresentaciones_CellClick);
             // 
             // btnEliminar
             // 
@@ -57,6 +58,7 @@
             this.btnEliminar.TabIndex = 14;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -66,6 +68,7 @@
             this.btnEditar.TabIndex = 13;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnAgregar
             // 
@@ -75,6 +78,7 @@
             this.btnAgregar.TabIndex = 12;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label2
             // 
