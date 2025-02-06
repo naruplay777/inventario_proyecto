@@ -87,36 +87,6 @@ namespace inventario_proyecto
 
 
         // Obtener todas las categorías
-        public List<Categoria> ObtenerCategorias()
-        {
-            List<Categoria> listaCategorias = new List<Categoria>();
-            string query = "SELECT id_categoria, nombre_categoria FROM categorias";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-                    connection.Open();
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            listaCategorias.Add(new Categoria
-                            {
-                                Id = reader.GetInt32("id_categoria"),
-                                Nombre = reader.GetString("nombre_categoria")
-                            });
-                        }
-                    }
-                }
-                catch (MySqlException ex)
-                {
-                    Console.WriteLine($"Error al obtener categorías: {ex.Message}");
-                }
-            }
-            return listaCategorias;
-        }
 
         // Obtener todas las presentaciones
         public List<Presentacion> ObtenerPresentaciones()

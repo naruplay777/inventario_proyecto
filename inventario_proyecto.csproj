@@ -167,7 +167,6 @@
     <Compile Include="borrar.Designer.cs">
       <DependentUpon>borrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Categoria.cs" />
     <Compile Include="categoriaForm.cs">
       <SubType>Form</SubType>
     </Compile>

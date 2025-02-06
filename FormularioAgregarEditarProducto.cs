@@ -9,130 +9,270 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace inventario_proyecto
 {
     public partial class FormularioAgregarEditarProducto : Form
     {
-        public Producto Producto { get; private set; }
-        private readonly DBHelper dbHelper;
+        private DataTable dtProductos = new DataTable();
 
-        // Constructor que recibe un producto, en caso de editar
+        public FormularioAgregarEditarProducto()
+        {
+            InitializeComponent();
+        }
+
+        private class ConexionDB
+        {
+            private static string connectionString = "Server=localhost;Database=heladeria;Uid=root;Pwd=andrewserver;";
+
+            public static MySqlConnection GetConnection()
+            {
+                return new MySqlConnection(connectionString);
+            }
+        }
+
         public FormularioAgregarEditarProducto(Producto producto = null)
         {
             InitializeComponent();
 
-            // Aquí se inicializa dbHelper con la cadena de conexión
-            dbHelper = new DBHelper("Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;");
-
-            Producto = producto;
         }
 
         private void FormularioAgregarEditarProducto_Load(object sender, EventArgs e)
         {
-            // Cargar categorías desde la base de datos
-            cmbCategoria.DataSource = dbHelper.ObtenerCategorias();
-            cmbCategoria.DisplayMember = "Nombre";
-            cmbCategoria.ValueMember = "Id";
+            CargarProductos();
+            CargarCategorias();
+            dgvProductos.ClearSelection();
+            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
+        }
 
-            // Cargar presentaciones desde la base de datos
-            cmbPresentacion.DataSource = dbHelper.ObtenerPresentaciones();
-            cmbPresentacion.DisplayMember = "Descripcion";
-            cmbPresentacion.ValueMember = "Id";
 
-            // Si estamos editando un producto, cargamos los datos
-            if (Producto != null)
+
+        private void CargarProductos()
+        {
+            dtProductos.Clear();
+            string query = @"SELECT 
+                        p.producto_id AS ID, 
+                        p.nombre, 
+                        p.descripcion, 
+                        c.nombre AS categoria,  -- Aquí cambiamos categoria_id por su nombre
+                        p.unidad_base, 
+                        p.stock_minimo 
+                    FROM productos p
+                    JOIN categorias c ON p.categoria_id = c.categoria_id
+                    WHERE p.activo = 1";
+
+            using (MySqlConnection conn = ConexionDB.GetConnection())
             {
-                txtNombre.Text = Producto.Nombre;
-                cmbCategoria.SelectedValue = Producto.CategoriaId;
+                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
+                da.Fill(dtProductos);
+            }
 
-                // Cargar la presentación asociada y su precio
-                var presentacion = dbHelper.ObtenerPresentacionPorProducto(Producto.Id);
-                txtDescripcion.Text = presentacion?.CostoPorPresentacion.ToString();
+            dgvProductos.DataSource = dtProductos; // Aquí estaba el error, se asignaba dgvProductos a sí mismo
+        }
 
-                // Seleccionar la presentación que corresponde
-                cmbPresentacion.SelectedValue = presentacion?.Id;
+        private void LimpiarCampos()
+        {
+            txtNombre.Clear();
+            txtDescripcion.Clear();
+            txtUnidad.Clear();
+            txtStock.Clear();
+            cmbCategoria.DataSource = null;
+            cmbCategoria.Items.Clear();
+            dgvProductos.ClearSelection();
+            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
+        }
+
+        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgvProductos.Rows[e.RowIndex];
+
+                txtNombre.Text = fila.Cells["nombre"].Value.ToString();
+                txtDescripcion.Text = fila.Cells["descripcion"].Value.ToString();
+                txtUnidad.Text = fila.Cells["unidad_base"].Value.ToString();
+                txtStock.Text = fila.Cells["stock_minimo"].Value.ToString();
+
+                // Obtener el nombre de la categoría desde el DataGridView
+                string nombreCategoria = fila.Cells["categoria"].Value.ToString();
+
+                // Buscar el índice del nombre en el ComboBox y seleccionarlo
+                cmbCategoria.SelectedIndex = cmbCategoria.FindStringExact(nombreCategoria);
+
+                btnEditar.Enabled = true;
+                btnEliminar.Enabled = true;
             }
         }
 
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
-            // Verificar si los campos están vacíos
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
-                cmbCategoria.SelectedIndex == -1 || cmbPresentacion.SelectedIndex == -1)
+            if (dgvProductos.CurrentRow == null)
             {
-                MessageBox.Show("Todos los campos son obligatorios.");
+                MessageBox.Show("Selecciona un producto para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Si el producto es null, lo inicializamos
-            Producto = Producto ?? new Producto();
+            int productoId = Convert.ToInt32(dgvProductos.CurrentRow.Cells["ID"].Value);
+            string query = "UPDATE productos SET nombre = @nombre, descripcion = @descripcion, categoria_id = @categoria_id, unidad_base = @unidad_base, stock_minimo = @stock_minimo  WHERE producto_id = @id";
 
-            // Asignar el nombre del producto
-            Producto.Nombre = txtNombre.Text;
-
-            // Asignar el ID de la categoría seleccionada
-            Producto.CategoriaId = (int)cmbCategoria.SelectedValue;
-
-            // Si el producto no tiene Id, es nuevo, entonces insertamos
-            if (Producto.Id == 0)
+            try
             {
-                // Insertar el producto en la base de datos
-                dbHelper.InsertarProducto(Producto);
-
-                // Después de insertar el producto, obtenemos el ID generado
-                int productoId = dbHelper.ObtenerUltimoProductoId();
-
-                // Crear una presentación con el precio y asociarla al producto
-                var presentacion = new Presentacion
+                using (MySqlConnection conn = ConexionDB.GetConnection())
                 {
-                    Descripcion = cmbPresentacion.SelectedItem.ToString(), // Descripción de la presentación
-                    CostoPorPresentacion = decimal.Parse(txtDescripcion.Text), // Precio de la presentación
-                    ProductoId = productoId // Referencia al ID del producto recién insertado
-                };
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@nombre", txtNombre.Text.Trim());
+                    cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text.Trim());
+                    cmd.Parameters.AddWithValue("@categoria_id", cmbCategoria.SelectedValue);
+                    cmd.Parameters.AddWithValue("@unidad_base", txtUnidad.Text.Trim());
 
-                // Insertar la presentación
-                dbHelper.InsertarPresentacion(presentacion);
+                    if (float.TryParse(txtStock.Text.Trim(), out float stock_minimo))
+                    {
+                        cmd.Parameters.AddWithValue("@stock_minimo", stock_minimo);
+                    }
+                    else
+                    {
+                        MessageBox.Show("El Stock Minimo debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+
+                    cmd.Parameters.AddWithValue("@id", productoId);
+                    cmd.ExecuteNonQuery();
+                }
+
+                LimpiarCampos();
+                CargarProductos();
+                MessageBox.Show("Producto actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
+            catch (Exception ex)
             {
-                // Si ya existe el producto, actualizamos el producto
-                dbHelper.ActualizarProducto(Producto);
-
-                // Y actualizamos la presentación con el precio actualizado
-                var presentacion = new Presentacion
-                {
-                    ProductoId = Producto.Id, // El producto al que pertenece esta presentación
-                    Descripcion = cmbPresentacion.SelectedItem.ToString(),
-                    CostoPorPresentacion = decimal.Parse(txtDescripcion.Text)
-                };
-
-                dbHelper.ActualizarPresentacion(presentacion);
+                MessageBox.Show("Error al editar Producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // Cerrar el formulario y devolver el resultado
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            CargarCategorias();
+
         }
 
-        public int ObtenerUltimoProductoId()
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;";
+            if (dgvProductos.CurrentRow == null)
+            {
+                MessageBox.Show("Selecciona un Producto para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            DialogResult result = MessageBox.Show(
+                "¿Estás seguro de desactivar esta producto?",
+                "Confirmar eliminación lógica",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                int productoID = Convert.ToInt32(dgvProductos.CurrentRow.Cells["ID"].Value);
+                string query = "UPDATE productos SET activo = 0 WHERE producto_id = @id";
+
+                try
+                {
+                    using (MySqlConnection conn = ConexionDB.GetConnection())
+                    {
+                        conn.Open();
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@id", productoID);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    LimpiarCampos();
+                    CargarProductos();
+                    MessageBox.Show("Producto desactivada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                CargarCategorias();
+
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                MessageBox.Show("El nombre del Producto es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string query = "INSERT INTO productos (nombre, descripcion, categoria_id, unidad_base, stock_minimo) VALUES (@nombre, @descripcion, @categoria_id, @unidad_base, @stock_minimo)";
+
+            try
+            {
+                using (MySqlConnection conn = ConexionDB.GetConnection())
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@nombre", txtNombre.Text.Trim());
+                    cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text.Trim());
+                    cmd.Parameters.AddWithValue("@categoria_id", cmbCategoria.SelectedValue);
+                    cmd.Parameters.AddWithValue("@unidad_base", txtUnidad.Text.Trim());
+
+                    if (float.TryParse(txtStock.Text.Trim(), out float stock_minimo))
+                    {
+                        cmd.Parameters.AddWithValue("@stock_minimo", stock_minimo);
+                    }
+                    else
+                    {
+                        MessageBox.Show("El Stock Minimo debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                LimpiarCampos();
+                CargarProductos();
+                MessageBox.Show("Producto agregada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void CargarCategorias()
+        {
+            string query = "SELECT categoria_id, nombre FROM categorias WHERE activo = 1";
+
+            using (MySqlConnection conn = ConexionDB.GetConnection())
             {
                 try
                 {
-                    connection.Open();
-                    string query = "SELECT LAST_INSERT_ID()";
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-                    return Convert.ToInt32(cmd.ExecuteScalar());
+                    conn.Open();
+                    MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
+                    DataTable dtCategorias = new DataTable();
+                    da.Fill(dtCategorias);
+
+                    cmbCategoria.DataSource = dtCategorias;
+                    cmbCategoria.DisplayMember = "nombre";  // Lo que se mostrará en el ComboBox
+                    cmbCategoria.ValueMember = "categoria_id";  // Lo que se guardará internamente
                 }
-                catch (MySqlException ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine($"Error al obtener el ID del último producto: {ex.Message}");
-                    return -1; // Retornar un valor que indica error
+                    MessageBox.Show("Error al cargar categorías: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -145,6 +285,8 @@ namespace inventario_proyecto
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+// DISEÑO---------------------------------------------------------------------------------
 
         private void pictureCerrar_Click(object sender, EventArgs e)
         {
@@ -166,5 +308,7 @@ namespace inventario_proyecto
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+
     }
 }
