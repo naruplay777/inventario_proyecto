@@ -1,20 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace inventario_proyecto
 {
-    public partial class categoriaForm : Form
+    public partial class presentacionForm : Form
     {
-        private DataTable dtCategorias = new DataTable();
+        private DataTable dtPresentaciones = new DataTable();
 
-        public categoriaForm()
+        public presentacionForm()
         {
             InitializeComponent();
         }
-
-        // Clase para manejar la conexión a la base de datos
         private class ConexionDB
         {
             private static string connectionString = "Server=localhost;Database=heladeria;Uid=root;Pwd=andrewserver;";
@@ -25,45 +29,43 @@ namespace inventario_proyecto
             }
         }
 
-        private void categoriaForm_Load(object sender, EventArgs e)
+        private void presentacionForm_Load(object sender, EventArgs e)
         {
-            CargarCategorias();
-            dgvCategorias.ClearSelection();
+            CargarPresentaciones();
+            dgvPresentaciones.ClearSelection();
             btnEditar.Enabled = false;
             btnEliminar.Enabled = false;
         }
 
-        private void CargarCategorias()
+        private void CargarPresentaciones()
         {
-            dtCategorias.Clear();
-            string query = "SELECT categoria_id AS ID, nombre, descripcion FROM categorias WHERE activo = 1";
+            dtPresentaciones.Clear();
+            string query = "SELECT presentacion_id AS ID, nombre, descripcion, factor FROM presentaciones WHERE activo = 1";
 
             using (MySqlConnection conn = ConexionDB.GetConnection())
             {
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                da.Fill(dtCategorias);
+                da.Fill(dtPresentaciones);
             }
 
-            dgvCategorias.DataSource = dtCategorias;
+            dgvPresentaciones.DataSource = dtPresentaciones;
         }
-
 
         private void LimpiarCampos()
         {
             txtNombre.Clear();
             txtDescripcion.Clear();
-            dgvCategorias.ClearSelection();
+            txtFactor.Clear();
+            dgvPresentaciones.ClearSelection();
             btnEditar.Enabled = false;
             btnEliminar.Enabled = false;
         }
 
-
-
-        private void dgvCategorias_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvPresentaciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgvCategorias.Rows[e.RowIndex];
+                DataGridViewRow row = dgvPresentaciones.Rows[e.RowIndex];
                 txtNombre.Text = row.Cells["nombre"].Value.ToString();
                 txtDescripcion.Text = row.Cells["descripcion"].Value.ToString();
                 btnEditar.Enabled = true;
@@ -72,16 +74,15 @@ namespace inventario_proyecto
             }
         }
 
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvCategorias.CurrentRow == null)
+            if (dgvPresentaciones.CurrentRow == null)
             {
                 MessageBox.Show("Selecciona una categoría para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            int categoriaId = Convert.ToInt32(dgvCategorias.CurrentRow.Cells["ID"].Value);
+            int categoriaId = Convert.ToInt32(dgvPresentaciones.CurrentRow.Cells["ID"].Value);
             string query = "UPDATE categorias SET nombre = @nombre, descripcion = @descripcion WHERE categoria_id = @id";
 
             try
@@ -92,12 +93,13 @@ namespace inventario_proyecto
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@nombre", txtNombre.Text.Trim());
                     cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text.Trim());
+
                     cmd.Parameters.AddWithValue("@id", categoriaId);
                     cmd.ExecuteNonQuery();
                 }
 
                 LimpiarCampos();
-                CargarCategorias();
+                CargarPresentaciones();
                 MessageBox.Show("Categoría actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -105,49 +107,6 @@ namespace inventario_proyecto
                 MessageBox.Show("Error al editar categoría: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (dgvCategorias.CurrentRow == null)
-            {
-                MessageBox.Show("Selecciona una categoría para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            DialogResult result = MessageBox.Show(
-                "¿Estás seguro de desactivar esta categoría?",
-                "Confirmar eliminación lógica",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                int categoriaId = Convert.ToInt32(dgvCategorias.CurrentRow.Cells["ID"].Value);
-                string query = "UPDATE categorias SET activo = 0 WHERE categoria_id = @id";
-
-                try
-                {
-                    using (MySqlConnection conn = ConexionDB.GetConnection())
-                    {
-                        conn.Open();
-                        MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@id", categoriaId);
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    LimpiarCampos();
-                    CargarCategorias();
-                    MessageBox.Show("Categoría desactivada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al eliminar categoría: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
@@ -175,7 +134,7 @@ namespace inventario_proyecto
                 }
 
                 LimpiarCampos();
-                CargarCategorias();
+                CargarPresentaciones();
                 MessageBox.Show("Categoría agregada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
