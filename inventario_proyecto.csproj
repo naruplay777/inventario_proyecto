@@ -200,7 +200,6 @@
     <Compile Include="presentacionForm.Designer.cs">
       <DependentUpon>presentacionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Producto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="categoriaForm.resx">
