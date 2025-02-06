@@ -124,6 +124,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtNombre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "categoriaForm";
             this.Text = "categoriaForm";
             this.Load += new System.EventHandler(this.categoriaForm_Load);
