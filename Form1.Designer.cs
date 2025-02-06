@@ -33,24 +33,24 @@
             this.btnTestConnection = new System.Windows.Forms.Button();
             this.formularioP = new System.Windows.Forms.Button();
             this.panelBarra = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelfecha = new System.Windows.Forms.Label();
             this.labelHora = new System.Windows.Forms.Label();
-            this.pictureRetaurar = new System.Windows.Forms.PictureBox();
             this.pictureMinimizar = new System.Windows.Forms.PictureBox();
             this.pictureMaximizar = new System.Windows.Forms.PictureBox();
             this.pictureCerrar = new System.Windows.Forms.PictureBox();
+            this.pictureRetaurar = new System.Windows.Forms.PictureBox();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.labelfecha = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelBarra.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureRetaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureRetaurar)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -101,9 +101,9 @@
             // 
             this.panelBarra.BackColor = System.Drawing.Color.Gold;
             this.panelBarra.Controls.Add(this.label1);
+            this.panelBarra.Controls.Add(this.pictureRetaurar);
             this.panelBarra.Controls.Add(this.labelfecha);
             this.panelBarra.Controls.Add(this.labelHora);
-            this.panelBarra.Controls.Add(this.pictureRetaurar);
             this.panelBarra.Controls.Add(this.pictureMinimizar);
             this.panelBarra.Controls.Add(this.pictureMaximizar);
             this.panelBarra.Controls.Add(this.pictureCerrar);
@@ -115,6 +115,29 @@
             this.panelBarra.Paint += new System.Windows.Forms.PaintEventHandler(this.panelBarra_Paint);
             this.panelBarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBarra_MouseDown);
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Sylfaen", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(596, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "CYROP";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelfecha
+            // 
+            this.labelfecha.Location = new System.Drawing.Point(105, 2);
+            this.labelfecha.Name = "labelfecha";
+            this.labelfecha.Size = new System.Drawing.Size(96, 21);
+            this.labelfecha.TabIndex = 2;
+            this.labelfecha.Text = "label1";
+            this.labelfecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelfecha.Click += new System.EventHandler(this.labelfecha_Click);
+            // 
             // labelHora
             // 
             this.labelHora.Location = new System.Drawing.Point(3, 3);
@@ -123,19 +146,6 @@
             this.labelHora.TabIndex = 1;
             this.labelHora.Text = "label1";
             this.labelHora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureRetaurar
-            // 
-            this.pictureRetaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureRetaurar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureRetaurar.Image = ((System.Drawing.Image)(resources.GetObject("pictureRetaurar.Image")));
-            this.pictureRetaurar.Location = new System.Drawing.Point(1089, 2);
-            this.pictureRetaurar.Name = "pictureRetaurar";
-            this.pictureRetaurar.Size = new System.Drawing.Size(20, 19);
-            this.pictureRetaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureRetaurar.TabIndex = 0;
-            this.pictureRetaurar.TabStop = false;
-            this.pictureRetaurar.Click += new System.EventHandler(this.pictureRetaurar_Click);
             // 
             // pictureMinimizar
             // 
@@ -174,6 +184,19 @@
             this.pictureCerrar.TabIndex = 0;
             this.pictureCerrar.TabStop = false;
             this.pictureCerrar.Click += new System.EventHandler(this.pictureCerrar_Click);
+            // 
+            // pictureRetaurar
+            // 
+            this.pictureRetaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureRetaurar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureRetaurar.Image = ((System.Drawing.Image)(resources.GetObject("pictureRetaurar.Image")));
+            this.pictureRetaurar.Location = new System.Drawing.Point(1089, 2);
+            this.pictureRetaurar.Name = "pictureRetaurar";
+            this.pictureRetaurar.Size = new System.Drawing.Size(20, 19);
+            this.pictureRetaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureRetaurar.TabIndex = 0;
+            this.pictureRetaurar.TabStop = false;
+            this.pictureRetaurar.Click += new System.EventHandler(this.pictureRetaurar_Click);
             // 
             // panelMenu
             // 
@@ -214,34 +237,6 @@
             this.panelContenedor.Size = new System.Drawing.Size(952, 464);
             this.panelContenedor.TabIndex = 5;
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // labelfecha
-            // 
-            this.labelfecha.Location = new System.Drawing.Point(105, 2);
-            this.labelfecha.Name = "labelfecha";
-            this.labelfecha.Size = new System.Drawing.Size(96, 21);
-            this.labelfecha.TabIndex = 2;
-            this.labelfecha.Text = "label1";
-            this.labelfecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelfecha.Click += new System.EventHandler(this.labelfecha_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Font = new System.Drawing.Font("Sylfaen", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(596, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 21);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "CYROP";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -252,6 +247,11 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -268,10 +268,10 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelBarra.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureRetaurar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureRetaurar)).EndInit();
             this.panelMenu.ResumeLayout(false);
             this.panelContenedor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
