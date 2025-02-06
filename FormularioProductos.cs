@@ -47,15 +47,7 @@ namespace inventario_proyecto
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvProductos.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Seleccione un producto para editar.");
-                return;
-            }
-
-            var producto = (Producto)dgvProductos.SelectedRows[0].DataBoundItem;
-
-            using (var formulario = new FormularioAgregarEditarProducto(producto))
+            using (var formulario = new presentacionForm())
             {
                 if (formulario.ShowDialog() == DialogResult.OK)
                 {
@@ -98,7 +90,7 @@ namespace inventario_proyecto
 
         private void CargarProductos()
         {
-            DBHelper dbHelper = new DBHelper("Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;");
+            DBHelper dbHelper = new DBHelper("Server=localhost;Database=inventarioheladeria;Uid=root;Pwd=andrewserver;");
             List<Producto> productos = dbHelper.ObtenerProductos();
 
             dgvProductos.DataSource = null; // Limpia el DataGridView
@@ -261,6 +253,11 @@ namespace inventario_proyecto
                     CargarProductos(); // Recarga el DataGridView
                 }
             }
+        }
+
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
