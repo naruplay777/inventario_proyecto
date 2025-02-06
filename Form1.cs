@@ -39,7 +39,7 @@ namespace inventario_proyecto
         private void btnTestConnection_Click_1(object sender, EventArgs e)
         {
             // Cadena de conexión: ajusta los valores según tu configuración.
-            string connectionString = "Server=localhost;Database=inventario_heladeria;Uid=root;Pwd=andrewserver;";
+            string connectionString = "Server=localhost;Database=heladeria;Uid=root;Pwd=andrewserver;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {

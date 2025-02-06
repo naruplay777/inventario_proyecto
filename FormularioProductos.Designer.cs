@@ -39,6 +39,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
             this.panelServicio = new System.Windows.Forms.Panel();
+            this.AggCate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).BeginInit();
@@ -69,10 +70,9 @@
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
-            this.btnAgregar.Location = new System.Drawing.Point(0, 10);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregar.Location = new System.Drawing.Point(0, 8);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(187, 32);
+            this.btnAgregar.Size = new System.Drawing.Size(140, 26);
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
@@ -88,10 +88,9 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(0, 89);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Location = new System.Drawing.Point(0, 72);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(187, 32);
+            this.btnEliminar.Size = new System.Drawing.Size(140, 26);
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -107,10 +106,9 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(0, 49);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditar.Location = new System.Drawing.Point(0, 40);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(187, 32);
+            this.btnEditar.Size = new System.Drawing.Size(140, 26);
             this.btnEditar.TabIndex = 2;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -123,10 +121,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductos.Location = new System.Drawing.Point(19, 55);
-            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvProductos.Location = new System.Drawing.Point(14, 45);
             this.dgvProductos.Name = "dgvProductos";
-            this.dgvProductos.Size = new System.Drawing.Size(1235, 393);
+            this.dgvProductos.Size = new System.Drawing.Size(926, 319);
             this.dgvProductos.TabIndex = 0;
             // 
             // btnGenerarpdf
@@ -137,10 +134,9 @@
             this.btnGenerarpdf.FlatAppearance.BorderSize = 0;
             this.btnGenerarpdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerarpdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarpdf.Location = new System.Drawing.Point(1067, 455);
-            this.btnGenerarpdf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerarpdf.Location = new System.Drawing.Point(800, 370);
             this.btnGenerarpdf.Name = "btnGenerarpdf";
-            this.btnGenerarpdf.Size = new System.Drawing.Size(187, 65);
+            this.btnGenerarpdf.Size = new System.Drawing.Size(140, 53);
             this.btnGenerarpdf.TabIndex = 4;
             this.btnGenerarpdf.Text = "PDF";
             this.btnGenerarpdf.UseVisualStyleBackColor = false;
@@ -153,9 +149,8 @@
             this.panelMenu.Controls.Add(this.pictureBoxCerrar);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(1269, 48);
+            this.panelMenu.Size = new System.Drawing.Size(952, 39);
             this.panelMenu.TabIndex = 6;
             // 
             // button1
@@ -170,10 +165,9 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = global::inventario_proyecto.Properties.Resources.icons8_clasificar_abajo_24;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(16, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(12, 9);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(187, 32);
+            this.button1.Size = new System.Drawing.Size(140, 26);
             this.button1.TabIndex = 6;
             this.button1.Text = "Servicio";
             this.button1.UseVisualStyleBackColor = false;
@@ -186,10 +180,9 @@
             this.pictureBoxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCerrar.Image")));
-            this.pictureBoxCerrar.Location = new System.Drawing.Point(1228, 4);
-            this.pictureBoxCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxCerrar.Location = new System.Drawing.Point(921, 3);
             this.pictureBoxCerrar.Name = "pictureBoxCerrar";
-            this.pictureBoxCerrar.Size = new System.Drawing.Size(25, 34);
+            this.pictureBoxCerrar.Size = new System.Drawing.Size(19, 28);
             this.pictureBoxCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxCerrar.TabIndex = 5;
             this.pictureBoxCerrar.TabStop = false;
@@ -201,25 +194,34 @@
             this.panelServicio.Controls.Add(this.btnEditar);
             this.panelServicio.Controls.Add(this.btnAgregar);
             this.panelServicio.Controls.Add(this.btnEliminar);
-            this.panelServicio.Location = new System.Drawing.Point(16, 46);
-            this.panelServicio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelServicio.Location = new System.Drawing.Point(12, 37);
             this.panelServicio.Name = "panelServicio";
-            this.panelServicio.Size = new System.Drawing.Size(187, 133);
+            this.panelServicio.Size = new System.Drawing.Size(140, 108);
             this.panelServicio.TabIndex = 7;
             this.panelServicio.Visible = false;
             // 
+            // AggCate
+            // 
+            this.AggCate.Location = new System.Drawing.Point(348, 383);
+            this.AggCate.Name = "AggCate";
+            this.AggCate.Size = new System.Drawing.Size(75, 23);
+            this.AggCate.TabIndex = 8;
+            this.AggCate.Text = "Agregar Categoria";
+            this.AggCate.UseVisualStyleBackColor = true;
+            this.AggCate.Click += new System.EventHandler(this.AggCate_Click);
+            // 
             // FormularioProductos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1269, 571);
+            this.ClientSize = new System.Drawing.Size(952, 464);
+            this.Controls.Add(this.AggCate);
             this.Controls.Add(this.panelServicio);
             this.Controls.Add(this.btnGenerarpdf);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.dgvProductos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormularioProductos";
             this.Text = "Gestión de Productos";
             this.Load += new System.EventHandler(this.FormularioProductos_Load);
@@ -242,5 +244,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBoxCerrar;
         private System.Windows.Forms.Panel panelServicio;
+        private System.Windows.Forms.Button AggCate;
     }
 }

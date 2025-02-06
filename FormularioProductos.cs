@@ -239,5 +239,17 @@ namespace inventario_proyecto
                 }
             }
         }
+
+        private void AggCate_Click(object sender, EventArgs e)
+        {      
+           using (var formulario = new categoriaForm())
+            {
+                if (formulario.ShowDialog() == DialogResult.OK)
+                {
+                    CargarProductos(); // Recarga el DataGridView
+                }
+            }
+        
+    }
     }
 }
