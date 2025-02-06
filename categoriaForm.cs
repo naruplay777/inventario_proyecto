@@ -184,5 +184,9 @@ namespace inventario_proyecto
             }
         }
 
+        private void pictureCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
