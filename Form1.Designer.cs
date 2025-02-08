@@ -33,6 +33,8 @@
             this.btnTestConnection = new System.Windows.Forms.Button();
             this.formularioP = new System.Windows.Forms.Button();
             this.panelBarra = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelfecha = new System.Windows.Forms.Label();
             this.labelHora = new System.Windows.Forms.Label();
             this.pictureRetaurar = new System.Windows.Forms.PictureBox();
             this.pictureMinimizar = new System.Windows.Forms.PictureBox();
@@ -42,10 +44,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.labelfecha = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelBarra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureRetaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimizar)).BeginInit();
@@ -58,14 +58,14 @@
             // 
             // btnTestConnection
             // 
-            this.btnTestConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.btnTestConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.btnTestConnection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnTestConnection.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTestConnection.FlatAppearance.BorderSize = 0;
-            this.btnTestConnection.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gold;
+            this.btnTestConnection.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
             this.btnTestConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTestConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTestConnection.ForeColor = System.Drawing.Color.Black;
+            this.btnTestConnection.ForeColor = System.Drawing.Color.White;
             this.btnTestConnection.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTestConnection.Location = new System.Drawing.Point(12, 74);
             this.btnTestConnection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -79,14 +79,14 @@
             // 
             // formularioP
             // 
-            this.formularioP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.formularioP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.formularioP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.formularioP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.formularioP.FlatAppearance.BorderSize = 0;
-            this.formularioP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gold;
+            this.formularioP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
             this.formularioP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.formularioP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.formularioP.ForeColor = System.Drawing.Color.Black;
+            this.formularioP.ForeColor = System.Drawing.Color.White;
             this.formularioP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.formularioP.Location = new System.Drawing.Point(12, 174);
             this.formularioP.Name = "formularioP";
@@ -114,6 +114,29 @@
             this.panelBarra.TabIndex = 3;
             this.panelBarra.Paint += new System.Windows.Forms.PaintEventHandler(this.panelBarra_Paint);
             this.panelBarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBarra_MouseDown);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Sylfaen", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(596, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "CYROP";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelfecha
+            // 
+            this.labelfecha.Location = new System.Drawing.Point(105, 2);
+            this.labelfecha.Name = "labelfecha";
+            this.labelfecha.Size = new System.Drawing.Size(96, 21);
+            this.labelfecha.TabIndex = 2;
+            this.labelfecha.Text = "label1";
+            this.labelfecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelfecha.Click += new System.EventHandler(this.labelfecha_Click);
             // 
             // labelHora
             // 
@@ -177,7 +200,7 @@
             // 
             // panelMenu
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.panelMenu.Controls.Add(this.panel3);
             this.panelMenu.Controls.Add(this.panel2);
             this.panelMenu.Controls.Add(this.btnTestConnection);
@@ -190,7 +213,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.Gold;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
             this.panel3.Location = new System.Drawing.Point(0, 174);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(15, 59);
@@ -198,7 +221,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Gold;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
             this.panel2.Location = new System.Drawing.Point(0, 74);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(15, 59);
@@ -214,34 +237,6 @@
             this.panelContenedor.Size = new System.Drawing.Size(952, 464);
             this.panelContenedor.TabIndex = 5;
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // labelfecha
-            // 
-            this.labelfecha.Location = new System.Drawing.Point(105, 2);
-            this.labelfecha.Name = "labelfecha";
-            this.labelfecha.Size = new System.Drawing.Size(96, 21);
-            this.labelfecha.TabIndex = 2;
-            this.labelfecha.Text = "label1";
-            this.labelfecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelfecha.Click += new System.EventHandler(this.labelfecha_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Font = new System.Drawing.Font("Sylfaen", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(596, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 21);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "CYROP";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -252,6 +247,11 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 

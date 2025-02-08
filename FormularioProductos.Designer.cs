@@ -35,10 +35,10 @@
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.btnGenerarpdf = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
-            this.panelServicio = new System.Windows.Forms.Panel();
             this.AggCate = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panelServicio = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).BeginInit();
@@ -137,6 +137,37 @@
             this.panelMenu.Size = new System.Drawing.Size(952, 39);
             this.panelMenu.TabIndex = 6;
             // 
+            // pictureBoxCerrar
+            // 
+            this.pictureBoxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCerrar.Image")));
+            this.pictureBoxCerrar.Location = new System.Drawing.Point(921, 3);
+            this.pictureBoxCerrar.Name = "pictureBoxCerrar";
+            this.pictureBoxCerrar.Size = new System.Drawing.Size(19, 28);
+            this.pictureBoxCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCerrar.TabIndex = 5;
+            this.pictureBoxCerrar.TabStop = false;
+            this.pictureBoxCerrar.Click += new System.EventHandler(this.pictureBoxCerrar_Click);
+            // 
+            // AggCate
+            // 
+            this.AggCate.BackColor = System.Drawing.Color.Transparent;
+            this.AggCate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AggCate.FlatAppearance.BorderSize = 0;
+            this.AggCate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.AggCate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AggCate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AggCate.ForeColor = System.Drawing.Color.White;
+            this.AggCate.Location = new System.Drawing.Point(-3, 69);
+            this.AggCate.Name = "AggCate";
+            this.AggCate.Size = new System.Drawing.Size(132, 26);
+            this.AggCate.TabIndex = 8;
+            this.AggCate.Text = "Categorias";
+            this.AggCate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AggCate.UseVisualStyleBackColor = false;
+            this.AggCate.Click += new System.EventHandler(this.AggCate_Click);
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -159,19 +190,6 @@
             this.button1.MouseEnter += new System.EventHandler(this.btnMouseEnter);
             this.button1.MouseLeave += new System.EventHandler(this.btnMouseLeave);
             // 
-            // pictureBoxCerrar
-            // 
-            this.pictureBoxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCerrar.Image")));
-            this.pictureBoxCerrar.Location = new System.Drawing.Point(921, 3);
-            this.pictureBoxCerrar.Name = "pictureBoxCerrar";
-            this.pictureBoxCerrar.Size = new System.Drawing.Size(19, 28);
-            this.pictureBoxCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCerrar.TabIndex = 5;
-            this.pictureBoxCerrar.TabStop = false;
-            this.pictureBoxCerrar.Click += new System.EventHandler(this.pictureBoxCerrar_Click);
-            // 
             // panelServicio
             // 
             this.panelServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
@@ -183,24 +201,6 @@
             this.panelServicio.Size = new System.Drawing.Size(129, 98);
             this.panelServicio.TabIndex = 7;
             this.panelServicio.Visible = false;
-            // 
-            // AggCate
-            // 
-            this.AggCate.BackColor = System.Drawing.Color.Transparent;
-            this.AggCate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AggCate.FlatAppearance.BorderSize = 0;
-            this.AggCate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.AggCate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AggCate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AggCate.ForeColor = System.Drawing.Color.White;
-            this.AggCate.Location = new System.Drawing.Point(-3, 69);
-            this.AggCate.Name = "AggCate";
-            this.AggCate.Size = new System.Drawing.Size(132, 26);
-            this.AggCate.TabIndex = 8;
-            this.AggCate.Text = "Categorias";
-            this.AggCate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AggCate.UseVisualStyleBackColor = false;
-            this.AggCate.Click += new System.EventHandler(this.AggCate_Click);
             // 
             // FormularioProductos
             // 
@@ -231,9 +231,9 @@
         private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.Button btnGenerarpdf;
         private System.Windows.Forms.Panel panelMenu;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBoxCerrar;
-        private System.Windows.Forms.Panel panelServicio;
         private System.Windows.Forms.Button AggCate;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panelServicio;
     }
 }

@@ -144,7 +144,7 @@ namespace inventario_proyecto
             if (result == DialogResult.Yes)
             {
                 // Crear el archivo PDF  
-                using (FileStream fs = new FileStream("C:\\Users\\Personal\\Documents\\PDFGenerado.pdf", FileMode.Create))
+                using (FileStream fs = new FileStream(@".\PDFGenerado.pdf", FileMode.Create))
                 {
                     Document doc = new Document(PageSize.LETTER, 3, 3, 3, 3);
                     PdfWriter pw = PdfWriter.GetInstance(doc, fs);
