@@ -26,12 +26,13 @@ namespace inventario_proyecto
 
         private void ConfigurarAcceso()
         {
-            if (rolUsuario == "Empleado")
+            if (rolUsuario == "empleado")
             {
-                btnAgregar.Enabled = false; //productos
-                AggCate.Enabled = false; //categorias
-                btnEditar.Enabled = false; //presentaciones
-                AggProv.Enabled = false; //Proveedores 
+                btnAgregar.Enabled = false; //Productos
+                btnEditar.Enabled = false; //Presentaciones
+                AggIngreso.Enabled = true; //Ingresos
+                AggCate.Enabled = false; //Categorias
+                AggProv.Enabled = false; //Proveedores
                 AggUsuarios.Enabled = false;
             }
         }

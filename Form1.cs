@@ -16,9 +16,12 @@ namespace inventario_proyecto
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private string rolUsuario;
+
+        public Form1(string rol)
         {
             InitializeComponent();
+            rolUsuario = rol;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -56,7 +59,7 @@ namespace inventario_proyecto
         private void formularioP_Click(object sender, EventArgs e)
         {
             // Crear una nueva instancia del FormularioProductos
-            FormularioProductos formulario1 = new FormularioProductos("Admin"); // Ajusta el rol según sea necesario
+            FormularioProductos formulario1 = new FormularioProductos(rolUsuario); // Pasa el rol del usuario
 
             // Mostrar el FormularioProductos
             AbrirFormButon(formulario1);
@@ -122,4 +125,5 @@ namespace inventario_proyecto
         }
     }
 }
+
 
