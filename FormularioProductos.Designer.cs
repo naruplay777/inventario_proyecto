@@ -35,16 +35,17 @@
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.btnGenerarpdf = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
             this.AggCate = new System.Windows.Forms.Button();
             this.panelServicio = new System.Windows.Forms.Panel();
             this.AggIngreso = new System.Windows.Forms.Button();
             this.AggProv = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
+            this.AggUsuarios = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panelMenu.SuspendLayout();
-            this.panelServicio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).BeginInit();
+            this.panelServicio.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPDF
@@ -139,57 +140,6 @@
             this.panelMenu.Size = new System.Drawing.Size(952, 39);
             this.panelMenu.TabIndex = 6;
             // 
-            // AggCate
-            // 
-            this.AggCate.BackColor = System.Drawing.Color.Transparent;
-            this.AggCate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AggCate.FlatAppearance.BorderSize = 0;
-            this.AggCate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.AggCate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AggCate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AggCate.ForeColor = System.Drawing.Color.White;
-            this.AggCate.Location = new System.Drawing.Point(-3, 69);
-            this.AggCate.Name = "AggCate";
-            this.AggCate.Size = new System.Drawing.Size(132, 26);
-            this.AggCate.TabIndex = 8;
-            this.AggCate.Text = "Categorias";
-            this.AggCate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AggCate.UseVisualStyleBackColor = false;
-            this.AggCate.Click += new System.EventHandler(this.AggCate_Click);
-            // 
-            // panelServicio
-            // 
-            this.panelServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.panelServicio.Controls.Add(this.AggCate);
-            this.panelServicio.Controls.Add(this.btnEditar);
-            this.panelServicio.Controls.Add(this.btnAgregar);
-            this.panelServicio.Location = new System.Drawing.Point(14, 37);
-            this.panelServicio.Name = "panelServicio";
-            this.panelServicio.Size = new System.Drawing.Size(129, 98);
-            this.panelServicio.TabIndex = 7;
-            this.panelServicio.Visible = false;
-            // 
-            // AggIngreso
-            // 
-            this.AggIngreso.Location = new System.Drawing.Point(483, 391);
-            this.AggIngreso.Name = "AggIngreso";
-            this.AggIngreso.Size = new System.Drawing.Size(75, 23);
-            this.AggIngreso.TabIndex = 8;
-            this.AggIngreso.Text = "button2";
-            this.AggIngreso.UseVisualStyleBackColor = true;
-            this.AggIngreso.Click += new System.EventHandler(this.AggIngreso_Click);
-            // 
-            // AggProv
-            // 
-            this.AggProv.Location = new System.Drawing.Point(175, 386);
-            this.AggProv.Name = "AggProv";
-            this.AggProv.Size = new System.Drawing.Size(75, 23);
-            this.AggProv.TabIndex = 9;
-            this.AggProv.Text = "Proveedores";
-            this.AggProv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AggProv.UseVisualStyleBackColor = true;
-            this.AggProv.Click += new System.EventHandler(this.AggProv_Click);
-            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -225,12 +175,75 @@
             this.pictureBoxCerrar.TabStop = false;
             this.pictureBoxCerrar.Click += new System.EventHandler(this.pictureBoxCerrar_Click);
             // 
+            // AggCate
+            // 
+            this.AggCate.BackColor = System.Drawing.Color.Transparent;
+            this.AggCate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AggCate.FlatAppearance.BorderSize = 0;
+            this.AggCate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.AggCate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AggCate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AggCate.ForeColor = System.Drawing.Color.White;
+            this.AggCate.Location = new System.Drawing.Point(-3, 69);
+            this.AggCate.Name = "AggCate";
+            this.AggCate.Size = new System.Drawing.Size(132, 26);
+            this.AggCate.TabIndex = 8;
+            this.AggCate.Text = "Categorias";
+            this.AggCate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AggCate.UseVisualStyleBackColor = false;
+            this.AggCate.Click += new System.EventHandler(this.AggCate_Click);
+            // 
+            // panelServicio
+            // 
+            this.panelServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.panelServicio.Controls.Add(this.AggCate);
+            this.panelServicio.Controls.Add(this.btnEditar);
+            this.panelServicio.Controls.Add(this.btnAgregar);
+            this.panelServicio.Location = new System.Drawing.Point(14, 37);
+            this.panelServicio.Name = "panelServicio";
+            this.panelServicio.Size = new System.Drawing.Size(129, 98);
+            this.panelServicio.TabIndex = 7;
+            this.panelServicio.Visible = false;
+            // 
+            // AggIngreso
+            // 
+            this.AggIngreso.Location = new System.Drawing.Point(280, 386);
+            this.AggIngreso.Name = "AggIngreso";
+            this.AggIngreso.Size = new System.Drawing.Size(184, 23);
+            this.AggIngreso.TabIndex = 8;
+            this.AggIngreso.Text = "Ingresar Mercancia";
+            this.AggIngreso.UseVisualStyleBackColor = true;
+            this.AggIngreso.Click += new System.EventHandler(this.AggIngreso_Click);
+            // 
+            // AggProv
+            // 
+            this.AggProv.Location = new System.Drawing.Point(175, 386);
+            this.AggProv.Name = "AggProv";
+            this.AggProv.Size = new System.Drawing.Size(75, 23);
+            this.AggProv.TabIndex = 9;
+            this.AggProv.Text = "Proveedores";
+            this.AggProv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AggProv.UseVisualStyleBackColor = true;
+            this.AggProv.Click += new System.EventHandler(this.AggProv_Click);
+            // 
+            // AggUsuarios
+            // 
+            this.AggUsuarios.Location = new System.Drawing.Point(487, 386);
+            this.AggUsuarios.Name = "AggUsuarios";
+            this.AggUsuarios.Size = new System.Drawing.Size(124, 23);
+            this.AggUsuarios.TabIndex = 10;
+            this.AggUsuarios.Text = "Usuarios";
+            this.AggUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AggUsuarios.UseVisualStyleBackColor = true;
+            this.AggUsuarios.Click += new System.EventHandler(this.AggUsuarios_Click);
+            // 
             // FormularioProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(952, 464);
+            this.Controls.Add(this.AggUsuarios);
             this.Controls.Add(this.AggProv);
             this.Controls.Add(this.AggIngreso);
             this.Controls.Add(this.panelServicio);
@@ -243,8 +256,8 @@
             this.Load += new System.EventHandler(this.FormularioProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.panelMenu.ResumeLayout(false);
-            this.panelServicio.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).EndInit();
+            this.panelServicio.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -262,5 +275,6 @@
         private System.Windows.Forms.Panel panelServicio;
         private System.Windows.Forms.Button AggIngreso;
         private System.Windows.Forms.Button AggProv;
+        private System.Windows.Forms.Button AggUsuarios;
     }
 }
