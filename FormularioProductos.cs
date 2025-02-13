@@ -152,7 +152,7 @@ namespace inventario_proyecto
                     iTextSharp.text.Font standarfint = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
                     // Cargar la imagen  
-                    string imagePath = "C:\\Users\\Personal\\Documents\\1000036045.jpg";
+                    string imagePath = "C:\\Users\\Personal\\Documents\\1000036045.jpg"; 
                     iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(imagePath);
                     img.ScaleToFit(60f, 60f); // Ajustar el tamaño de la imagen  
 
@@ -226,16 +226,16 @@ namespace inventario_proyecto
         }
 
         private void AggCate_Click(object sender, EventArgs e)
-        {
-            using (var formulario = new categoriaForm())
+        {      
+           using (var formulario = new categoriaForm())
             {
                 if (formulario.ShowDialog() == DialogResult.OK)
                 {
                     CargarProductos(); // Recarga el DataGridView
                 }
             }
-
-        }
+        
+    }
 
         private void AggPresen_Click(object sender, EventArgs e)
         {
@@ -255,21 +255,17 @@ namespace inventario_proyecto
 
         private void AggIngreso_Click(object sender, EventArgs e)
         {
-            try
+       
+            using (var formulario = new FormEntradas())
             {
-                using (var formulario = new IngresoMercanciaForm())
+                if (formulario.ShowDialog() == DialogResult.OK)
                 {
-                    if (formulario.ShowDialog() == DialogResult.OK)
-                    {
-                        CargarProductos(); // Recarga el DataGridView
-                    }
+                    CargarProductos(); // Recarga el DataGridView
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al abrir el formulario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+
+        
+    }
 
         private void AggProv_Click(object sender, EventArgs e)
         {
@@ -281,17 +277,6 @@ namespace inventario_proyecto
                 }
             }
 
-        }
-
-        private void AggUsuarios_Click(object sender, EventArgs e)
-        {
-            using (var formulario = new UsuarioForm())
-            {
-                if (formulario.ShowDialog() == DialogResult.OK)
-                {
-                    CargarProductos(); // Recarga el DataGridView
-                }
-            }
         }
     }
 }

@@ -181,6 +181,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEntradas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEntradas.Designer.cs">
+      <DependentUpon>FormEntradas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormularioAgregarEditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,12 +198,6 @@
     </Compile>
     <Compile Include="FormularioProductos.Designer.cs">
       <DependentUpon>FormularioProductos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IngresoMercanciaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IngresoMercanciaForm.Designer.cs">
-      <DependentUpon>IngresoMercanciaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion.cs" />
     <Compile Include="presentacionForm.cs">
@@ -212,23 +212,20 @@
     <Compile Include="proveedorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UsuarioForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <EmbeddedResource Include="categoriaForm.resx">
       <DependentUpon>categoriaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEntradas.resx">
+      <DependentUpon>FormEntradas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormularioAgregarEditarProducto.resx">
       <DependentUpon>FormularioAgregarEditarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioProductos.resx">
       <DependentUpon>FormularioProductos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IngresoMercanciaForm.resx">
-      <DependentUpon>IngresoMercanciaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentacionForm.resx">
       <DependentUpon>presentacionForm.cs</DependentUpon>
@@ -245,9 +242,6 @@
     </Compile>
     <EmbeddedResource Include="proveedorForm.resx">
       <DependentUpon>proveedorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsuarioForm.resx">
-      <DependentUpon>UsuarioForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
