@@ -63,6 +63,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregar.BackColor = System.Drawing.Color.Transparent;
             this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.FlatAppearance.BorderSize = 0;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -71,7 +72,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(19, 13);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(187, 32);
+            this.btnAgregar.Size = new System.Drawing.Size(190, 32);
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Productos";
             this.btnAgregar.UseVisualStyleBackColor = false;
@@ -82,15 +83,16 @@
             // btnEditar
             // 
             this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEditar.BackColor = System.Drawing.Color.Transparent;
             this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.FlatAppearance.BorderSize = 0;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(236, 12);
+            this.btnEditar.Location = new System.Drawing.Point(229, 12);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(187, 32);
+            this.btnEditar.Size = new System.Drawing.Size(190, 32);
             this.btnEditar.TabIndex = 2;
             this.btnEditar.Text = "Presentaciones";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -180,15 +182,16 @@
             // 
             // AggCate
             // 
+            this.AggCate.BackColor = System.Drawing.Color.Transparent;
             this.AggCate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AggCate.FlatAppearance.BorderSize = 0;
             this.AggCate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AggCate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AggCate.ForeColor = System.Drawing.Color.White;
-            this.AggCate.Location = new System.Drawing.Point(465, 13);
+            this.AggCate.Location = new System.Drawing.Point(457, 13);
             this.AggCate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AggCate.Name = "AggCate";
-            this.AggCate.Size = new System.Drawing.Size(187, 32);
+            this.AggCate.Size = new System.Drawing.Size(185, 32);
             this.AggCate.TabIndex = 8;
             this.AggCate.Text = "Categorias";
             this.AggCate.UseVisualStyleBackColor = false;

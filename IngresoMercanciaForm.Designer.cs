@@ -42,6 +42,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureCerrar = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
@@ -70,10 +72,10 @@
             // dgvProductos
             // 
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductos.Location = new System.Drawing.Point(16, 238);
+            this.dgvProductos.Location = new System.Drawing.Point(16, 222);
             this.dgvProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvProductos.Name = "dgvProductos";
-            this.dgvProductos.Size = new System.Drawing.Size(349, 221);
+            this.dgvProductos.Size = new System.Drawing.Size(349, 234);
             this.dgvProductos.TabIndex = 2;
             // 
             // txtPrecio
@@ -189,6 +191,7 @@
             this.pictureCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureCerrar.TabIndex = 13;
             this.pictureCerrar.TabStop = false;
+            this.pictureCerrar.Click += new System.EventHandler(this.pictureCerrar_Click);
             // 
             // label3
             // 
@@ -200,11 +203,33 @@
             this.label3.Text = "Ingreso de Mercancia";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 44);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 16);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Proveedor";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(201, 44);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 16);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Producto";
+            // 
             // IngresoMercanciaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 472);
+            this.ClientSize = new System.Drawing.Size(387, 470);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -243,5 +268,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureCerrar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

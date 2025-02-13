@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace inventario_proyecto
 {
@@ -146,8 +149,14 @@ namespace inventario_proyecto
             }
         }
 
+        private void pictureCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void btnGenerarpdf_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }
