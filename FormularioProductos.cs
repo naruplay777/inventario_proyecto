@@ -15,10 +15,27 @@ namespace inventario_proyecto
 {
     public partial class FormularioProductos : Form
     {
-        public FormularioProductos()
+        private string rolUsuario;
+
+        public FormularioProductos(string rol)
         {
             InitializeComponent();
+            rolUsuario = rol;
+            ConfigurarAcceso();
         }
+
+        private void ConfigurarAcceso()
+        {
+            if (rolUsuario == "Empleado")
+            {
+                btnAgregar.Enabled = false; //productos
+                AggCate.Enabled = false; //categorias
+                btnEditar.Enabled = false; //presentaciones
+                AggProv.Enabled = false; //Proveedores 
+                AggUsuarios.Enabled = false;
+            }
+        }
+
         Panel p = new Panel();
         private void btnMouseEnter(object sender, EventArgs e)
         {
@@ -302,3 +319,5 @@ namespace inventario_proyecto
         }
     }
 }
+
+
