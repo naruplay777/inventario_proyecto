@@ -44,6 +44,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnPdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
@@ -223,11 +224,30 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Producto";
             // 
+            // btnPdf
+            // 
+            this.btnPdf.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnPdf.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPdf.FlatAppearance.BorderSize = 0;
+            this.btnPdf.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnPdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPdf.ForeColor = System.Drawing.Color.Black;
+            this.btnPdf.Location = new System.Drawing.Point(264, 469);
+            this.btnPdf.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPdf.Name = "btnPdf";
+            this.btnPdf.Size = new System.Drawing.Size(100, 28);
+            this.btnPdf.TabIndex = 13;
+            this.btnPdf.Text = "PDF";
+            this.btnPdf.UseVisualStyleBackColor = false;
+            this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
+            // 
             // IngresoMercanciaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 470);
+            this.ClientSize = new System.Drawing.Size(387, 510);
+            this.Controls.Add(this.btnPdf);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
@@ -270,5 +290,6 @@
         private System.Windows.Forms.PictureBox pictureCerrar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnPdf;
     }
 }
