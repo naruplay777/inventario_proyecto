@@ -46,6 +46,7 @@
             this.dgvPresentaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPresentaciones.Location = new System.Drawing.Point(71, 262);
             this.dgvPresentaciones.Name = "dgvPresentaciones";
+            this.dgvPresentaciones.ReadOnly = true;
             this.dgvPresentaciones.Size = new System.Drawing.Size(336, 150);
             this.dgvPresentaciones.TabIndex = 15;
             this.dgvPresentaciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPresentaciones_CellClick);
