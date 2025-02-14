@@ -378,6 +378,19 @@ namespace inventario_proyecto
                 }
             }
         }
+
+        private void carpeta_Click(object sender, EventArgs e)
+        {
+            string reportesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "reportes");
+            if (Directory.Exists(reportesPath))
+            {
+                System.Diagnostics.Process.Start("explorer.exe", reportesPath);
+            }
+            else
+            {
+                MessageBox.Show("La carpeta de reportes no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
 

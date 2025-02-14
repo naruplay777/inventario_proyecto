@@ -44,6 +44,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
+            this.carpeta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.panelServicio.SuspendLayout();
@@ -242,7 +243,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 12;
-            this.button2.Text = "button2";
+            this.button2.Text = "reportes";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -281,12 +282,23 @@
             this.pictureBoxCerrar.TabStop = false;
             this.pictureBoxCerrar.Click += new System.EventHandler(this.pictureBoxCerrar_Click);
             // 
+            // carpeta
+            // 
+            this.carpeta.Location = new System.Drawing.Point(263, 405);
+            this.carpeta.Name = "carpeta";
+            this.carpeta.Size = new System.Drawing.Size(75, 23);
+            this.carpeta.TabIndex = 13;
+            this.carpeta.Text = "carpeta";
+            this.carpeta.UseVisualStyleBackColor = true;
+            this.carpeta.Click += new System.EventHandler(this.carpeta_Click);
+            // 
             // FormularioProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(952, 464);
+            this.Controls.Add(this.carpeta);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.AggEgreso);
             this.Controls.Add(this.AggIngreso);
@@ -322,5 +334,6 @@
         private System.Windows.Forms.Button AggUsuarios;
         private System.Windows.Forms.Button AggEgreso;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button carpeta;
     }
 }
