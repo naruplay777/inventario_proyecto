@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -37,6 +38,11 @@ namespace inventario_proyecto
             ConfigurarDataGridView();
             CargarProductos();
         }
+        // esto es para que el diseño se puda mover con mouse
+        [DllImport("user32.Dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.Dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private class ConexionDB
         {
@@ -323,6 +329,7 @@ namespace inventario_proyecto
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(552, 27);
             this.panel1.TabIndex = 17;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureCerrar
             // 
@@ -380,6 +387,12 @@ namespace inventario_proyecto
         private void pictureCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }
