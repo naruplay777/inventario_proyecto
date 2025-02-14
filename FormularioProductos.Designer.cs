@@ -42,7 +42,6 @@
             this.AggIngreso = new System.Windows.Forms.Button();
             this.AggProv = new System.Windows.Forms.Button();
             this.AggUsuarios = new System.Windows.Forms.Button();
-            this.AggEgreso = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).BeginInit();
@@ -238,23 +237,12 @@
             this.AggUsuarios.UseVisualStyleBackColor = true;
             this.AggUsuarios.Click += new System.EventHandler(this.AggUsuarios_Click);
             // 
-            // AggEgreso
-            // 
-            this.AggEgreso.Location = new System.Drawing.Point(280, 415);
-            this.AggEgreso.Name = "AggEgreso";
-            this.AggEgreso.Size = new System.Drawing.Size(184, 23);
-            this.AggEgreso.TabIndex = 11;
-            this.AggEgreso.Text = "Sacar Mercancia";
-            this.AggEgreso.UseVisualStyleBackColor = true;
-            this.AggEgreso.Click += new System.EventHandler(this.AggEgreso_Click);
-            // 
             // FormularioProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(952, 464);
-            this.Controls.Add(this.AggEgreso);
             this.Controls.Add(this.AggUsuarios);
             this.Controls.Add(this.AggProv);
             this.Controls.Add(this.AggIngreso);
@@ -288,6 +276,5 @@
         private System.Windows.Forms.Button AggIngreso;
         private System.Windows.Forms.Button AggProv;
         private System.Windows.Forms.Button AggUsuarios;
-        private System.Windows.Forms.Button AggEgreso;
     }
 }
