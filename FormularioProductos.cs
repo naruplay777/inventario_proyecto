@@ -320,6 +320,17 @@ namespace inventario_proyecto
                 }
             }
         }
+
+        private void AggEgreso_Click(object sender, EventArgs e)
+        {
+            using (var formulario = new EgresoMercanciaForm())
+            {
+                if (formulario.ShowDialog() == DialogResult.OK)
+                {
+                    CargarProductos(); // Recarga el DataGridView
+                }
+            }
+        }
     }
 }
 
