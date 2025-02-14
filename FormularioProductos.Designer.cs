@@ -36,12 +36,12 @@
             this.btnGenerarpdf = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.AggProv = new System.Windows.Forms.Button();
+            this.AggUsuarios = new System.Windows.Forms.Button();
             this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
             this.AggCate = new System.Windows.Forms.Button();
             this.panelServicio = new System.Windows.Forms.Panel();
             this.AggIngreso = new System.Windows.Forms.Button();
-            this.AggProv = new System.Windows.Forms.Button();
-            this.AggUsuarios = new System.Windows.Forms.Button();
             this.AggEgreso = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panelMenu.SuspendLayout();
@@ -69,16 +69,15 @@
             this.btnAgregar.BackColor = System.Drawing.Color.Transparent;
             this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
-            this.btnAgregar.Location = new System.Drawing.Point(0, 4);
+            this.btnAgregar.Location = new System.Drawing.Point(3, 36);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(132, 26);
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Productos";
-            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -88,16 +87,15 @@
             this.btnEditar.BackColor = System.Drawing.Color.Transparent;
             this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.FlatAppearance.BorderSize = 0;
-            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(-3, 36);
+            this.btnEditar.Location = new System.Drawing.Point(3, 68);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(132, 26);
             this.btnEditar.TabIndex = 2;
             this.btnEditar.Text = "Presentaciones";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
@@ -108,10 +106,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductos.Location = new System.Drawing.Point(14, 45);
+            this.dgvProductos.Location = new System.Drawing.Point(14, 59);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
-            this.dgvProductos.Size = new System.Drawing.Size(926, 319);
+            this.dgvProductos.Size = new System.Drawing.Size(926, 329);
             this.dgvProductos.TabIndex = 0;
             this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             // 
@@ -123,9 +121,9 @@
             this.btnGenerarpdf.FlatAppearance.BorderSize = 0;
             this.btnGenerarpdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerarpdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarpdf.Location = new System.Drawing.Point(800, 370);
+            this.btnGenerarpdf.Location = new System.Drawing.Point(788, 405);
             this.btnGenerarpdf.Name = "btnGenerarpdf";
-            this.btnGenerarpdf.Size = new System.Drawing.Size(140, 53);
+            this.btnGenerarpdf.Size = new System.Drawing.Size(152, 35);
             this.btnGenerarpdf.TabIndex = 4;
             this.btnGenerarpdf.Text = "PDF";
             this.btnGenerarpdf.UseVisualStyleBackColor = false;
@@ -135,8 +133,6 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.panelMenu.Controls.Add(this.button1);
-            this.panelMenu.Controls.Add(this.AggProv);
-            this.panelMenu.Controls.Add(this.AggUsuarios);
             this.panelMenu.Controls.Add(this.pictureBoxCerrar);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
@@ -166,6 +162,40 @@
             this.button1.MouseEnter += new System.EventHandler(this.btnMouseEnter);
             this.button1.MouseLeave += new System.EventHandler(this.btnMouseLeave);
             // 
+            // AggProv
+            // 
+            this.AggProv.BackColor = System.Drawing.Color.Transparent;
+            this.AggProv.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AggProv.FlatAppearance.BorderSize = 0;
+            this.AggProv.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.AggProv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AggProv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AggProv.ForeColor = System.Drawing.Color.White;
+            this.AggProv.Location = new System.Drawing.Point(3, 132);
+            this.AggProv.Name = "AggProv";
+            this.AggProv.Size = new System.Drawing.Size(132, 26);
+            this.AggProv.TabIndex = 9;
+            this.AggProv.Text = "Proveedores";
+            this.AggProv.UseVisualStyleBackColor = false;
+            this.AggProv.Click += new System.EventHandler(this.AggProv_Click);
+            // 
+            // AggUsuarios
+            // 
+            this.AggUsuarios.BackColor = System.Drawing.Color.Transparent;
+            this.AggUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AggUsuarios.FlatAppearance.BorderSize = 0;
+            this.AggUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.AggUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AggUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AggUsuarios.ForeColor = System.Drawing.Color.White;
+            this.AggUsuarios.Location = new System.Drawing.Point(3, 100);
+            this.AggUsuarios.Name = "AggUsuarios";
+            this.AggUsuarios.Size = new System.Drawing.Size(132, 26);
+            this.AggUsuarios.TabIndex = 10;
+            this.AggUsuarios.Text = "Usuarios";
+            this.AggUsuarios.UseVisualStyleBackColor = false;
+            this.AggUsuarios.Click += new System.EventHandler(this.AggUsuarios_Click);
+            // 
             // pictureBoxCerrar
             // 
             this.pictureBoxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -184,71 +214,60 @@
             this.AggCate.BackColor = System.Drawing.Color.Transparent;
             this.AggCate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AggCate.FlatAppearance.BorderSize = 0;
-            this.AggCate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.AggCate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.AggCate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AggCate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AggCate.ForeColor = System.Drawing.Color.White;
-            this.AggCate.Location = new System.Drawing.Point(-3, 69);
+            this.AggCate.Location = new System.Drawing.Point(3, 4);
             this.AggCate.Name = "AggCate";
             this.AggCate.Size = new System.Drawing.Size(132, 26);
             this.AggCate.TabIndex = 8;
             this.AggCate.Text = "Categorias";
-            this.AggCate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.AggCate.UseVisualStyleBackColor = false;
             this.AggCate.Click += new System.EventHandler(this.AggCate_Click);
             // 
             // panelServicio
             // 
             this.panelServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.panelServicio.Controls.Add(this.AggCate);
             this.panelServicio.Controls.Add(this.btnEditar);
+            this.panelServicio.Controls.Add(this.AggProv);
             this.panelServicio.Controls.Add(this.btnAgregar);
+            this.panelServicio.Controls.Add(this.AggUsuarios);
+            this.panelServicio.Controls.Add(this.AggCate);
             this.panelServicio.Location = new System.Drawing.Point(14, 37);
             this.panelServicio.Name = "panelServicio";
-            this.panelServicio.Size = new System.Drawing.Size(129, 98);
+            this.panelServicio.Size = new System.Drawing.Size(138, 171);
             this.panelServicio.TabIndex = 7;
             this.panelServicio.Visible = false;
             // 
             // AggIngreso
             // 
-            this.AggIngreso.Location = new System.Drawing.Point(280, 386);
+            this.AggIngreso.BackColor = System.Drawing.Color.DodgerBlue;
+            this.AggIngreso.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AggIngreso.FlatAppearance.BorderSize = 0;
+            this.AggIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AggIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AggIngreso.Location = new System.Drawing.Point(14, 405);
             this.AggIngreso.Name = "AggIngreso";
-            this.AggIngreso.Size = new System.Drawing.Size(184, 23);
+            this.AggIngreso.Size = new System.Drawing.Size(152, 35);
             this.AggIngreso.TabIndex = 8;
             this.AggIngreso.Text = "Ingresar Mercancia";
-            this.AggIngreso.UseVisualStyleBackColor = true;
+            this.AggIngreso.UseVisualStyleBackColor = false;
             this.AggIngreso.Click += new System.EventHandler(this.AggIngreso_Click);
-            // 
-            // AggProv
-            // 
-            this.AggProv.Location = new System.Drawing.Point(410, 8);
-            this.AggProv.Name = "AggProv";
-            this.AggProv.Size = new System.Drawing.Size(75, 23);
-            this.AggProv.TabIndex = 9;
-            this.AggProv.Text = "Proveedores";
-            this.AggProv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AggProv.UseVisualStyleBackColor = true;
-            this.AggProv.Click += new System.EventHandler(this.AggProv_Click);
-            // 
-            // AggUsuarios
-            // 
-            this.AggUsuarios.Location = new System.Drawing.Point(280, 9);
-            this.AggUsuarios.Name = "AggUsuarios";
-            this.AggUsuarios.Size = new System.Drawing.Size(124, 23);
-            this.AggUsuarios.TabIndex = 10;
-            this.AggUsuarios.Text = "Usuarios";
-            this.AggUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AggUsuarios.UseVisualStyleBackColor = true;
-            this.AggUsuarios.Click += new System.EventHandler(this.AggUsuarios_Click);
             // 
             // AggEgreso
             // 
-            this.AggEgreso.Location = new System.Drawing.Point(280, 415);
+            this.AggEgreso.BackColor = System.Drawing.Color.DodgerBlue;
+            this.AggEgreso.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AggEgreso.FlatAppearance.BorderSize = 0;
+            this.AggEgreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AggEgreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AggEgreso.Location = new System.Drawing.Point(398, 405);
             this.AggEgreso.Name = "AggEgreso";
-            this.AggEgreso.Size = new System.Drawing.Size(184, 23);
+            this.AggEgreso.Size = new System.Drawing.Size(152, 35);
             this.AggEgreso.TabIndex = 11;
             this.AggEgreso.Text = "Sacar Mercancia";
-            this.AggEgreso.UseVisualStyleBackColor = true;
+            this.AggEgreso.UseVisualStyleBackColor = false;
             this.AggEgreso.Click += new System.EventHandler(this.AggEgreso_Click);
             // 
             // FormularioProductos
