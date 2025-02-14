@@ -161,8 +161,10 @@ namespace inventario_proyecto
 
             if (result == DialogResult.Yes)
             {
-                // Crear el archivo PDF  
-                using (FileStream fs = new FileStream(@".\PDFGenerado.pdf", FileMode.Create))
+                // Crear la ruta del archivo PDF en la carpeta del proyecto  
+                string pdfPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PDFGenerado.pdf");
+
+                using (FileStream fs = new FileStream(pdfPath, FileMode.Create))
                 {
                     Document doc = new Document(PageSize.LETTER, 3, 3, 3, 3);
                     PdfWriter pw = PdfWriter.GetInstance(doc, fs);
@@ -245,7 +247,7 @@ namespace inventario_proyecto
                     doc.Close();
                     pw.Close();
 
-                    MessageBox.Show("Documento generado satisfactoriamente", "Éxitos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Documento generado satisfactoriamente en: " + pdfPath, "Éxitos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
