@@ -35,20 +35,19 @@
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.btnGenerarpdf = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
             this.AggProv = new System.Windows.Forms.Button();
             this.AggUsuarios = new System.Windows.Forms.Button();
             this.AggCate = new System.Windows.Forms.Button();
             this.panelServicio = new System.Windows.Forms.Panel();
             this.AggIngreso = new System.Windows.Forms.Button();
             this.AggEgreso = new System.Windows.Forms.Button();
-            this.btnSupervision = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).BeginInit();
             this.panelServicio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // btnPDF
@@ -141,41 +140,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(952, 39);
             this.panelMenu.TabIndex = 6;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::inventario_proyecto.Properties.Resources.icons8_clasificar_abajo_24;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(12, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 26);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Servicios";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseEnter += new System.EventHandler(this.btnMouseEnter);
-            this.button1.MouseLeave += new System.EventHandler(this.btnMouseLeave);
-            // 
-            // pictureBoxCerrar
-            // 
-            this.pictureBoxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCerrar.Image")));
-            this.pictureBoxCerrar.Location = new System.Drawing.Point(921, 3);
-            this.pictureBoxCerrar.Name = "pictureBoxCerrar";
-            this.pictureBoxCerrar.Size = new System.Drawing.Size(19, 28);
-            this.pictureBoxCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCerrar.TabIndex = 5;
-            this.pictureBoxCerrar.TabStop = false;
-            this.pictureBoxCerrar.Click += new System.EventHandler(this.pictureBoxCerrar_Click);
             // 
             // AggProv
             // 
@@ -272,13 +236,6 @@
             this.AggEgreso.UseVisualStyleBackColor = false;
             this.AggEgreso.Click += new System.EventHandler(this.AggEgreso_Click);
             // 
-            // btnSupervision
-            // 
-            this.btnSupervision.Location = new System.Drawing.Point(0, 0);
-            this.btnSupervision.Name = "btnSupervision";
-            this.btnSupervision.Size = new System.Drawing.Size(75, 23);
-            this.btnSupervision.TabIndex = 0;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(631, 405);
@@ -289,6 +246,41 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::inventario_proyecto.Properties.Resources.icons8_clasificar_abajo_24;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(12, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 26);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Servicios";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseEnter += new System.EventHandler(this.btnMouseEnter);
+            this.button1.MouseLeave += new System.EventHandler(this.btnMouseLeave);
+            // 
+            // pictureBoxCerrar
+            // 
+            this.pictureBoxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCerrar.Image")));
+            this.pictureBoxCerrar.Location = new System.Drawing.Point(921, 3);
+            this.pictureBoxCerrar.Name = "pictureBoxCerrar";
+            this.pictureBoxCerrar.Size = new System.Drawing.Size(19, 28);
+            this.pictureBoxCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCerrar.TabIndex = 5;
+            this.pictureBoxCerrar.TabStop = false;
+            this.pictureBoxCerrar.Click += new System.EventHandler(this.pictureBoxCerrar_Click);
+            // 
             // FormularioProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,7 +288,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(952, 464);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnSupervision);
             this.Controls.Add(this.AggEgreso);
             this.Controls.Add(this.AggIngreso);
             this.Controls.Add(this.panelServicio);
@@ -309,8 +300,8 @@
             this.Load += new System.EventHandler(this.FormularioProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.panelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).EndInit();
             this.panelServicio.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -330,7 +321,6 @@
         private System.Windows.Forms.Button AggProv;
         private System.Windows.Forms.Button AggUsuarios;
         private System.Windows.Forms.Button AggEgreso;
-        private System.Windows.Forms.Button btnSupervision;
         private System.Windows.Forms.Button button2;
     }
 }
