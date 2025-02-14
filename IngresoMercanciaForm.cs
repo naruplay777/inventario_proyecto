@@ -70,6 +70,8 @@ namespace inventario_proyecto
             }
         }
 
+
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (cbProducto.SelectedValue == null || string.IsNullOrWhiteSpace(txtCantidad.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text))
@@ -78,10 +80,27 @@ namespace inventario_proyecto
                 return;
             }
 
-            int productoId = Convert.ToInt32(cbProducto.SelectedValue);
+            int productoId;
+            if (!int.TryParse(cbProducto.SelectedValue.ToString(), out productoId))
+            {
+                MessageBox.Show("ID de producto no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             string nombreProducto = cbProducto.Text;
-            int cantidad = Convert.ToInt32(txtCantidad.Text);
-            decimal precioUnitario = Convert.ToDecimal(txtPrecio.Text);
+            int cantidad;
+            if (!int.TryParse(txtCantidad.Text, out cantidad))
+            {
+                MessageBox.Show("Cantidad no válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            decimal precioUnitario;
+            if (!decimal.TryParse(txtPrecio.Text, out precioUnitario))
+            {
+                MessageBox.Show("Precio unitario no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             dgvProductos.Rows.Add(productoId, nombreProducto, cantidad, precioUnitario);
         }
@@ -114,9 +133,22 @@ namespace inventario_proyecto
                 {
                     foreach (DataGridViewRow row in dgvProductos.Rows)
                     {
+                        if (row.IsNewRow) continue; // Saltar las filas nuevas vacías
+
                         int productoId = Convert.ToInt32(row.Cells["producto_id"].Value);
                         int cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
                         decimal precioUnitario = Convert.ToDecimal(row.Cells["precio_unitario"].Value);
+
+                        // Verificar si el producto existe en la tabla productos
+                        string queryVerificarProducto = "SELECT COUNT(*) FROM productos WHERE producto_id = @productoId";
+                        MySqlCommand cmdVerificarProducto = new MySqlCommand(queryVerificarProducto, conn, transaction);
+                        cmdVerificarProducto.Parameters.AddWithValue("@productoId", productoId);
+                        int productoExiste = Convert.ToInt32(cmdVerificarProducto.ExecuteScalar());
+
+                        if (productoExiste == 0)
+                        {
+                            throw new Exception($"El producto con ID {productoId} no existe en la tabla productos.");
+                        }
 
                         string queryEntrada = "INSERT INTO entradas (producto_id, proveedor_id, usuario_id, cantidad, precio_unitario, fecha_entrada) VALUES (@productoId, @proveedorId, @usuarioId, @cantidad, @precio, NOW())";
                         MySqlCommand cmdEntrada = new MySqlCommand(queryEntrada, conn, transaction);
