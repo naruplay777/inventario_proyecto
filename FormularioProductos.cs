@@ -203,8 +203,13 @@ namespace inventario_proyecto
 
             if (result == DialogResult.Yes)
             {
-                // Crear la ruta del archivo PDF en la carpeta del ejecutable
-                string pdfPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PDFGenerado.pdf");
+                // Crear la ruta del archivo PDF en la carpeta "reportes" dentro de la carpeta del ejecutable
+                string reportesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "reportes");
+                Directory.CreateDirectory(reportesPath); // Crear la carpeta si no existe
+
+                // Generar un nombre de archivo único con marca de tiempo
+                string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                string pdfPath = Path.Combine(reportesPath, $"PDFGenerado_{timestamp}.pdf");
 
                 using (FileStream fs = new FileStream(pdfPath, FileMode.Create))
                 {
@@ -230,7 +235,7 @@ namespace inventario_proyecto
                     doc.Add(img);
 
                     // Se crea el título  
-                    Paragraph title = new Paragraph("Título del documento", standarfint);
+                    Paragraph title = new Paragraph("Reporte", standarfint);
                     title.Alignment = Element.ALIGN_CENTER;
 
                     // Agregar el título al documento  
