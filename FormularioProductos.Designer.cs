@@ -35,6 +35,8 @@
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.btnGenerarpdf = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
             this.AggProv = new System.Windows.Forms.Button();
             this.AggUsuarios = new System.Windows.Forms.Button();
             this.AggCate = new System.Windows.Forms.Button();
@@ -42,13 +44,11 @@
             this.AggIngreso = new System.Windows.Forms.Button();
             this.AggEgreso = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBoxCerrar = new System.Windows.Forms.PictureBox();
             this.carpeta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panelMenu.SuspendLayout();
-            this.panelServicio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).BeginInit();
+            this.panelServicio.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPDF
@@ -141,6 +141,41 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(952, 39);
             this.panelMenu.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::inventario_proyecto.Properties.Resources.icons8_clasificar_abajo_24;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(12, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 26);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Servicios";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseEnter += new System.EventHandler(this.btnMouseEnter);
+            this.button1.MouseLeave += new System.EventHandler(this.btnMouseLeave);
+            // 
+            // pictureBoxCerrar
+            // 
+            this.pictureBoxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCerrar.Image")));
+            this.pictureBoxCerrar.Location = new System.Drawing.Point(921, 3);
+            this.pictureBoxCerrar.Name = "pictureBoxCerrar";
+            this.pictureBoxCerrar.Size = new System.Drawing.Size(19, 28);
+            this.pictureBoxCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCerrar.TabIndex = 5;
+            this.pictureBoxCerrar.TabStop = false;
+            this.pictureBoxCerrar.Click += new System.EventHandler(this.pictureBoxCerrar_Click);
             // 
             // AggProv
             // 
@@ -239,57 +274,30 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(631, 405);
+            this.button2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(607, 405);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(134, 35);
             this.button2.TabIndex = 12;
             this.button2.Text = "reportes";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::inventario_proyecto.Properties.Resources.icons8_clasificar_abajo_24;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(12, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 26);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Servicios";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseEnter += new System.EventHandler(this.btnMouseEnter);
-            this.button1.MouseLeave += new System.EventHandler(this.btnMouseLeave);
-            // 
-            // pictureBoxCerrar
-            // 
-            this.pictureBoxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCerrar.Image")));
-            this.pictureBoxCerrar.Location = new System.Drawing.Point(921, 3);
-            this.pictureBoxCerrar.Name = "pictureBoxCerrar";
-            this.pictureBoxCerrar.Size = new System.Drawing.Size(19, 28);
-            this.pictureBoxCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCerrar.TabIndex = 5;
-            this.pictureBoxCerrar.TabStop = false;
-            this.pictureBoxCerrar.Click += new System.EventHandler(this.pictureBoxCerrar_Click);
             // 
             // carpeta
             // 
-            this.carpeta.Location = new System.Drawing.Point(263, 405);
+            this.carpeta.BackColor = System.Drawing.Color.DodgerBlue;
+            this.carpeta.FlatAppearance.BorderSize = 0;
+            this.carpeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.carpeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.carpeta.Location = new System.Drawing.Point(209, 405);
             this.carpeta.Name = "carpeta";
-            this.carpeta.Size = new System.Drawing.Size(75, 23);
+            this.carpeta.Size = new System.Drawing.Size(138, 35);
             this.carpeta.TabIndex = 13;
             this.carpeta.Text = "carpeta";
-            this.carpeta.UseVisualStyleBackColor = true;
+            this.carpeta.UseVisualStyleBackColor = false;
             this.carpeta.Click += new System.EventHandler(this.carpeta_Click);
             // 
             // FormularioProductos
@@ -312,8 +320,8 @@
             this.Load += new System.EventHandler(this.FormularioProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.panelMenu.ResumeLayout(false);
-            this.panelServicio.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrar)).EndInit();
+            this.panelServicio.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
