@@ -70,8 +70,6 @@ namespace inventario_proyecto
             }
         }
 
-
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (cbProducto.SelectedValue == null || string.IsNullOrWhiteSpace(txtCantidad.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text))
@@ -131,6 +129,16 @@ namespace inventario_proyecto
 
                 try
                 {
+                    // Insertar en la tabla 'entradas'
+                    string queryEntrada = "INSERT INTO entradas (proveedor_id, usuario_id, fecha_entrada) VALUES (@proveedorId, @usuarioId, NOW())";
+                    MySqlCommand cmdEntrada = new MySqlCommand(queryEntrada, conn, transaction);
+                    cmdEntrada.Parameters.AddWithValue("@proveedorId", proveedorId);
+                    cmdEntrada.Parameters.AddWithValue("@usuarioId", usuarioId);
+                    cmdEntrada.ExecuteNonQuery();
+
+                    // Obtener el ID de la entrada recién insertada
+                    long entradaId = cmdEntrada.LastInsertedId;
+
                     foreach (DataGridViewRow row in dgvProductos.Rows)
                     {
                         if (row.IsNewRow) continue; // Saltar las filas nuevas vacías
@@ -150,15 +158,16 @@ namespace inventario_proyecto
                             throw new Exception($"El producto con ID {productoId} no existe en la tabla productos.");
                         }
 
-                        string queryEntrada = "INSERT INTO entradas (producto_id, proveedor_id, usuario_id, cantidad, precio_unitario, fecha_entrada) VALUES (@productoId, @proveedorId, @usuarioId, @cantidad, @precio, NOW())";
-                        MySqlCommand cmdEntrada = new MySqlCommand(queryEntrada, conn, transaction);
-                        cmdEntrada.Parameters.AddWithValue("@productoId", productoId);
-                        cmdEntrada.Parameters.AddWithValue("@proveedorId", proveedorId);
-                        cmdEntrada.Parameters.AddWithValue("@usuarioId", usuarioId);
-                        cmdEntrada.Parameters.AddWithValue("@cantidad", cantidad);
-                        cmdEntrada.Parameters.AddWithValue("@precio", precioUnitario);
-                        cmdEntrada.ExecuteNonQuery();
+                        // Insertar en la tabla 'detalle_entradas'
+                        string queryDetalleEntrada = "INSERT INTO detalle_entradas (entrada_id, producto_id, cantidad, precio_unitario) VALUES (@entradaId, @productoId, @cantidad, @precio)";
+                        MySqlCommand cmdDetalleEntrada = new MySqlCommand(queryDetalleEntrada, conn, transaction);
+                        cmdDetalleEntrada.Parameters.AddWithValue("@entradaId", entradaId);
+                        cmdDetalleEntrada.Parameters.AddWithValue("@productoId", productoId);
+                        cmdDetalleEntrada.Parameters.AddWithValue("@cantidad", cantidad);
+                        cmdDetalleEntrada.Parameters.AddWithValue("@precio", precioUnitario);
+                        cmdDetalleEntrada.ExecuteNonQuery();
 
+                        // Actualizar el inventario
                         string queryInventario = "UPDATE inventario SET stock_actual = stock_actual + @cantidad WHERE producto_id = @productoId";
                         MySqlCommand cmdInventario = new MySqlCommand(queryInventario, conn, transaction);
                         cmdInventario.Parameters.AddWithValue("@cantidad", cantidad);
@@ -177,9 +186,5 @@ namespace inventario_proyecto
                 }
             }
         }
-
-
-
-
     }
 }
