@@ -173,7 +173,7 @@ namespace inventario_proyecto
 
                     // Título del PDF  
                     doc.AddAuthor("Wiredbox");
-                    doc.AddTitle("CYROP");
+                    doc.AddTitle("Iventario");
 
                     // Definimos fuente  
                     iTextSharp.text.Font standarfint = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
