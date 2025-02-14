@@ -14,6 +14,8 @@ namespace inventario_proyecto
 {
     public partial class IngresoMercanciaForm : Form
     {
+        public event EventHandler MercanciaIngresada; // Evento personalizado
+
         private string connectionString = "Server=localhost;Database=heladeria;Uid=root;Pwd=andrewserver;"; // Reemplaza con tu cadena de conexión
 
         public IngresoMercanciaForm()
@@ -178,6 +180,9 @@ namespace inventario_proyecto
                     transaction.Commit();
                     MessageBox.Show("Ingreso registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgvProductos.Rows.Clear();
+
+                    // Disparar el evento personalizado
+                    MercanciaIngresada?.Invoke(this, EventArgs.Empty);
                 }
                 catch (Exception ex)
                 {
@@ -188,4 +193,5 @@ namespace inventario_proyecto
         }
     }
 }
+
 

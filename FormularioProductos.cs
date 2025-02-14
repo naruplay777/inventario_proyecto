@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System.IO;
+using iTextSharp.text;
+using MySql.Data.MySqlClient;
 
 namespace inventario_proyecto
 {
@@ -108,24 +109,65 @@ namespace inventario_proyecto
 
         private void CargarProductos()
         {
-            DBHelper dbHelper = new DBHelper("Server=localhost;Database=inventarioheladeria;Uid=root;Pwd=andrewserver;");
-            List<Producto> productos = dbHelper.ObtenerProductos();
-
-            dgvProductos.DataSource = null; // Limpia el DataGridView
-            dgvProductos.DataSource = productos;
-
-            // Personaliza encabezados y oculta columnas si es necesario
-            if (dgvProductos.Columns.Contains("CategoriaNombre"))
+            using (MySqlConnection conn = new MySqlConnection("Server=localhost;Database=heladeria;Uid=root;Pwd=andrewserver;"))
             {
-                dgvProductos.Columns["CategoriaNombre"].HeaderText = "Categoría";
-            }
+                conn.Open();
+                string query = @"
+                    SELECT 
+                        p.producto_id, 
+                        p.nombre, 
+                        p.descripcion, 
+                        p.categoria_id, 
+                        p.unidad_base, 
+                        p.stock_minimo, 
+                        p.activo, 
+                        i.stock_actual 
+                    FROM 
+                        productos p
+                    LEFT JOIN 
+                        inventario i ON p.producto_id = i.producto_id
+                    WHERE 
+                        p.activo = 1";
 
-            if (dgvProductos.Columns.Contains("PresentacionDescripcion"))
-            {
-                dgvProductos.Columns["PresentacionDescripcion"].HeaderText = "Presentación";
-            }
+                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvProductos.DataSource = dt;
 
-            dgvProductos.Columns["CategoriaId"].Visible = false;
+                // Personaliza encabezados y oculta columnas si es necesario
+                dgvProductos.Columns["producto_id"].HeaderText = "ID Producto";
+                dgvProductos.Columns["producto_id"].Width = 50; // Ajustar el tamaño de la columna del ID
+                dgvProductos.Columns["nombre"].HeaderText = "Nombre";
+                dgvProductos.Columns["descripcion"].HeaderText = "Descripción";
+                dgvProductos.Columns["categoria_id"].HeaderText = "Categoría";
+                dgvProductos.Columns["unidad_base"].HeaderText = "Unidad Base";
+                dgvProductos.Columns["stock_minimo"].HeaderText = "Stock Mínimo";
+                dgvProductos.Columns["activo"].Visible = false;
+                dgvProductos.Columns["stock_actual"].HeaderText = "Stock Actual";
+
+                // Aplicar formato condicional a las celdas del stock actual
+                foreach (DataGridViewRow row in dgvProductos.Rows)
+                {
+                    decimal stockActual = Convert.ToDecimal(row.Cells["stock_actual"].Value);
+                    decimal stockMinimo = Convert.ToDecimal(row.Cells["stock_minimo"].Value);
+
+                    if (stockActual <= stockMinimo)
+                    {
+                        row.Cells["stock_actual"].Style.BackColor = Color.Red;
+                        row.Cells["stock_actual"].Style.ForeColor = Color.White;
+                    }
+                    else if (stockActual <= stockMinimo + 10)
+                    {
+                        row.Cells["stock_actual"].Style.BackColor = Color.Yellow;
+                        row.Cells["stock_actual"].Style.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        row.Cells["stock_actual"].Style.BackColor = Color.Green;
+                        row.Cells["stock_actual"].Style.ForeColor = Color.White;
+                    }
+                }
+            }
         }
 
         private void FormularioProductos_Load(object sender, EventArgs e)
@@ -173,7 +215,7 @@ namespace inventario_proyecto
 
                     // Título del PDF  
                     doc.AddAuthor("Wiredbox");
-                    doc.AddTitle("Iventario");
+                    doc.AddTitle("Inventario");
 
                     // Definimos fuente  
                     iTextSharp.text.Font standarfint = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
@@ -286,6 +328,7 @@ namespace inventario_proyecto
             {
                 using (var formulario = new IngresoMercanciaForm())
                 {
+                    formulario.MercanciaIngresada += (s, args) => CargarProductos(); // Suscribirse al evento
                     if (formulario.ShowDialog() == DialogResult.OK)
                     {
                         CargarProductos(); // Recarga el DataGridView
@@ -325,6 +368,7 @@ namespace inventario_proyecto
         {
             using (var formulario = new EgresoMercanciaForm())
             {
+                formulario.MercanciaEgresada += (s, args) => CargarProductos(); // Suscribirse al evento
                 if (formulario.ShowDialog() == DialogResult.OK)
                 {
                     CargarProductos(); // Recarga el DataGridView
@@ -333,5 +377,4 @@ namespace inventario_proyecto
         }
     }
 }
-
 
