@@ -203,8 +203,8 @@ namespace inventario_proyecto
 
             if (result == DialogResult.Yes)
             {
-                // Crear la ruta del archivo PDF en la carpeta del proyecto  
-                string pdfPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PDFGenerado.pdf");
+                // Crear la ruta del archivo PDF en la carpeta del ejecutable
+                string pdfPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PDFGenerado.pdf");
 
                 using (FileStream fs = new FileStream(pdfPath, FileMode.Create))
                 {
@@ -221,7 +221,7 @@ namespace inventario_proyecto
                     iTextSharp.text.Font standarfint = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
                     // Cargar la imagen  
-                    string imagePath = "C:\\Users\\Personal\\Documents\\1000036045.jpg";
+                    string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagen", "1000036045.jpg");
                     iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(imagePath);
                     img.ScaleToFit(60f, 60f); // Ajustar el tamaño de la imagen  
 
@@ -240,48 +240,35 @@ namespace inventario_proyecto
                     doc.Add(Chunk.NEWLINE);
 
                     // Encabezado de columnas   
-                    PdfPTable tb = new PdfPTable(6);
+                    PdfPTable tb = new PdfPTable(dgvProductos.Columns.Cast<DataGridViewColumn>().Where(c => c.Visible).Count());
                     tb.WidthPercentage = 90;
 
-                    // Configuración del título de columnas   
-                    PdfPCell clID = new PdfPCell(new Phrase("ID", standarfint));
-                    clID.BorderWidth = 1;
-                    clID.BorderWidthBottom = 0.75f;
+                    // Agregar encabezados de columnas
+                    foreach (DataGridViewColumn column in dgvProductos.Columns)
+                    {
+                        if (column.Visible)
+                        {
+                            PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, standarfint));
+                            cell.BorderWidth = 1;
+                            cell.BorderWidthBottom = 0.75f;
+                            tb.AddCell(cell);
+                        }
+                    }
 
-                    PdfPCell clNombre = new PdfPCell(new Phrase("Nombre", standarfint));
-                    clNombre.BorderWidth = 1;
-                    clNombre.BorderWidthBottom = 0.75f;
-
-                    PdfPCell clUnidad = new PdfPCell(new Phrase("UnidadMedia", standarfint));
-                    clUnidad.BorderWidth = 1;
-                    clUnidad.BorderWidthBottom = 0.75f;
-
-                    PdfPCell clActual = new PdfPCell(new Phrase("StockActual", standarfint));
-                    clActual.BorderWidth = 1;
-                    clActual.BorderWidthBottom = 0.75f;
-
-                    PdfPCell clMinimo = new PdfPCell(new Phrase("StockMinimo", standarfint));
-                    clMinimo.BorderWidth = 1;
-                    clMinimo.BorderWidthBottom = 0.75f;
-
-                    PdfPCell clCategoria = new PdfPCell(new Phrase("Categoria", standarfint));
-                    clCategoria.BorderWidth = 1;
-                    clCategoria.BorderWidthBottom = 0.75f;
-
-                    // Agregamos las columnas a la tabla  
-                    tb.AddCell(clID);
-                    tb.AddCell(clNombre);
-                    tb.AddCell(clUnidad);
-                    tb.AddCell(clActual);
-                    tb.AddCell(clMinimo);
-                    tb.AddCell(clCategoria);
-
-                    // Agregar datos aquí (ejemplo comentado)  
-                    /* foreach (var mercancia in productos )  
-                     {  
-                         clID = new PdfPCell(new Phrase(mercancia.ID.ToString(), standarfint));  
-                         tb.AddCell(clID);  
-                     }*/
+                    // Agregar datos de las filas
+                    foreach (DataGridViewRow row in dgvProductos.Rows)
+                    {
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (dgvProductos.Columns[cell.ColumnIndex].Visible)
+                            {
+                                PdfPCell pdfCell = new PdfPCell(new Phrase(cell.Value?.ToString(), standarfint));
+                                pdfCell.BorderWidth = 1;
+                                pdfCell.BorderWidthBottom = 0.75f;
+                                tb.AddCell(pdfCell);
+                            }
+                        }
+                    }
 
                     doc.Add(tb);
 
