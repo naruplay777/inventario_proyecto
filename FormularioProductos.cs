@@ -113,21 +113,21 @@ namespace inventario_proyecto
             {
                 conn.Open();
                 string query = @"
-                    SELECT 
-                        p.producto_id, 
-                        p.nombre, 
-                        p.descripcion, 
-                        p.categoria_id, 
-                        p.unidad_base, 
-                        p.stock_minimo, 
-                        p.activo, 
-                        i.stock_actual 
-                    FROM 
-                        productos p
-                    LEFT JOIN 
-                        inventario i ON p.producto_id = i.producto_id
-                    WHERE 
-                        p.activo = 1";
+            SELECT 
+                p.producto_id, 
+                p.nombre, 
+                p.descripcion, 
+                p.categoria_id, 
+                p.unidad_base, 
+                p.stock_minimo, 
+                p.activo, 
+                i.stock_actual 
+            FROM 
+                productos p
+            LEFT JOIN 
+                inventario i ON p.producto_id = i.producto_id
+            WHERE 
+                p.activo = 1";
 
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
@@ -148,8 +148,8 @@ namespace inventario_proyecto
                 // Aplicar formato condicional a las celdas del stock actual
                 foreach (DataGridViewRow row in dgvProductos.Rows)
                 {
-                    decimal stockActual = Convert.ToDecimal(row.Cells["stock_actual"].Value);
-                    decimal stockMinimo = Convert.ToDecimal(row.Cells["stock_minimo"].Value);
+                    decimal stockActual = row.Cells["stock_actual"].Value != DBNull.Value ? Convert.ToDecimal(row.Cells["stock_actual"].Value) : 0;
+                    decimal stockMinimo = row.Cells["stock_minimo"].Value != DBNull.Value ? Convert.ToDecimal(row.Cells["stock_minimo"].Value) : 0;
 
                     if (stockActual <= stockMinimo)
                     {
@@ -361,6 +361,17 @@ namespace inventario_proyecto
             using (var formulario = new EgresoMercanciaForm())
             {
                 formulario.MercanciaEgresada += (s, args) => CargarProductos(); // Suscribirse al evento
+                if (formulario.ShowDialog() == DialogResult.OK)
+                {
+                    CargarProductos(); // Recarga el DataGridView
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var formulario = new repos())
+            {
                 if (formulario.ShowDialog() == DialogResult.OK)
                 {
                     CargarProductos(); // Recarga el DataGridView
