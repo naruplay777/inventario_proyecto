@@ -459,7 +459,7 @@ namespace inventario_proyecto
 
         private void pictureCerrar_Click_1(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
