@@ -19,6 +19,9 @@ namespace inventario_proyecto
         private Label label4;
         private TextBox txtNombre;
         private Button btnAgregar;
+        private Panel panel1;
+        private PictureBox pictureCerrar;
+        private Label label5;
         private DataTable dtUsuarios = new DataTable();
 
         public UsuarioForm()
@@ -206,6 +209,7 @@ namespace inventario_proyecto
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsuarioForm));
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.cbRol = new System.Windows.Forms.ComboBox();
@@ -218,33 +222,46 @@ namespace inventario_proyecto
             this.label4 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureCerrar = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(347, 119);
+            this.btnEditar.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Location = new System.Drawing.Point(337, 96);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.Size = new System.Drawing.Size(75, 25);
             this.btnEditar.TabIndex = 0;
             this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(427, 119);
+            this.btnEliminar.BackColor = System.Drawing.Color.Red;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(427, 96);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.Size = new System.Drawing.Size(75, 25);
             this.btnEliminar.TabIndex = 1;
             this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // cbRol
             // 
             this.cbRol.FormattingEnabled = true;
-            this.cbRol.Location = new System.Drawing.Point(41, 121);
+            this.cbRol.Location = new System.Drawing.Point(12, 96);
             this.cbRol.Name = "cbRol";
             this.cbRol.Size = new System.Drawing.Size(121, 21);
             this.cbRol.TabIndex = 2;
@@ -252,7 +269,7 @@ namespace inventario_proyecto
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 105);
+            this.label1.Location = new System.Drawing.Point(12, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 13);
             this.label1.TabIndex = 3;
@@ -261,16 +278,20 @@ namespace inventario_proyecto
             // dgvUsuarios
             // 
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Location = new System.Drawing.Point(12, 148);
+            this.dgvUsuarios.Location = new System.Drawing.Point(12, 125);
             this.dgvUsuarios.Name = "dgvUsuarios";
-            this.dgvUsuarios.Size = new System.Drawing.Size(490, 137);
+            this.dgvUsuarios.Size = new System.Drawing.Size(490, 160);
             this.dgvUsuarios.TabIndex = 4;
             this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
             // 
             // txtContrasena
             // 
             this.txtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+<<<<<<< HEAD
+            this.txtContrasena.Location = new System.Drawing.Point(12, 57);
+=======
             this.txtContrasena.Location = new System.Drawing.Point(12, 42);
+>>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.Size = new System.Drawing.Size(150, 20);
             this.txtContrasena.TabIndex = 5;
@@ -278,7 +299,11 @@ namespace inventario_proyecto
             // label2
             // 
             this.label2.AutoSize = true;
+<<<<<<< HEAD
+            this.label2.Location = new System.Drawing.Point(9, 41);
+=======
             this.label2.Location = new System.Drawing.Point(12, 26);
+>>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 6;
@@ -287,7 +312,11 @@ namespace inventario_proyecto
             // label3
             // 
             this.label3.AutoSize = true;
+<<<<<<< HEAD
+            this.label3.Location = new System.Drawing.Point(178, 41);
+=======
             this.label3.Location = new System.Drawing.Point(178, 26);
+>>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 8;
@@ -296,7 +325,11 @@ namespace inventario_proyecto
             // txtEmail
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+<<<<<<< HEAD
+            this.txtEmail.Location = new System.Drawing.Point(181, 57);
+=======
             this.txtEmail.Location = new System.Drawing.Point(181, 42);
+>>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(150, 20);
             this.txtEmail.TabIndex = 7;
@@ -304,7 +337,11 @@ namespace inventario_proyecto
             // label4
             // 
             this.label4.AutoSize = true;
+<<<<<<< HEAD
+            this.label4.Location = new System.Drawing.Point(349, 41);
+=======
             this.label4.Location = new System.Drawing.Point(349, 26);
+>>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 10;
@@ -313,24 +350,67 @@ namespace inventario_proyecto
             // txtNombre
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+<<<<<<< HEAD
+            this.txtNombre.Location = new System.Drawing.Point(352, 57);
+=======
             this.txtNombre.Location = new System.Drawing.Point(352, 42);
+>>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(150, 20);
             this.txtNombre.TabIndex = 9;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(265, 119);
+            this.btnAgregar.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(243, 96);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(75, 25);
             this.btnAgregar.TabIndex = 11;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gold;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.pictureCerrar);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(514, 27);
+            this.panel1.TabIndex = 12;
+            // 
+            // pictureCerrar
+            // 
+            this.pictureCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureCerrar.Image")));
+            this.pictureCerrar.Location = new System.Drawing.Point(491, 3);
+            this.pictureCerrar.Name = "pictureCerrar";
+            this.pictureCerrar.Size = new System.Drawing.Size(20, 19);
+            this.pictureCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureCerrar.TabIndex = 3;
+            this.pictureCerrar.TabStop = false;
+            this.pictureCerrar.Click += new System.EventHandler(this.pictureCerrar_Click);
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(176, 1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(179, 25);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Registrar Usuarios";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UsuarioForm
             // 
             this.ClientSize = new System.Drawing.Size(514, 297);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtNombre);
@@ -343,12 +423,20 @@ namespace inventario_proyecto
             this.Controls.Add(this.cbRol);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UsuarioForm";
             this.Load += new System.EventHandler(this.UsuarioForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void pictureCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
