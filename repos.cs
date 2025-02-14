@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using MySql.Data.MySqlClient;
+using System.Runtime.InteropServices;
 
 namespace inventario_proyecto
 {
@@ -20,6 +21,11 @@ namespace inventario_proyecto
         {
             InitializeComponent();
         }
+        // Esto es para que el diseño se pueda mover con el mouse
+        [DllImport("user32.Dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.Dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private void btnReporteProveedoresActivos_Click(object sender, EventArgs e)
         {
@@ -966,10 +972,19 @@ namespace inventario_proyecto
             }
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+        private void panelBarra_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
 
-
-
-
+        private void pictureCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(repos));
             this.btnReporteProveedoresActivos = new System.Windows.Forms.Button();
             this.btnReporteUsuariosRegistrados = new System.Windows.Forms.Button();
             this.btnReporteCategoriasPresentaciones = new System.Windows.Forms.Button();
@@ -40,130 +41,227 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureCerrar = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReporteProveedoresActivos
             // 
-            this.btnReporteProveedoresActivos.Location = new System.Drawing.Point(30, 51);
+            this.btnReporteProveedoresActivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.btnReporteProveedoresActivos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReporteProveedoresActivos.FlatAppearance.BorderSize = 0;
+            this.btnReporteProveedoresActivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteProveedoresActivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteProveedoresActivos.ForeColor = System.Drawing.Color.White;
+            this.btnReporteProveedoresActivos.Location = new System.Drawing.Point(30, 111);
             this.btnReporteProveedoresActivos.Name = "btnReporteProveedoresActivos";
             this.btnReporteProveedoresActivos.Size = new System.Drawing.Size(224, 46);
             this.btnReporteProveedoresActivos.TabIndex = 0;
-            this.btnReporteProveedoresActivos.Text = "btnReporteProveedoresActivos";
-            this.btnReporteProveedoresActivos.UseVisualStyleBackColor = true;
+            this.btnReporteProveedoresActivos.Text = "Reporte Proveedores Activos";
+            this.btnReporteProveedoresActivos.UseVisualStyleBackColor = false;
             this.btnReporteProveedoresActivos.Click += new System.EventHandler(this.btnReporteProveedoresActivos_Click);
             // 
             // btnReporteUsuariosRegistrados
             // 
-            this.btnReporteUsuariosRegistrados.Location = new System.Drawing.Point(30, 120);
+            this.btnReporteUsuariosRegistrados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.btnReporteUsuariosRegistrados.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReporteUsuariosRegistrados.FlatAppearance.BorderSize = 0;
+            this.btnReporteUsuariosRegistrados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteUsuariosRegistrados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteUsuariosRegistrados.ForeColor = System.Drawing.Color.White;
+            this.btnReporteUsuariosRegistrados.Location = new System.Drawing.Point(30, 175);
             this.btnReporteUsuariosRegistrados.Name = "btnReporteUsuariosRegistrados";
             this.btnReporteUsuariosRegistrados.Size = new System.Drawing.Size(224, 46);
             this.btnReporteUsuariosRegistrados.TabIndex = 1;
-            this.btnReporteUsuariosRegistrados.Text = "btnReporteUsuariosRegistrados";
-            this.btnReporteUsuariosRegistrados.UseVisualStyleBackColor = true;
+            this.btnReporteUsuariosRegistrados.Text = "Reporte Usuarios Registrados";
+            this.btnReporteUsuariosRegistrados.UseVisualStyleBackColor = false;
             this.btnReporteUsuariosRegistrados.Click += new System.EventHandler(this.btnReporteUsuariosRegistrados_Click);
             // 
             // btnReporteCategoriasPresentaciones
             // 
-            this.btnReporteCategoriasPresentaciones.Location = new System.Drawing.Point(30, 198);
+            this.btnReporteCategoriasPresentaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.btnReporteCategoriasPresentaciones.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReporteCategoriasPresentaciones.FlatAppearance.BorderSize = 0;
+            this.btnReporteCategoriasPresentaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteCategoriasPresentaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteCategoriasPresentaciones.ForeColor = System.Drawing.Color.White;
+            this.btnReporteCategoriasPresentaciones.Location = new System.Drawing.Point(30, 240);
             this.btnReporteCategoriasPresentaciones.Name = "btnReporteCategoriasPresentaciones";
             this.btnReporteCategoriasPresentaciones.Size = new System.Drawing.Size(224, 46);
             this.btnReporteCategoriasPresentaciones.TabIndex = 2;
-            this.btnReporteCategoriasPresentaciones.Text = "btnReporteCategoriasPresentaciones";
-            this.btnReporteCategoriasPresentaciones.UseVisualStyleBackColor = true;
+            this.btnReporteCategoriasPresentaciones.Text = "Reporte Categorias Presentaciones";
+            this.btnReporteCategoriasPresentaciones.UseVisualStyleBackColor = false;
             this.btnReporteCategoriasPresentaciones.Click += new System.EventHandler(this.btnReporteCategoriasPresentaciones_Click);
             // 
             // btnReporteInventarioActual
             // 
-            this.btnReporteInventarioActual.Location = new System.Drawing.Point(279, 51);
+            this.btnReporteInventarioActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.btnReporteInventarioActual.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReporteInventarioActual.FlatAppearance.BorderSize = 0;
+            this.btnReporteInventarioActual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteInventarioActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteInventarioActual.ForeColor = System.Drawing.Color.White;
+            this.btnReporteInventarioActual.Location = new System.Drawing.Point(292, 111);
             this.btnReporteInventarioActual.Name = "btnReporteInventarioActual";
             this.btnReporteInventarioActual.Size = new System.Drawing.Size(224, 46);
             this.btnReporteInventarioActual.TabIndex = 3;
-            this.btnReporteInventarioActual.Text = "btnReporteInventarioActual";
-            this.btnReporteInventarioActual.UseVisualStyleBackColor = true;
+            this.btnReporteInventarioActual.Text = "Reporte Inventario Actual";
+            this.btnReporteInventarioActual.UseVisualStyleBackColor = false;
             this.btnReporteInventarioActual.Click += new System.EventHandler(this.btnReporteInventarioActual_Click);
             // 
             // btnReporteEntradasMercancia
             // 
-            this.btnReporteEntradasMercancia.Location = new System.Drawing.Point(279, 120);
+            this.btnReporteEntradasMercancia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.btnReporteEntradasMercancia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReporteEntradasMercancia.FlatAppearance.BorderSize = 0;
+            this.btnReporteEntradasMercancia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteEntradasMercancia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteEntradasMercancia.ForeColor = System.Drawing.Color.White;
+            this.btnReporteEntradasMercancia.Location = new System.Drawing.Point(292, 175);
             this.btnReporteEntradasMercancia.Name = "btnReporteEntradasMercancia";
             this.btnReporteEntradasMercancia.Size = new System.Drawing.Size(224, 46);
             this.btnReporteEntradasMercancia.TabIndex = 4;
-            this.btnReporteEntradasMercancia.Text = "btnReporteEntradasMercancia";
-            this.btnReporteEntradasMercancia.UseVisualStyleBackColor = true;
+            this.btnReporteEntradasMercancia.Text = "Reporte Entradas Mercancia";
+            this.btnReporteEntradasMercancia.UseVisualStyleBackColor = false;
             this.btnReporteEntradasMercancia.Click += new System.EventHandler(this.btnReporteEntradasMercancia_Click);
             // 
             // btnReporteSalidasMercancia
             // 
-            this.btnReporteSalidasMercancia.Location = new System.Drawing.Point(279, 198);
+            this.btnReporteSalidasMercancia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.btnReporteSalidasMercancia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReporteSalidasMercancia.FlatAppearance.BorderSize = 0;
+            this.btnReporteSalidasMercancia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteSalidasMercancia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteSalidasMercancia.ForeColor = System.Drawing.Color.White;
+            this.btnReporteSalidasMercancia.Location = new System.Drawing.Point(292, 240);
             this.btnReporteSalidasMercancia.Name = "btnReporteSalidasMercancia";
             this.btnReporteSalidasMercancia.Size = new System.Drawing.Size(224, 46);
             this.btnReporteSalidasMercancia.TabIndex = 5;
-            this.btnReporteSalidasMercancia.Text = "btnReporteSalidasMercancia";
-            this.btnReporteSalidasMercancia.UseVisualStyleBackColor = true;
+            this.btnReporteSalidasMercancia.Text = "Reporte Salidas Mercancia";
+            this.btnReporteSalidasMercancia.UseVisualStyleBackColor = false;
             this.btnReporteSalidasMercancia.Click += new System.EventHandler(this.btnReporteSalidasMercancia_Click);
             // 
             // btnReporteBajoStock
             // 
-            this.btnReporteBajoStock.Location = new System.Drawing.Point(524, 51);
+            this.btnReporteBajoStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.btnReporteBajoStock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReporteBajoStock.FlatAppearance.BorderSize = 0;
+            this.btnReporteBajoStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteBajoStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteBajoStock.ForeColor = System.Drawing.Color.White;
+            this.btnReporteBajoStock.Location = new System.Drawing.Point(556, 111);
             this.btnReporteBajoStock.Name = "btnReporteBajoStock";
             this.btnReporteBajoStock.Size = new System.Drawing.Size(224, 46);
             this.btnReporteBajoStock.TabIndex = 6;
-            this.btnReporteBajoStock.Text = "btnReporteBajoStock";
-            this.btnReporteBajoStock.UseVisualStyleBackColor = true;
+            this.btnReporteBajoStock.Text = "Reporte Bajo Stock";
+            this.btnReporteBajoStock.UseVisualStyleBackColor = false;
             this.btnReporteBajoStock.Click += new System.EventHandler(this.btnReporteBajoStock_Click);
             // 
             // btnReporteComprasProveedor
             // 
-            this.btnReporteComprasProveedor.Location = new System.Drawing.Point(524, 120);
+            this.btnReporteComprasProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.btnReporteComprasProveedor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReporteComprasProveedor.FlatAppearance.BorderSize = 0;
+            this.btnReporteComprasProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteComprasProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteComprasProveedor.ForeColor = System.Drawing.Color.White;
+            this.btnReporteComprasProveedor.Location = new System.Drawing.Point(556, 175);
             this.btnReporteComprasProveedor.Name = "btnReporteComprasProveedor";
             this.btnReporteComprasProveedor.Size = new System.Drawing.Size(224, 46);
             this.btnReporteComprasProveedor.TabIndex = 7;
-            this.btnReporteComprasProveedor.Text = "btnReporteComprasProveedor";
-            this.btnReporteComprasProveedor.UseVisualStyleBackColor = true;
+            this.btnReporteComprasProveedor.Text = "Reporte Compras Proveedor";
+            this.btnReporteComprasProveedor.UseVisualStyleBackColor = false;
             this.btnReporteComprasProveedor.Click += new System.EventHandler(this.btnReporteComprasProveedor_Click);
             // 
             // btnReporteProductosSinMovimiento
             // 
-            this.btnReporteProductosSinMovimiento.Location = new System.Drawing.Point(524, 198);
+            this.btnReporteProductosSinMovimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(0)))), ((int)(((byte)(10)))));
+            this.btnReporteProductosSinMovimiento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReporteProductosSinMovimiento.FlatAppearance.BorderSize = 0;
+            this.btnReporteProductosSinMovimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteProductosSinMovimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteProductosSinMovimiento.ForeColor = System.Drawing.Color.White;
+            this.btnReporteProductosSinMovimiento.Location = new System.Drawing.Point(556, 240);
             this.btnReporteProductosSinMovimiento.Name = "btnReporteProductosSinMovimiento";
             this.btnReporteProductosSinMovimiento.Size = new System.Drawing.Size(224, 46);
             this.btnReporteProductosSinMovimiento.TabIndex = 8;
-            this.btnReporteProductosSinMovimiento.Text = "btnReporteProductosSinMovimiento";
-            this.btnReporteProductosSinMovimiento.UseVisualStyleBackColor = true;
+            this.btnReporteProductosSinMovimiento.Text = "Reporte Productos SinMovimiento";
+            this.btnReporteProductosSinMovimiento.UseVisualStyleBackColor = false;
             this.btnReporteProductosSinMovimiento.Click += new System.EventHandler(this.btnReporteProductosSinMovimiento_Click);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(596, 18);
+            this.label1.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(556, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.Size = new System.Drawing.Size(224, 28);
             this.label1.TabIndex = 9;
             this.label1.Text = "Toma de Decisiones";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(339, 18);
+            this.label2.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(292, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.Size = new System.Drawing.Size(224, 28);
             this.label2.TabIndex = 10;
             this.label2.Text = "Operativos";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(112, 18);
+            this.label3.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(39, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.Size = new System.Drawing.Size(215, 28);
             this.label3.TabIndex = 11;
             this.label3.Text = "Supervision";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gold;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.pictureCerrar);
+            this.panel1.Location = new System.Drawing.Point(-1, -1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(810, 29);
+            this.panel1.TabIndex = 12;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // pictureCerrar
+            // 
+            this.pictureCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureCerrar.Image")));
+            this.pictureCerrar.Location = new System.Drawing.Point(787, 7);
+            this.pictureCerrar.Name = "pictureCerrar";
+            this.pictureCerrar.Size = new System.Drawing.Size(20, 19);
+            this.pictureCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureCerrar.TabIndex = 1;
+            this.pictureCerrar.TabStop = false;
+            this.pictureCerrar.Click += new System.EventHandler(this.pictureCerrar_Click);
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(350, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(118, 29);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Reportes";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // repos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 278);
+            this.ClientSize = new System.Drawing.Size(810, 326);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -176,10 +274,12 @@
             this.Controls.Add(this.btnReporteCategoriasPresentaciones);
             this.Controls.Add(this.btnReporteUsuariosRegistrados);
             this.Controls.Add(this.btnReporteProveedoresActivos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "repos";
             this.Text = "repos";
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -197,5 +297,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureCerrar;
     }
 }
