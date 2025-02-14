@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -28,6 +29,11 @@ namespace inventario_proyecto
         {
             InitializeComponent();
         }
+        // esto es para que el diseño se puda mover con mouse
+        [DllImport("user32.Dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.Dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private class ConexionDB
         {
@@ -223,8 +229,8 @@ namespace inventario_proyecto
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureCerrar = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureCerrar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
@@ -287,7 +293,6 @@ namespace inventario_proyecto
             // txtContrasena
             // 
             this.txtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-
             this.txtContrasena.Location = new System.Drawing.Point(12, 42);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.Size = new System.Drawing.Size(150, 20);
@@ -296,7 +301,6 @@ namespace inventario_proyecto
             // label2
             // 
             this.label2.AutoSize = true;
-
             this.label2.Location = new System.Drawing.Point(12, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
@@ -315,7 +319,6 @@ namespace inventario_proyecto
             // txtEmail
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-
             this.txtEmail.Location = new System.Drawing.Point(181, 42);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(150, 20);
@@ -324,7 +327,6 @@ namespace inventario_proyecto
             // label4
             // 
             this.label4.AutoSize = true;
-
             this.label4.Location = new System.Drawing.Point(349, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
@@ -334,8 +336,6 @@ namespace inventario_proyecto
             // txtNombre
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-
-
             this.txtNombre.Location = new System.Drawing.Point(352, 42);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(150, 20);
@@ -365,6 +365,17 @@ namespace inventario_proyecto
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(514, 27);
             this.panel1.TabIndex = 12;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(176, 1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(179, 25);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Registrar Usuarios";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureCerrar
             // 
@@ -378,16 +389,6 @@ namespace inventario_proyecto
             this.pictureCerrar.TabIndex = 3;
             this.pictureCerrar.TabStop = false;
             this.pictureCerrar.Click += new System.EventHandler(this.pictureCerrar_Click);
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(176, 1);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(179, 25);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Registrar Usuarios";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UsuarioForm
             // 
@@ -419,6 +420,12 @@ namespace inventario_proyecto
         private void pictureCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }
