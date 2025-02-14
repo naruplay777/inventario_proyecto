@@ -14,6 +14,8 @@ namespace inventario_proyecto
 {
     public partial class EgresoMercanciaForm : Form
     {
+        public event EventHandler MercanciaEgresada; // Evento personalizado
+
         private ComboBox cbProducto;
         private Label label1;
         private DataGridView dgvProductos;
@@ -171,6 +173,9 @@ namespace inventario_proyecto
                     transaction.Commit();
                     MessageBox.Show("Egreso registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgvProductos.Rows.Clear();
+
+                    // Disparar el evento personalizado
+                    MercanciaEgresada?.Invoke(this, EventArgs.Empty);
                 }
                 catch (Exception ex)
                 {
@@ -303,4 +308,3 @@ namespace inventario_proyecto
         }
     }
 }
-
