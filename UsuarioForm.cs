@@ -269,15 +269,16 @@ namespace inventario_proyecto
             // 
             // txtContrasena
             // 
-            this.txtContrasena.Location = new System.Drawing.Point(41, 42);
+            this.txtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtContrasena.Location = new System.Drawing.Point(12, 42);
             this.txtContrasena.Name = "txtContrasena";
-            this.txtContrasena.Size = new System.Drawing.Size(100, 20);
+            this.txtContrasena.Size = new System.Drawing.Size(150, 20);
             this.txtContrasena.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 26);
+            this.label2.Location = new System.Drawing.Point(12, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 6;
@@ -286,7 +287,7 @@ namespace inventario_proyecto
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(169, 26);
+            this.label3.Location = new System.Drawing.Point(178, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 8;
@@ -294,15 +295,16 @@ namespace inventario_proyecto
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(172, 42);
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmail.Location = new System.Drawing.Point(181, 42);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(168, 20);
+            this.txtEmail.Size = new System.Drawing.Size(150, 20);
             this.txtEmail.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(356, 26);
+            this.label4.Location = new System.Drawing.Point(349, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 10;
@@ -310,9 +312,10 @@ namespace inventario_proyecto
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(359, 42);
+            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNombre.Location = new System.Drawing.Point(352, 42);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.Size = new System.Drawing.Size(150, 20);
             this.txtNombre.TabIndex = 9;
             // 
             // btnAgregar
