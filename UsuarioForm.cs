@@ -287,11 +287,8 @@ namespace inventario_proyecto
             // txtContrasena
             // 
             this.txtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-<<<<<<< HEAD
-            this.txtContrasena.Location = new System.Drawing.Point(12, 57);
-=======
+
             this.txtContrasena.Location = new System.Drawing.Point(12, 42);
->>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.Size = new System.Drawing.Size(150, 20);
             this.txtContrasena.TabIndex = 5;
@@ -299,11 +296,8 @@ namespace inventario_proyecto
             // label2
             // 
             this.label2.AutoSize = true;
-<<<<<<< HEAD
-            this.label2.Location = new System.Drawing.Point(9, 41);
-=======
+
             this.label2.Location = new System.Drawing.Point(12, 26);
->>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 6;
@@ -312,11 +306,7 @@ namespace inventario_proyecto
             // label3
             // 
             this.label3.AutoSize = true;
-<<<<<<< HEAD
-            this.label3.Location = new System.Drawing.Point(178, 41);
-=======
             this.label3.Location = new System.Drawing.Point(178, 26);
->>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 8;
@@ -325,11 +315,8 @@ namespace inventario_proyecto
             // txtEmail
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-<<<<<<< HEAD
-            this.txtEmail.Location = new System.Drawing.Point(181, 57);
-=======
+
             this.txtEmail.Location = new System.Drawing.Point(181, 42);
->>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(150, 20);
             this.txtEmail.TabIndex = 7;
@@ -337,11 +324,8 @@ namespace inventario_proyecto
             // label4
             // 
             this.label4.AutoSize = true;
-<<<<<<< HEAD
-            this.label4.Location = new System.Drawing.Point(349, 41);
-=======
+
             this.label4.Location = new System.Drawing.Point(349, 26);
->>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 10;
@@ -350,11 +334,9 @@ namespace inventario_proyecto
             // txtNombre
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-<<<<<<< HEAD
-            this.txtNombre.Location = new System.Drawing.Point(352, 57);
-=======
+
+
             this.txtNombre.Location = new System.Drawing.Point(352, 42);
->>>>>>> fe08c814d9d449c4098a28aab468fc5e1ded3270
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(150, 20);
             this.txtNombre.TabIndex = 9;
