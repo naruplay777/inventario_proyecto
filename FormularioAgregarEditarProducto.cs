@@ -311,8 +311,8 @@ namespace inventario_proyecto
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+           
         }
+        
     }
 }

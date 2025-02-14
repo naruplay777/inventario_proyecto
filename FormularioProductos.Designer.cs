@@ -135,6 +135,8 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.panelMenu.Controls.Add(this.button1);
+            this.panelMenu.Controls.Add(this.AggProv);
+            this.panelMenu.Controls.Add(this.AggUsuarios);
             this.panelMenu.Controls.Add(this.pictureBoxCerrar);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
@@ -219,7 +221,7 @@
             // 
             // AggProv
             // 
-            this.AggProv.Location = new System.Drawing.Point(175, 386);
+            this.AggProv.Location = new System.Drawing.Point(410, 8);
             this.AggProv.Name = "AggProv";
             this.AggProv.Size = new System.Drawing.Size(75, 23);
             this.AggProv.TabIndex = 9;
@@ -230,7 +232,7 @@
             // 
             // AggUsuarios
             // 
-            this.AggUsuarios.Location = new System.Drawing.Point(487, 386);
+            this.AggUsuarios.Location = new System.Drawing.Point(280, 9);
             this.AggUsuarios.Name = "AggUsuarios";
             this.AggUsuarios.Size = new System.Drawing.Size(124, 23);
             this.AggUsuarios.TabIndex = 10;
@@ -256,8 +258,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(952, 464);
             this.Controls.Add(this.AggEgreso);
-            this.Controls.Add(this.AggUsuarios);
-            this.Controls.Add(this.AggProv);
             this.Controls.Add(this.AggIngreso);
             this.Controls.Add(this.panelServicio);
             this.Controls.Add(this.btnGenerarpdf);

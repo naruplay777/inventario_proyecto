@@ -205,13 +205,17 @@ namespace inventario_proyecto
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            
         }
 
         private void pictureCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void panelBarra_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

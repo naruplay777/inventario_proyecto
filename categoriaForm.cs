@@ -198,6 +198,15 @@ namespace inventario_proyecto
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void panelBarra_MouseDown(object sender, MouseEventArgs e)
+        {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }

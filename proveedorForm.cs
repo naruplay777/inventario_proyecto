@@ -240,8 +240,8 @@ namespace inventario_proyecto
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnGenerarPDF = new System.Windows.Forms.Button();
             this.pictureCerrar = new System.Windows.Forms.PictureBox();
+            this.btnGenerarPDF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
@@ -399,6 +399,7 @@ namespace inventario_proyecto
             this.panel1.Size = new System.Drawing.Size(434, 26);
             this.panel1.TabIndex = 14;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBarra_MouseDown);
             // 
             // label5
             // 
@@ -408,6 +409,19 @@ namespace inventario_proyecto
             this.label5.Size = new System.Drawing.Size(127, 21);
             this.label5.TabIndex = 3;
             this.label5.Text = "Proveedores";
+            // 
+            // pictureCerrar
+            // 
+            this.pictureCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureCerrar.Image")));
+            this.pictureCerrar.Location = new System.Drawing.Point(411, 3);
+            this.pictureCerrar.Name = "pictureCerrar";
+            this.pictureCerrar.Size = new System.Drawing.Size(20, 19);
+            this.pictureCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureCerrar.TabIndex = 2;
+            this.pictureCerrar.TabStop = false;
+            this.pictureCerrar.Click += new System.EventHandler(this.pictureCerrar_Click_1);
             // 
             // btnGenerarPDF
             // 
@@ -422,19 +436,6 @@ namespace inventario_proyecto
             this.btnGenerarPDF.TabIndex = 15;
             this.btnGenerarPDF.Text = "PDF";
             this.btnGenerarPDF.UseVisualStyleBackColor = false;
-            // 
-            // pictureCerrar
-            // 
-            this.pictureCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureCerrar.Image = ((System.Drawing.Image)(resources.GetObject("pictureCerrar.Image")));
-            this.pictureCerrar.Location = new System.Drawing.Point(411, 3);
-            this.pictureCerrar.Name = "pictureCerrar";
-            this.pictureCerrar.Size = new System.Drawing.Size(20, 19);
-            this.pictureCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureCerrar.TabIndex = 2;
-            this.pictureCerrar.TabStop = false;
-            this.pictureCerrar.Click += new System.EventHandler(this.pictureCerrar_Click_1);
             // 
             // proveedorForm
             // 
@@ -471,6 +472,10 @@ namespace inventario_proyecto
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+        private void panelBarra_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);

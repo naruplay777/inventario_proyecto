@@ -146,6 +146,7 @@
             this.panel1.Size = new System.Drawing.Size(401, 24);
             this.panel1.TabIndex = 8;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBarra_MouseDown);
             // 
             // label5
             // 
@@ -159,6 +160,7 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "CATEGORIAS";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // pictureCerrar
             // 

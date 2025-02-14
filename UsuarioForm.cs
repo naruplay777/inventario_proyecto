@@ -366,6 +366,7 @@ namespace inventario_proyecto
             this.panel1.Size = new System.Drawing.Size(514, 27);
             this.panel1.TabIndex = 12;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBarra_MouseDown);
             // 
             // label5
             // 
@@ -423,6 +424,10 @@ namespace inventario_proyecto
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+          
+        }
+        private void panelBarra_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
