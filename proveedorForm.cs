@@ -232,9 +232,9 @@ namespace inventario_proyecto
             this.label4 = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.pictureCerrar = new System.Windows.Forms.PictureBox();
             this.btnGenerarPDF = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCerrar)).BeginInit();
@@ -392,6 +392,15 @@ namespace inventario_proyecto
             this.panel1.Size = new System.Drawing.Size(434, 26);
             this.panel1.TabIndex = 14;
             // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(154, 1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(127, 21);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Proveedores";
+            // 
             // pictureCerrar
             // 
             this.pictureCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -417,15 +426,6 @@ namespace inventario_proyecto
             this.btnGenerarPDF.TabIndex = 15;
             this.btnGenerarPDF.Text = "PDF";
             this.btnGenerarPDF.UseVisualStyleBackColor = false;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(154, 1);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 21);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Proveedores";
             // 
             // proveedorForm
             // 
