@@ -168,7 +168,7 @@ namespace inventario_proyecto
                         cmdDetalleEntrada.ExecuteNonQuery();
 
                         // Actualizar el inventario
-                        string queryInventario = "UPDATE inventario SET stock_actual = stock_actual + @cantidad WHERE producto_id = @productoId";
+                        string queryInventario = "INSERT INTO inventario (producto_id, stock_actual) VALUES (@productoId, @cantidad) ON DUPLICATE KEY UPDATE stock_actual = stock_actual + @cantidad";
                         MySqlCommand cmdInventario = new MySqlCommand(queryInventario, conn, transaction);
                         cmdInventario.Parameters.AddWithValue("@cantidad", cantidad);
                         cmdInventario.Parameters.AddWithValue("@productoId", productoId);
@@ -188,3 +188,4 @@ namespace inventario_proyecto
         }
     }
 }
+

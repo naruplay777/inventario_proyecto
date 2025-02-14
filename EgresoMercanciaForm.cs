@@ -67,17 +67,117 @@ namespace inventario_proyecto
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (cbProducto.SelectedValue == null || string.IsNullOrWhiteSpace(txtCantidad.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text))
+            {
+                MessageBox.Show("Debe completar todos los campos antes de agregar un producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            int productoId;
+            if (!int.TryParse(cbProducto.SelectedValue.ToString(), out productoId))
+            {
+                MessageBox.Show("ID de producto no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string nombreProducto = cbProducto.Text;
+            int cantidad;
+            if (!int.TryParse(txtCantidad.Text, out cantidad))
+            {
+                MessageBox.Show("Cantidad no válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            decimal precioUnitario;
+            if (!decimal.TryParse(txtPrecio.Text, out precioUnitario))
+            {
+                MessageBox.Show("Precio unitario no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            dgvProductos.Rows.Add(productoId, nombreProducto, cantidad, precioUnitario);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
+            foreach (DataGridViewRow row in dgvProductos.SelectedRows)
+            {
+                dgvProductos.Rows.Remove(row);
+            }
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            if (dgvProductos.Rows.Count == 0)
+            {
+                MessageBox.Show("Debe agregar al menos un producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            int usuarioId = 1; // Reemplazar con el usuario logueado
+
+            using (MySqlConnection conn = ConexionDB.GetConnection())
+            {
+                conn.Open();
+                MySqlTransaction transaction = conn.BeginTransaction();
+
+                try
+                {
+                    // Insertar en la tabla 'salidas'
+                    string querySalida = "INSERT INTO salidas (usuario_id, fecha_salida) VALUES (@usuarioId, NOW())";
+                    MySqlCommand cmdSalida = new MySqlCommand(querySalida, conn, transaction);
+                    cmdSalida.Parameters.AddWithValue("@usuarioId", usuarioId);
+                    cmdSalida.ExecuteNonQuery();
+
+                    // Obtener el ID de la salida recién insertada
+                    long salidaId = cmdSalida.LastInsertedId;
+
+                    foreach (DataGridViewRow row in dgvProductos.Rows)
+                    {
+                        if (row.IsNewRow) continue; // Saltar las filas nuevas vacías
+
+                        int productoId = Convert.ToInt32(row.Cells["producto_id"].Value);
+                        int cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
+                        decimal precioUnitario = Convert.ToDecimal(row.Cells["precio_unitario"].Value);
+
+                        // Verificar si el producto existe en la tabla productos
+                        string queryVerificarProducto = "SELECT COUNT(*) FROM productos WHERE producto_id = @productoId";
+                        MySqlCommand cmdVerificarProducto = new MySqlCommand(queryVerificarProducto, conn, transaction);
+                        cmdVerificarProducto.Parameters.AddWithValue("@productoId", productoId);
+                        int productoExiste = Convert.ToInt32(cmdVerificarProducto.ExecuteScalar());
+
+                        if (productoExiste == 0)
+                        {
+                            throw new Exception($"El producto con ID {productoId} no existe en la tabla productos.");
+                        }
+
+                        // Insertar en la tabla 'detalle_salidas'
+                        string queryDetalleSalida = "INSERT INTO detalle_salidas (salida_id, producto_id, cantidad, precio_unitario) VALUES (@salidaId, @productoId, @cantidad, @precio)";
+                        MySqlCommand cmdDetalleSalida = new MySqlCommand(queryDetalleSalida, conn, transaction);
+                        cmdDetalleSalida.Parameters.AddWithValue("@salidaId", salidaId);
+                        cmdDetalleSalida.Parameters.AddWithValue("@productoId", productoId);
+                        cmdDetalleSalida.Parameters.AddWithValue("@cantidad", cantidad);
+                        cmdDetalleSalida.Parameters.AddWithValue("@precio", precioUnitario);
+                        cmdDetalleSalida.ExecuteNonQuery();
+
+                        // Actualizar el inventario
+                        string queryInventario = "UPDATE inventario SET stock_actual = stock_actual - @cantidad WHERE producto_id = @productoId";
+                        MySqlCommand cmdInventario = new MySqlCommand(queryInventario, conn, transaction);
+                        cmdInventario.Parameters.AddWithValue("@cantidad", cantidad);
+                        cmdInventario.Parameters.AddWithValue("@productoId", productoId);
+                        cmdInventario.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    MessageBox.Show("Egreso registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvProductos.Rows.Clear();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Error al registrar el egreso: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void InitializeComponent()
@@ -160,6 +260,7 @@ namespace inventario_proyecto
             this.btnEliminar.TabIndex = 15;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 
@@ -169,6 +270,7 @@ namespace inventario_proyecto
             this.btnAgregar.TabIndex = 14;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnRegistrar
             // 
@@ -176,8 +278,9 @@ namespace inventario_proyecto
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(75, 23);
             this.btnRegistrar.TabIndex = 16;
-            this.btnRegistrar.Text = "Regristrar";
+            this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // EgresoMercanciaForm
             // 
@@ -200,3 +303,4 @@ namespace inventario_proyecto
         }
     }
 }
+
